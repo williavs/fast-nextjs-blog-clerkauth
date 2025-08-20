@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WillyV3's Homelab Blog
 
-## Getting Started
+> Infrastructure as Code when you barely know how to code. Real failures, real solutions.
 
-First, run the development server:
+A Next.js 15 blog with MDX support, Clerk authentication, Neon PostgreSQL comments, and doom-64 retro gaming theme.
 
+## Features
+
+- 🎮 **doom-64 theme** - Retro gaming aesthetic with shadcn/ui components
+- 📝 **MDX blog posts** - Write rich content with React components
+- 💬 **Comments system** - Authenticated comments with likes via Clerk + Neon
+- 🔍 **SEO optimized** - Comprehensive metadata, sitemap, RSS feed
+- 🚀 **Production ready** - Built with Next.js 15, TypeScript, Tailwind v4
+
+## Adding Blog Posts with Claude Code
+
+This blog is designed to work seamlessly with Claude Code. To add new blog posts:
+
+### Method 1: Direct Command
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+claude "Add a new blog post about [topic]"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Method 2: Detailed Instructions
+```bash
+claude "Create a new blog post:
+- Title: Your Post Title
+- Topic: Brief description
+- Include code examples, images, or specific sections
+- Add appropriate tags and metadata"
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Blog Post Structure
+Claude Code will automatically:
+- Create a new `.mdx` file in `/src/content/blog/`
+- Generate proper frontmatter with title, date, excerpt, tags
+- Structure content with headings, code blocks, and components
+- Optimize for SEO with proper metadata
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Example Blog Post Request
+```bash
+claude "Write a blog post about setting up a Kubernetes cluster on Raspberry Pi. Include:
+- Hardware requirements
+- Installation steps with code
+- Common troubleshooting issues
+- Performance benchmarks
+Tag it with: kubernetes, raspberry-pi, homelab"
+```
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Install dependencies
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Run development server
+npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Build for production
+npm run build
 
-## Deploy on Vercel
+# Start production server
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create a `.env.local` file:
+
+```env
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+
+# Neon PostgreSQL
+DATABASE_URL=postgresql://...
+```
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS v4 + shadcn/ui (doom-64 theme)
+- **Content**: MDX with gray-matter frontmatter
+- **Auth**: Clerk
+- **Database**: Neon PostgreSQL
+- **Deployment**: Vercel-ready
+
+## Repository
+
+https://github.com/williavs/homelab-blog
+
+---
+
+Built with Claude Code 🤖
