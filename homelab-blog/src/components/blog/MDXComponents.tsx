@@ -1,4 +1,8 @@
-import { MDXComponents } from 'mdx/types'
+import React from 'react'
+
+type MDXComponents = {
+  [key: string]: React.ComponentType<Record<string, unknown>>
+}
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
