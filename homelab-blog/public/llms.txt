@@ -1,0 +1,13 @@
+# Breaking Shit & Fixing It
+
+> Infrastructure as Code when you barely know how to code. Real failures, real solutions. A Next.js 15 blog documenting homelab adventures, automation experiments, and AI-powered development workflows.
+
+This is WillyV3's personal homelab blog built with Next.js 15, featuring MDX blog posts about infrastructure failures and fixes. The site uses Clerk for authentication, Neon PostgreSQL for comments, and showcases real-world homelab scenarios solved with Claude Code automation.
+
+Key technologies: Next.js 15 App Router, TypeScript, Tailwind CSS v4, shadcn/ui components, MDX with React components, Clerk authentication, Neon PostgreSQL.
+
+## Blog Posts
+
+- [VM Go Brrrr: A Homelab Disaster Story](https://breakshit.blog/blog/persistent-vm-pattern): How to solve OAuth token complexity with persistent VM approach using Packer and Vagrant
+
+
