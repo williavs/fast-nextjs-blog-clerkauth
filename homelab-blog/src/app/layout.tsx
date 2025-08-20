@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://homelab-blog.vercel.app'),
+  metadataBase: new URL('https://breakshit.blog'),
   title: {
     default: "Breaking Shit & Fixing It: An AI-Powered Homelab",
     template: "%s | Breaking Shit & Fixing It"
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://homelab-blog.vercel.app",
+    url: "https://breakshit.blog",
     title: "Breaking Shit & Fixing It: An AI-Powered Homelab",
     description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions.",
     siteName: "Breaking Shit & Fixing It",
