@@ -10,24 +10,11 @@ export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold tracking-tight mb-6">
-            Breaking Shit & Fixing It
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Infrastructure as Code when you barely know how to code. 
-          </p>
-          <Link href="/blog">
-            <Button size="lg" className="font-mono">
-              Read the Blog
-            </Button>
-          </Link>
-        </div>
 
         <div className="mb-12">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">What This Actually Is</CardTitle>
+              <CardTitle className="text-2xl">What This Is</CardTitle>
               <CardDescription>
                 My first homelab setup, documented as I learn
               </CardDescription>
