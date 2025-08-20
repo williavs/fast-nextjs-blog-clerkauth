@@ -14,10 +14,10 @@ interface CommentsListProps {
   comments: Comment[]
   postSlug: string
   onCommentAdded: (comment: Comment) => void
-  onRefresh: () => void
+  onLikeUpdate: (commentId: number, liked: boolean) => void
 }
 
-export function CommentsList({ comments, postSlug, onCommentAdded, onRefresh }: CommentsListProps) {
+export function CommentsList({ comments, postSlug, onCommentAdded, onLikeUpdate }: CommentsListProps) {
   const [replyingTo, setReplyingTo] = useState<number | null>(null)
   const { isSignedIn } = useUser()
 
@@ -30,8 +30,9 @@ export function CommentsList({ comments, postSlug, onCommentAdded, onRefresh }: 
       })
       
       if (response.ok) {
-        // Just refresh all comments from server
-        onRefresh()
+        const result = await response.json()
+        // Optimistically update the specific comment
+        onLikeUpdate(commentId, result.liked)
       }
     } catch (error) {
       console.error('Error toggling like:', error)

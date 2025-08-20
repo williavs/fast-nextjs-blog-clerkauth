@@ -34,7 +34,7 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
 
   useEffect(() => {
     fetchComments()
-  }, [postSlug, fetchComments])
+  }, [postSlug])
 
   const handleCommentAdded = (newComment: Comment) => {
     if (newComment.parent_id) {
@@ -52,6 +52,36 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
       // It's a top-level comment
       setComments(prev => [...prev, { ...newComment, replies: [] }])
     }
+  }
+
+  const handleLikeUpdate = (commentId: number, liked: boolean) => {
+    setComments(prev => prev.map(comment => {
+      if (comment.id === commentId) {
+        return {
+          ...comment,
+          user_has_liked: liked,
+          like_count: liked ? 
+            (Number(comment.like_count) || 0) + 1 : 
+            Math.max((Number(comment.like_count) || 0) - 1, 0)
+        }
+      }
+      // Check replies too
+      if (comment.replies) {
+        return {
+          ...comment,
+          replies: comment.replies.map(reply => 
+            reply.id === commentId ? {
+              ...reply,
+              user_has_liked: liked,
+              like_count: liked ? 
+                (Number(reply.like_count) || 0) + 1 : 
+                Math.max((Number(reply.like_count) || 0) - 1, 0)
+            } : reply
+          )
+        }
+      }
+      return comment
+    }))
   }
 
 
@@ -86,7 +116,7 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
           comments={comments}
           postSlug={postSlug}
           onCommentAdded={handleCommentAdded}
-          onRefresh={fetchComments}
+          onLikeUpdate={handleLikeUpdate}
         />
       </CardContent>
     </Card>
