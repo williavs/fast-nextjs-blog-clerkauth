@@ -1,7 +1,31 @@
 import { getAllPosts, getAllCategories } from '@/lib/posts'
 import { BlogCard } from '@/components/blog/BlogCard'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Blog Posts",
+  description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions from a homelab journey.",
+  openGraph: {
+    title: "Blog Posts | Breaking Shit & Fixing It",
+    description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions from a homelab journey.",
+    url: "https://homelab-blog.vercel.app/blog",
+    images: [
+      {
+        url: "/og-image-blog.png",
+        width: 1200,
+        height: 630,
+        alt: "Blog Posts - Breaking Shit & Fixing It"
+      }
+    ]
+  },
+  twitter: {
+    title: "Blog Posts | Breaking Shit & Fixing It",
+    description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions from a homelab journey.",
+    images: ["/og-image-blog.png"]
+  }
+}
 
 export default function BlogPage() {
   const posts = getAllPosts()

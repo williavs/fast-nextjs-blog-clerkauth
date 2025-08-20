@@ -54,32 +54,6 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
     }
   }
 
-  const handleLikeToggle = (commentId: number, liked: boolean, count: number) => {
-    setComments(prev => prev.map(comment => {
-      if (comment.id === commentId) {
-        return {
-          ...comment,
-          user_has_liked: liked,
-          like_count: count
-        }
-      }
-      // Also check replies
-      if (comment.replies) {
-        const updatedReplies = comment.replies.map(reply => {
-          if (reply.id === commentId) {
-            return {
-              ...reply,
-              user_has_liked: liked,
-              like_count: count
-            }
-          }
-          return reply
-        })
-        return { ...comment, replies: updatedReplies }
-      }
-      return comment
-    }))
-  }
 
   if (loading) {
     return (
@@ -112,7 +86,6 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
           comments={comments}
           postSlug={postSlug}
           onCommentAdded={handleCommentAdded}
-          onLikeToggle={handleLikeToggle}
           onRefresh={fetchComments}
         />
       </CardContent>

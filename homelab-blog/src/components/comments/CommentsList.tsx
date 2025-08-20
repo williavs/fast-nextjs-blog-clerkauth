@@ -9,22 +9,15 @@ import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Heart, MessageCircle } from 'lucide-react'
 
-interface CommentsListProps {
-  comments: Comment[]
-  postSlug: string
-  onCommentAdded: (comment: Comment) => void
-  onLikeToggle: (commentId: number, liked: boolean, count: number) => void
-}
 
 interface CommentsListProps {
   comments: Comment[]
   postSlug: string
   onCommentAdded: (comment: Comment) => void
-  onLikeToggle: (commentId: number, liked: boolean, count: number) => void
   onRefresh: () => void
 }
 
-export function CommentsList({ comments, postSlug, onCommentAdded, onLikeToggle, onRefresh }: CommentsListProps) {
+export function CommentsList({ comments, postSlug, onCommentAdded, onRefresh }: CommentsListProps) {
   const [replyingTo, setReplyingTo] = useState<number | null>(null)
   const { isSignedIn } = useUser()
 

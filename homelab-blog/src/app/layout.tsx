@@ -15,8 +15,52 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Breaking Shit & Fixing It: An AI-Powered Homelab",
+  metadataBase: new URL('https://homelab-blog.vercel.app'),
+  title: {
+    default: "Breaking Shit & Fixing It: An AI-Powered Homelab",
+    template: "%s | Breaking Shit & Fixing It"
+  },
   description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions.",
+  keywords: ["homelab", "infrastructure", "devops", "claude", "automation", "self-hosted"],
+  authors: [{ name: "WillyV3", url: "https://willyv3.com" }],
+  creator: "WillyV3",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://homelab-blog.vercel.app",
+    title: "Breaking Shit & Fixing It: An AI-Powered Homelab",
+    description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions.",
+    siteName: "Breaking Shit & Fixing It",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Breaking Shit & Fixing It - Homelab Blog"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Breaking Shit & Fixing It: An AI-Powered Homelab",
+    description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions.",
+    images: ["/og-image.png"],
+    creator: "@willyv3"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code"
+  }
 };
 
 export default function RootLayout({

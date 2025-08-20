@@ -34,10 +34,10 @@ export default function Home() {
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
               <p className="mb-4 text-muted-foreground">
-                This is my first homelab running on a Minisforum UN100. I'm learning infrastructure by building it, breaking it, and documenting what might actually work. Packer for VM images, Vagrant for management, tmux for automation, and Claude Code as my agentic OS.
+                This is my first homelab running on a Minisforum UN100. I&apos;m learning infrastructure by building it, breaking it, and documenting what might actually work. Packer for VM images, Vagrant for management, tmux for automation, and Claude Code as my agentic OS.
               </p>
               <p className="mb-6 text-muted-foreground">
-                Each post covers real problems I've hit and the actual solutions that worked. No theory, no best practices from people who've never touched production - just what happens when you learn DevOps by doing it.
+                Each post covers real problems I&apos;ve hit and the actual solutions that worked. No theory, no best practices from people who&apos;ve never touched production - just what happens when you learn DevOps by doing it.
               </p>
               <p className="text-sm text-muted-foreground">
                 Cheers, <a href="https://willyv3.com/app-playground" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground underline">WillyV3</a>
