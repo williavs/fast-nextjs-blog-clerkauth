@@ -34,7 +34,7 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
 
   useEffect(() => {
     fetchComments()
-  }, [postSlug])
+  }, [postSlug, fetchComments])
 
   const handleCommentAdded = (newComment: Comment) => {
     if (newComment.parent_id) {
