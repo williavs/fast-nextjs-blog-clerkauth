@@ -1,0 +1,1555 @@
+[
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "cd /Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog && npm install @next/mdx @mdx-js/loader @mdx-js/react gray-matter remark-gfm rehype-highlight",
+      "description": "Install MDX dependencies"
+    },
+    "tool_response": {
+      "stdout": "added 144 packages, and audited 604 packages in 6s\n\n259 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/next.config.ts"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/next.config.ts",
+        "content": "import type { NextConfig } from \"next\";\n\nconst nextConfig: NextConfig = {\n  /* config options here */\n};\n\nexport default nextConfig;\n",
+        "numLines": 8,
+        "startLine": 1,
+        "totalLines": 8
+      }
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Edit",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/next.config.ts",
+      "old_string": "import type { NextConfig } from \"next\";\n\nconst nextConfig: NextConfig = {\n  /* config options here */\n};\n\nexport default nextConfig;",
+      "new_string": "import type { NextConfig } from \"next\";\nimport createMDX from '@next/mdx'\nimport remarkGfm from 'remark-gfm'\nimport rehypeHighlight from 'rehype-highlight'\n\nconst nextConfig: NextConfig = {\n  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],\n};\n\nconst withMDX = createMDX({\n  options: {\n    remarkPlugins: [remarkGfm],\n    rehypePlugins: [rehypeHighlight],\n  },\n})\n\nexport default withMDX(nextConfig);"
+    },
+    "tool_response": {
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/next.config.ts",
+      "oldString": "import type { NextConfig } from \"next\";\n\nconst nextConfig: NextConfig = {\n  /* config options here */\n};\n\nexport default nextConfig;",
+      "newString": "import type { NextConfig } from \"next\";\nimport createMDX from '@next/mdx'\nimport remarkGfm from 'remark-gfm'\nimport rehypeHighlight from 'rehype-highlight'\n\nconst nextConfig: NextConfig = {\n  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],\n};\n\nconst withMDX = createMDX({\n  options: {\n    remarkPlugins: [remarkGfm],\n    rehypePlugins: [rehypeHighlight],\n  },\n})\n\nexport default withMDX(nextConfig);",
+      "originalFile": "import type { NextConfig } from \"next\";\n\nconst nextConfig: NextConfig = {\n  /* config options here */\n};\n\nexport default nextConfig;\n",
+      "structuredPatch": [
+        {
+          "oldStart": 1,
+          "oldLines": 7,
+          "newStart": 1,
+          "newLines": 17,
+          "lines": [
+            " import type { NextConfig } from \"next\";",
+            "+import createMDX from '@next/mdx'",
+            "+import remarkGfm from 'remark-gfm'",
+            "+import rehypeHighlight from 'rehype-highlight'",
+            " ",
+            " const nextConfig: NextConfig = {",
+            "-  /* config options here */",
+            "+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],",
+            " };",
+            " ",
+            "-export default nextConfig;",
+            "+const withMDX = createMDX({",
+            "+  options: {",
+            "+    remarkPlugins: [remarkGfm],",
+            "+    rehypePlugins: [rehypeHighlight],",
+            "+  },",
+            "+})",
+            "+",
+            "+export default withMDX(nextConfig);"
+          ]
+        }
+      ],
+      "userModified": false,
+      "replaceAll": false
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "mkdir -p src/components/blog && mkdir -p src/lib && mkdir -p src/content/posts",
+      "description": "Create blog directory structure"
+    },
+    "tool_response": {
+      "stdout": "",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/components/blog/MDXComponents.tsx",
+      "content": "import { MDXComponents } from 'mdx/types'\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Alert, AlertDescription } from '@/components/ui/alert'\nimport { Badge } from '@/components/ui/badge'\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'\nimport { Separator } from '@/components/ui/separator'\nimport { Button } from '@/components/ui/button'\n\nexport const mdxComponents: MDXComponents = {\n  h1: ({ children }) => (\n    <h1 className=\"scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl mb-6\">\n      {children}\n    </h1>\n  ),\n  h2: ({ children }) => (\n    <h2 className=\"scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mb-4\">\n      {children}\n    </h2>\n  ),\n  h3: ({ children }) => (\n    <h3 className=\"scroll-m-20 text-2xl font-semibold tracking-tight mb-3\">\n      {children}\n    </h3>\n  ),\n  p: ({ children }) => (\n    <p className=\"leading-7 [&:not(:first-child)]:mt-6\">\n      {children}\n    </p>\n  ),\n  blockquote: ({ children }) => (\n    <blockquote className=\"mt-6 border-l-2 pl-6 italic\">\n      {children}\n    </blockquote>\n  ),\n  ul: ({ children }) => (\n    <ul className=\"my-6 ml-6 list-disc [&>li]:mt-2\">\n      {children}\n    </ul>\n  ),\n  ol: ({ children }) => (\n    <ol className=\"my-6 ml-6 list-decimal [&>li]:mt-2\">\n      {children}\n    </ol>\n  ),\n  li: ({ children }) => (\n    <li>{children}</li>\n  ),\n  code: ({ children }) => (\n    <code className=\"relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold\">\n      {children}\n    </code>\n  ),\n  pre: ({ children }) => (\n    <pre className=\"mb-4 mt-6 overflow-x-auto rounded-lg border bg-card p-4\">\n      {children}\n    </pre>\n  ),\n  hr: () => <Separator className=\"my-8\" />,\n  \n  // Custom components available in MDX\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n  Alert,\n  AlertDescription,\n  Badge,\n  Tabs,\n  TabsContent,\n  TabsList,\n  TabsTrigger,\n  Button,\n  Separator,\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/components/blog/MDXComponents.tsx",
+      "content": "import { MDXComponents } from 'mdx/types'\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Alert, AlertDescription } from '@/components/ui/alert'\nimport { Badge } from '@/components/ui/badge'\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'\nimport { Separator } from '@/components/ui/separator'\nimport { Button } from '@/components/ui/button'\n\nexport const mdxComponents: MDXComponents = {\n  h1: ({ children }) => (\n    <h1 className=\"scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl mb-6\">\n      {children}\n    </h1>\n  ),\n  h2: ({ children }) => (\n    <h2 className=\"scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mb-4\">\n      {children}\n    </h2>\n  ),\n  h3: ({ children }) => (\n    <h3 className=\"scroll-m-20 text-2xl font-semibold tracking-tight mb-3\">\n      {children}\n    </h3>\n  ),\n  p: ({ children }) => (\n    <p className=\"leading-7 [&:not(:first-child)]:mt-6\">\n      {children}\n    </p>\n  ),\n  blockquote: ({ children }) => (\n    <blockquote className=\"mt-6 border-l-2 pl-6 italic\">\n      {children}\n    </blockquote>\n  ),\n  ul: ({ children }) => (\n    <ul className=\"my-6 ml-6 list-disc [&>li]:mt-2\">\n      {children}\n    </ul>\n  ),\n  ol: ({ children }) => (\n    <ol className=\"my-6 ml-6 list-decimal [&>li]:mt-2\">\n      {children}\n    </ol>\n  ),\n  li: ({ children }) => (\n    <li>{children}</li>\n  ),\n  code: ({ children }) => (\n    <code className=\"relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold\">\n      {children}\n    </code>\n  ),\n  pre: ({ children }) => (\n    <pre className=\"mb-4 mt-6 overflow-x-auto rounded-lg border bg-card p-4\">\n      {children}\n    </pre>\n  ),\n  hr: () => <Separator className=\"my-8\" />,\n  \n  // Custom components available in MDX\n  Card,\n  CardContent,\n  CardDescription,\n  CardHeader,\n  CardTitle,\n  Alert,\n  AlertDescription,\n  Badge,\n  Tabs,\n  TabsContent,\n  TabsList,\n  TabsTrigger,\n  Button,\n  Separator,\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/mdx-components.tsx",
+      "content": "import type { MDXComponents } from 'mdx/types'\nimport { mdxComponents } from '@/components/blog/MDXComponents'\n\nexport function useMDXComponents(components: MDXComponents): MDXComponents {\n  return {\n    ...mdxComponents,\n    ...components,\n  }\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/mdx-components.tsx",
+      "content": "import type { MDXComponents } from 'mdx/types'\nimport { mdxComponents } from '@/components/blog/MDXComponents'\n\nexport function useMDXComponents(components: MDXComponents): MDXComponents {\n  return {\n    ...mdxComponents,\n    ...components,\n  }\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "in_progress",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "pending",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "pending",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ]
+    },
+    "tool_response": {
+      "oldTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "in_progress",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "pending",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "pending",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "pending",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "pending",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ],
+      "newTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "in_progress",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "pending",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "pending",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ]
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/lib/posts.ts",
+      "content": "import fs from 'fs'\nimport path from 'path'\nimport matter from 'gray-matter'\n\nexport interface BlogPost {\n  slug: string\n  title: string\n  date: string\n  category: string\n  tags: string[]\n  excerpt: string\n  content: string\n}\n\nconst postsDirectory = path.join(process.cwd(), 'src/content/posts')\n\nexport function getAllPosts(): BlogPost[] {\n  try {\n    const fileNames = fs.readdirSync(postsDirectory)\n    const allPostsData = fileNames\n      .filter((fileName) => fileName.endsWith('.mdx'))\n      .map((fileName) => {\n        const slug = fileName.replace(/\\.mdx$/, '')\n        const fullPath = path.join(postsDirectory, fileName)\n        const fileContents = fs.readFileSync(fullPath, 'utf8')\n        const { data, content } = matter(fileContents)\n\n        return {\n          slug,\n          title: data.title || '',\n          date: data.date || '',\n          category: data.category || 'uncategorized',\n          tags: data.tags || [],\n          excerpt: data.excerpt || '',\n          content,\n        } as BlogPost\n      })\n\n    return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))\n  } catch (error) {\n    console.error('Error reading posts:', error)\n    return []\n  }\n}\n\nexport function getPostBySlug(slug: string): BlogPost | null {\n  try {\n    const fullPath = path.join(postsDirectory, `${slug}.mdx`)\n    const fileContents = fs.readFileSync(fullPath, 'utf8')\n    const { data, content } = matter(fileContents)\n\n    return {\n      slug,\n      title: data.title || '',\n      date: data.date || '',\n      category: data.category || 'uncategorized',\n      tags: data.tags || [],\n      excerpt: data.excerpt || '',\n      content,\n    } as BlogPost\n  } catch (error) {\n    console.error(`Error reading post ${slug}:`, error)\n    return null\n  }\n}\n\nexport function getAllCategories(): string[] {\n  const posts = getAllPosts()\n  const categories = posts.map(post => post.category)\n  return Array.from(new Set(categories)).sort()\n}\n\nexport function getAllTags(): string[] {\n  const posts = getAllPosts()\n  const tags = posts.flatMap(post => post.tags)\n  return Array.from(new Set(tags)).sort()\n}\n\nexport function getPostsByCategory(category: string): BlogPost[] {\n  const posts = getAllPosts()\n  return posts.filter(post => post.category === category)\n}\n\nexport function getPostsByTag(tag: string): BlogPost[] {\n  const posts = getAllPosts()\n  return posts.filter(post => post.tags.includes(tag))\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/lib/posts.ts",
+      "content": "import fs from 'fs'\nimport path from 'path'\nimport matter from 'gray-matter'\n\nexport interface BlogPost {\n  slug: string\n  title: string\n  date: string\n  category: string\n  tags: string[]\n  excerpt: string\n  content: string\n}\n\nconst postsDirectory = path.join(process.cwd(), 'src/content/posts')\n\nexport function getAllPosts(): BlogPost[] {\n  try {\n    const fileNames = fs.readdirSync(postsDirectory)\n    const allPostsData = fileNames\n      .filter((fileName) => fileName.endsWith('.mdx'))\n      .map((fileName) => {\n        const slug = fileName.replace(/\\.mdx$/, '')\n        const fullPath = path.join(postsDirectory, fileName)\n        const fileContents = fs.readFileSync(fullPath, 'utf8')\n        const { data, content } = matter(fileContents)\n\n        return {\n          slug,\n          title: data.title || '',\n          date: data.date || '',\n          category: data.category || 'uncategorized',\n          tags: data.tags || [],\n          excerpt: data.excerpt || '',\n          content,\n        } as BlogPost\n      })\n\n    return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1))\n  } catch (error) {\n    console.error('Error reading posts:', error)\n    return []\n  }\n}\n\nexport function getPostBySlug(slug: string): BlogPost | null {\n  try {\n    const fullPath = path.join(postsDirectory, `${slug}.mdx`)\n    const fileContents = fs.readFileSync(fullPath, 'utf8')\n    const { data, content } = matter(fileContents)\n\n    return {\n      slug,\n      title: data.title || '',\n      date: data.date || '',\n      category: data.category || 'uncategorized',\n      tags: data.tags || [],\n      excerpt: data.excerpt || '',\n      content,\n    } as BlogPost\n  } catch (error) {\n    console.error(`Error reading post ${slug}:`, error)\n    return null\n  }\n}\n\nexport function getAllCategories(): string[] {\n  const posts = getAllPosts()\n  const categories = posts.map(post => post.category)\n  return Array.from(new Set(categories)).sort()\n}\n\nexport function getAllTags(): string[] {\n  const posts = getAllPosts()\n  const tags = posts.flatMap(post => post.tags)\n  return Array.from(new Set(tags)).sort()\n}\n\nexport function getPostsByCategory(category: string): BlogPost[] {\n  const posts = getAllPosts()\n  return posts.filter(post => post.category === category)\n}\n\nexport function getPostsByTag(tag: string): BlogPost[] {\n  const posts = getAllPosts()\n  return posts.filter(post => post.tags.includes(tag))\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "in_progress",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "pending",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ]
+    },
+    "tool_response": {
+      "oldTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "in_progress",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "pending",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "pending",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ],
+      "newTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "in_progress",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "pending",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ]
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/components/blog/BlogCard.tsx",
+      "content": "import Link from 'next/link'\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Badge } from '@/components/ui/badge'\nimport { BlogPost } from '@/lib/posts'\n\ninterface BlogCardProps {\n  post: BlogPost\n}\n\nexport function BlogCard({ post }: BlogCardProps) {\n  return (\n    <Link href={`/blog/${post.slug}`} className=\"block\">\n      <Card className=\"hover:shadow-xl transition-all duration-200 h-full\">\n        <CardHeader>\n          <div className=\"flex items-center justify-between mb-3\">\n            <Badge variant=\"secondary\" className=\"font-mono text-xs\">\n              {post.category}\n            </Badge>\n            <span className=\"text-muted-foreground text-sm font-mono\">\n              {new Date(post.date).toLocaleDateString()}\n            </span>\n          </div>\n          <CardTitle className=\"text-xl font-bold mb-2 line-clamp-2\">\n            {post.title}\n          </CardTitle>\n          <CardDescription className=\"text-base line-clamp-3\">\n            {post.excerpt}\n          </CardDescription>\n        </CardHeader>\n        {post.tags.length > 0 && (\n          <CardContent className=\"pt-0\">\n            <div className=\"flex flex-wrap gap-1\">\n              {post.tags.map((tag) => (\n                <Badge key={tag} variant=\"outline\" className=\"text-xs\">\n                  {tag}\n                </Badge>\n              ))}\n            </div>\n          </CardContent>\n        )}\n      </Card>\n    </Link>\n  )\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/components/blog/BlogCard.tsx",
+      "content": "import Link from 'next/link'\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Badge } from '@/components/ui/badge'\nimport { BlogPost } from '@/lib/posts'\n\ninterface BlogCardProps {\n  post: BlogPost\n}\n\nexport function BlogCard({ post }: BlogCardProps) {\n  return (\n    <Link href={`/blog/${post.slug}`} className=\"block\">\n      <Card className=\"hover:shadow-xl transition-all duration-200 h-full\">\n        <CardHeader>\n          <div className=\"flex items-center justify-between mb-3\">\n            <Badge variant=\"secondary\" className=\"font-mono text-xs\">\n              {post.category}\n            </Badge>\n            <span className=\"text-muted-foreground text-sm font-mono\">\n              {new Date(post.date).toLocaleDateString()}\n            </span>\n          </div>\n          <CardTitle className=\"text-xl font-bold mb-2 line-clamp-2\">\n            {post.title}\n          </CardTitle>\n          <CardDescription className=\"text-base line-clamp-3\">\n            {post.excerpt}\n          </CardDescription>\n        </CardHeader>\n        {post.tags.length > 0 && (\n          <CardContent className=\"pt-0\">\n            <div className=\"flex flex-wrap gap-1\">\n              {post.tags.map((tag) => (\n                <Badge key={tag} variant=\"outline\" className=\"text-xs\">\n                  {tag}\n                </Badge>\n              ))}\n            </div>\n          </CardContent>\n        )}\n      </Card>\n    </Link>\n  )\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/components/blog/BlogLayout.tsx",
+      "content": "import { ReactNode } from 'react'\nimport { Badge } from '@/components/ui/badge'\nimport { Separator } from '@/components/ui/separator'\nimport { BlogPost } from '@/lib/posts'\n\ninterface BlogLayoutProps {\n  children: ReactNode\n  post: BlogPost\n}\n\nexport function BlogLayout({ children, post }: BlogLayoutProps) {\n  return (\n    <article className=\"prose prose-lg max-w-4xl mx-auto\">\n      <header className=\"mb-8\">\n        <div className=\"flex items-center justify-between mb-4\">\n          <Badge variant=\"secondary\" className=\"font-mono\">\n            {post.category}\n          </Badge>\n          <time className=\"text-muted-foreground font-mono text-sm\">\n            {new Date(post.date).toLocaleDateString('en-US', {\n              year: 'numeric',\n              month: 'long',\n              day: 'numeric'\n            })}\n          </time>\n        </div>\n        \n        <h1 className=\"text-4xl font-bold tracking-tight mb-4\">\n          {post.title}\n        </h1>\n        \n        {post.excerpt && (\n          <p className=\"text-xl text-muted-foreground mb-6\">\n            {post.excerpt}\n          </p>\n        )}\n        \n        {post.tags.length > 0 && (\n          <div className=\"flex flex-wrap gap-2 mb-6\">\n            {post.tags.map((tag) => (\n              <Badge key={tag} variant=\"outline\" className=\"text-xs\">\n                {tag}\n              </Badge>\n            ))}\n          </div>\n        )}\n        \n        <Separator className=\"my-8\" />\n      </header>\n      \n      <div className=\"prose prose-lg dark:prose-invert max-w-none\">\n        {children}\n      </div>\n    </article>\n  )\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/components/blog/BlogLayout.tsx",
+      "content": "import { ReactNode } from 'react'\nimport { Badge } from '@/components/ui/badge'\nimport { Separator } from '@/components/ui/separator'\nimport { BlogPost } from '@/lib/posts'\n\ninterface BlogLayoutProps {\n  children: ReactNode\n  post: BlogPost\n}\n\nexport function BlogLayout({ children, post }: BlogLayoutProps) {\n  return (\n    <article className=\"prose prose-lg max-w-4xl mx-auto\">\n      <header className=\"mb-8\">\n        <div className=\"flex items-center justify-between mb-4\">\n          <Badge variant=\"secondary\" className=\"font-mono\">\n            {post.category}\n          </Badge>\n          <time className=\"text-muted-foreground font-mono text-sm\">\n            {new Date(post.date).toLocaleDateString('en-US', {\n              year: 'numeric',\n              month: 'long',\n              day: 'numeric'\n            })}\n          </time>\n        </div>\n        \n        <h1 className=\"text-4xl font-bold tracking-tight mb-4\">\n          {post.title}\n        </h1>\n        \n        {post.excerpt && (\n          <p className=\"text-xl text-muted-foreground mb-6\">\n            {post.excerpt}\n          </p>\n        )}\n        \n        {post.tags.length > 0 && (\n          <div className=\"flex flex-wrap gap-2 mb-6\">\n            {post.tags.map((tag) => (\n              <Badge key={tag} variant=\"outline\" className=\"text-xs\">\n                {tag}\n              </Badge>\n            ))}\n          </div>\n        )}\n        \n        <Separator className=\"my-8\" />\n      </header>\n      \n      <div className=\"prose prose-lg dark:prose-invert max-w-none\">\n        {children}\n      </div>\n    </article>\n  )\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "in_progress",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ]
+    },
+    "tool_response": {
+      "oldTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "in_progress",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "pending",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ],
+      "newTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "in_progress",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ]
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "mkdir -p /Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/blog/\\[slug\\]",
+      "description": "Create blog directory structure"
+    },
+    "tool_response": {
+      "stdout": "",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/blog/page.tsx",
+      "content": "import { getAllPosts, getAllCategories } from '@/lib/posts'\nimport { BlogCard } from '@/components/blog/BlogCard'\nimport { Badge } from '@/components/ui/badge'\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\n\nexport default function BlogPage() {\n  const posts = getAllPosts()\n  const categories = getAllCategories()\n  \n  return (\n    <div className=\"container mx-auto px-4 py-8\">\n      <div className=\"mb-8\">\n        <h1 className=\"text-4xl font-bold tracking-tight mb-4\">\n          Homelab Chronicles\n        </h1>\n        <p className=\"text-xl text-muted-foreground mb-6\">\n          Deep dives into VM orchestration, tmux automation, and AI-powered development workflows\n        </p>\n        \n        <div className=\"flex flex-wrap gap-2 mb-8\">\n          <span className=\"text-sm text-muted-foreground mr-2\">Categories:</span>\n          {categories.map((category) => (\n            <Badge key={category} variant=\"outline\" className=\"font-mono\">\n              {category}\n            </Badge>\n          ))}\n        </div>\n      </div>\n\n      {posts.length === 0 ? (\n        <Card>\n          <CardHeader>\n            <CardTitle>No posts yet</CardTitle>\n            <CardDescription>\n              Blog posts will appear here once they are created.\n            </CardDescription>\n          </CardHeader>\n        </Card>\n      ) : (\n        <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n          {posts.map((post) => (\n            <BlogCard key={post.slug} post={post} />\n          ))}\n        </div>\n      )}\n    </div>\n  )\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/blog/page.tsx",
+      "content": "import { getAllPosts, getAllCategories } from '@/lib/posts'\nimport { BlogCard } from '@/components/blog/BlogCard'\nimport { Badge } from '@/components/ui/badge'\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\n\nexport default function BlogPage() {\n  const posts = getAllPosts()\n  const categories = getAllCategories()\n  \n  return (\n    <div className=\"container mx-auto px-4 py-8\">\n      <div className=\"mb-8\">\n        <h1 className=\"text-4xl font-bold tracking-tight mb-4\">\n          Homelab Chronicles\n        </h1>\n        <p className=\"text-xl text-muted-foreground mb-6\">\n          Deep dives into VM orchestration, tmux automation, and AI-powered development workflows\n        </p>\n        \n        <div className=\"flex flex-wrap gap-2 mb-8\">\n          <span className=\"text-sm text-muted-foreground mr-2\">Categories:</span>\n          {categories.map((category) => (\n            <Badge key={category} variant=\"outline\" className=\"font-mono\">\n              {category}\n            </Badge>\n          ))}\n        </div>\n      </div>\n\n      {posts.length === 0 ? (\n        <Card>\n          <CardHeader>\n            <CardTitle>No posts yet</CardTitle>\n            <CardDescription>\n              Blog posts will appear here once they are created.\n            </CardDescription>\n          </CardHeader>\n        </Card>\n      ) : (\n        <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n          {posts.map((post) => (\n            <BlogCard key={post.slug} post={post} />\n          ))}\n        </div>\n      )}\n    </div>\n  )\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/blog/[slug]/page.tsx",
+      "content": "import { notFound } from 'next/navigation'\nimport { getAllPosts, getPostBySlug } from '@/lib/posts'\nimport { BlogLayout } from '@/components/blog/BlogLayout'\nimport { MDXRemote } from 'next-mdx-remote/rsc'\nimport { mdxComponents } from '@/components/blog/MDXComponents'\n\ninterface BlogPostPageProps {\n  params: Promise<{ slug: string }>\n}\n\nexport async function generateStaticParams() {\n  const posts = getAllPosts()\n  return posts.map((post) => ({\n    slug: post.slug,\n  }))\n}\n\nexport async function generateMetadata({ params }: BlogPostPageProps) {\n  const { slug } = await params\n  const post = getPostBySlug(slug)\n  \n  if (!post) {\n    return {}\n  }\n\n  return {\n    title: post.title,\n    description: post.excerpt,\n  }\n}\n\nexport default async function BlogPostPage({ params }: BlogPostPageProps) {\n  const { slug } = await params\n  const post = getPostBySlug(slug)\n\n  if (!post) {\n    notFound()\n  }\n\n  return (\n    <div className=\"container mx-auto px-4 py-8\">\n      <BlogLayout post={post}>\n        <MDXRemote \n          source={post.content} \n          components={mdxComponents}\n        />\n      </BlogLayout>\n    </div>\n  )\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/blog/[slug]/page.tsx",
+      "content": "import { notFound } from 'next/navigation'\nimport { getAllPosts, getPostBySlug } from '@/lib/posts'\nimport { BlogLayout } from '@/components/blog/BlogLayout'\nimport { MDXRemote } from 'next-mdx-remote/rsc'\nimport { mdxComponents } from '@/components/blog/MDXComponents'\n\ninterface BlogPostPageProps {\n  params: Promise<{ slug: string }>\n}\n\nexport async function generateStaticParams() {\n  const posts = getAllPosts()\n  return posts.map((post) => ({\n    slug: post.slug,\n  }))\n}\n\nexport async function generateMetadata({ params }: BlogPostPageProps) {\n  const { slug } = await params\n  const post = getPostBySlug(slug)\n  \n  if (!post) {\n    return {}\n  }\n\n  return {\n    title: post.title,\n    description: post.excerpt,\n  }\n}\n\nexport default async function BlogPostPage({ params }: BlogPostPageProps) {\n  const { slug } = await params\n  const post = getPostBySlug(slug)\n\n  if (!post) {\n    notFound()\n  }\n\n  return (\n    <div className=\"container mx-auto px-4 py-8\">\n      <BlogLayout post={post}>\n        <MDXRemote \n          source={post.content} \n          components={mdxComponents}\n        />\n      </BlogLayout>\n    </div>\n  )\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "npm install next-mdx-remote",
+      "description": "Install next-mdx-remote for dynamic MDX rendering"
+    },
+    "tool_response": {
+      "stdout": "added 9 packages, and audited 613 packages in 1s\n\n263 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "completed",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "completed",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "in_progress",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ]
+    },
+    "tool_response": {
+      "oldTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "in_progress",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "pending",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "pending",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ],
+      "newTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "completed",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "completed",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "in_progress",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ]
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/content/posts/persistent-vm-pattern.mdx",
+      "content": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2024-01-15\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---\n\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Alert, AlertDescription } from '@/components/ui/alert'\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'\nimport { Badge } from '@/components/ui/badge'\n\n# The Problem: OAuth Token Hell\n\nWhen you're trying to automate Claude Code in isolated environments, you hit this fucking annoying wall: OAuth tokens. Every time you destroy and recreate a VM, you need to re-authenticate Claude Code through a browser. This becomes a nightmare when you're trying to run automated development workflows.\n\n<Alert>\n  <AlertDescription>\n    Traditional approaches fail because OAuth requires human intervention. You can't script browser authentication flows without getting into security hell.\n  </AlertDescription>\n</Alert>\n\nI bought this little beast to run my homelab - a Minisforum UN100 with an Intel N100 processor, 16GB RAM, and dual gigabit ethernet ports. Small as fuck but handles everything I throw at it.\n\n![Minisforum UN100](https://darrenwatt.com/content/images/size/w2000/2024/02/Screenshot-2024-02-06-194024.png)\n\nThe specs are solid for a homelab starter:\n- Intel N100 Processor (4 cores, up to 3.4 GHz)\n- 16GB LPDDR5 RAM\n- Dual gigabit ethernet (perfect for network testing)\n- Multiple HDMI outputs\n- Runs at 7.7W idle, 23.5W under load\n\n## The Solution: Persistent VM Pattern\n\nInstead of fighting OAuth complexity, I decided to solve it with infrastructure. The approach is simple: authenticate once, then never destroy the VM.\n\n<Tabs defaultValue=\"approach\">\n  <TabsList>\n    <TabsTrigger value=\"approach\">The Pattern</TabsTrigger>\n    <TabsTrigger value=\"packer\">Packer Phase</TabsTrigger>\n    <TabsTrigger value=\"vagrant\">Vagrant Phase</TabsTrigger>\n    <TabsTrigger value=\"benefits\">Results</TabsTrigger>\n  </TabsList>\n  \n  <TabsContent value=\"approach\">\n    <Card>\n      <CardHeader>\n        <CardTitle>Two-Phase Infrastructure</CardTitle>\n        <CardDescription>Packer builds authenticated images, Vagrant manages runtime</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-2\">\n          <div>\ud83d\udce6 <Badge variant=\"secondary\">Packer</Badge> - One-time image creation with pre-authentication</div>\n          <div>\ud83d\udd04 <Badge variant=\"secondary\">Vagrant</Badge> - Project-specific setup and resource allocation</div>\n          <div>\ud83d\udcbe <Badge variant=\"secondary\">Suspend/Resume</Badge> - Instead of destroy/recreate cycles</div>\n          <div>\ud83d\udd12 <Badge variant=\"secondary\">Persistent Auth</Badge> - OAuth completed once during image build</div>\n        </div>\n      </CardContent>\n    </Card>\n  </TabsContent>\n  \n  <TabsContent value=\"packer\">\n    ```bash\n    # Packer handles the heavy lifting\n    packer {\n      required_plugins {\n        virtualbox = {\n          version = \">= 1.0.0\"\n          source  = \"github.com/hashicorp/virtualbox\"\n        }\n      }\n    }\n    \n    source \"virtualbox-iso\" \"ubuntu\" {\n      iso_url      = \"ubuntu-20.04.6-live-server-amd64.iso\"\n      iso_checksum = \"sha256:...\"\n      \n      vm_name     = \"claude-dev-base\"\n      memory      = 2048\n      cpus        = 2\n      disk_size   = 20480\n    }\n    \n    build {\n      sources = [\"source.virtualbox-iso.ubuntu\"]\n      \n      provisioner \"shell\" {\n        inline = [\n          \"curl -sSL https://claude.ai/install.sh | bash\",\n          \"claude auth login\",  # This requires human interaction\n          \"/workspace/vm-foreman/mark-authenticated.sh\"\n        ]\n      }\n    }\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"vagrant\">\n    ```ruby\n    # Vagrant uses the pre-built image\n    Vagrant.configure(\"2\") do |config|\n      config.vm.box = \"claude-dev-authenticated\"\n      config.vm.network \"private_network\", ip: \"192.168.121.44\"\n      \n      config.vm.provider \"virtualbox\" do |vb|\n        vb.memory = \"2048\"\n        vb.cpus = 2\n      end\n      \n      # Project-specific setup only\n      config.vm.provision \"shell\", inline: <<-SHELL\n        mkdir -p /workspace/#{project_name}\n        cd /workspace && ./setup-project.sh #{project_name}\n      SHELL\n    end\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"benefits\">\n    <div className=\"grid grid-cols-2 gap-4\">\n      <Card>\n        <CardHeader>\n          <CardTitle>Performance</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>5-10min</Badge> First-time image build</div>\n            <div><Badge>30sec</Badge> Resume time for daily work</div>\n            <div><Badge>5sec</Badge> Suspend when done</div>\n          </div>\n        </CardContent>\n      </Card>\n      \n      <Card>\n        <CardHeader>\n          <CardTitle>Reliability</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>Zero</Badge> Authentication failures</div>\n            <div><Badge>100%</Badge> Automation reliability</div>\n            <div><Badge>Isolated</Badge> Development environment</div>\n          </div>\n        </CardContent>\n      </Card>\n    </div>\n  </TabsContent>\n</Tabs>\n\n## Implementation Details\n\nThe workflow splits into two distinct phases:\n\n### Phase 1: Image Creation (Packer)\n```bash\n# Build the authenticated base image\npacker build claude-dev.pkr.hcl\n\n# This creates a VirtualBox image with:\n# - Ubuntu 20.04 base system\n# - Claude Code installed and authenticated\n# - Development tools pre-configured\n# - Authentication token stored securely\n```\n\n### Phase 2: Project Management (Vagrant)\n```bash\n# Daily usage is simple\nvagrant up      # Boots from authenticated image\nvagrant ssh     # Jump into development environment\n# ... do development work ...\nvagrant suspend # Saves state, releases resources\n```\n\n## Network Setup with Tailscale\n\nSince I'm running this on my homelab, I use Tailscale for secure remote access and Cloudflare for public applications. The VM gets a static IP on the Tailscale network, making it accessible from anywhere.\n\n```bash\n# On the VM\nsudo tailscale up --ssh\n# Now accessible from any device on my Tailscale network\n```\n\n## Learning Through Automation\n\nThis is my first real homelab setup, and I'm learning the ins and outs of computing as I go. Having Claude Code as an operator makes the learning curve manageable. I can give different Claude instances in different directories their own responsibilities and roles:\n\n- `/workspace/foreman/` - VM orchestration and monitoring\n- `/workspace/projects/` - Active development work  \n- `/workspace/templates/` - Project templates and scaffolding\n\nEach directory gets its own `CLAUDE.md` file with specific instructions and context.\n\n## The Results\n\nThis pattern eliminated OAuth complexity entirely. Instead of fighting authentication flows, I authenticate once during image creation and never deal with it again. The VM suspend/resume cycle takes seconds instead of minutes for full reprovisioning.\n\nFor a homelab setup, this approach scales well. I can create multiple authenticated images for different purposes - one for web development, another for systems work, etc. Each image is self-contained and ready to work.\n\n## Implementation Notes\n\nKey decisions that made this work:\n\n1. **Packer for image creation** - Handles the complex OAuth flow once\n2. **Vagrant for project management** - Simple, predictable VM lifecycle  \n3. **Suspend instead of destroy** - Preserves authentication state\n4. **Static networking** - Consistent access patterns\n5. **File-based communication** - Simple coordination between host and VM\n\nThe Minisforum UN100 handles this workload without breaking a sweat. Power consumption stays low, and the dual ethernet ports let me experiment with network configurations.\n\nThis pattern works because it separates concerns properly: Packer handles the hard infrastructure problems, Vagrant handles the simple project management, and the persistent authentication state eliminates the OAuth headache entirely."
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/content/posts/persistent-vm-pattern.mdx",
+      "content": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2024-01-15\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---\n\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Alert, AlertDescription } from '@/components/ui/alert'\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'\nimport { Badge } from '@/components/ui/badge'\n\n# The Problem: OAuth Token Hell\n\nWhen you're trying to automate Claude Code in isolated environments, you hit this fucking annoying wall: OAuth tokens. Every time you destroy and recreate a VM, you need to re-authenticate Claude Code through a browser. This becomes a nightmare when you're trying to run automated development workflows.\n\n<Alert>\n  <AlertDescription>\n    Traditional approaches fail because OAuth requires human intervention. You can't script browser authentication flows without getting into security hell.\n  </AlertDescription>\n</Alert>\n\nI bought this little beast to run my homelab - a Minisforum UN100 with an Intel N100 processor, 16GB RAM, and dual gigabit ethernet ports. Small as fuck but handles everything I throw at it.\n\n![Minisforum UN100](https://darrenwatt.com/content/images/size/w2000/2024/02/Screenshot-2024-02-06-194024.png)\n\nThe specs are solid for a homelab starter:\n- Intel N100 Processor (4 cores, up to 3.4 GHz)\n- 16GB LPDDR5 RAM\n- Dual gigabit ethernet (perfect for network testing)\n- Multiple HDMI outputs\n- Runs at 7.7W idle, 23.5W under load\n\n## The Solution: Persistent VM Pattern\n\nInstead of fighting OAuth complexity, I decided to solve it with infrastructure. The approach is simple: authenticate once, then never destroy the VM.\n\n<Tabs defaultValue=\"approach\">\n  <TabsList>\n    <TabsTrigger value=\"approach\">The Pattern</TabsTrigger>\n    <TabsTrigger value=\"packer\">Packer Phase</TabsTrigger>\n    <TabsTrigger value=\"vagrant\">Vagrant Phase</TabsTrigger>\n    <TabsTrigger value=\"benefits\">Results</TabsTrigger>\n  </TabsList>\n  \n  <TabsContent value=\"approach\">\n    <Card>\n      <CardHeader>\n        <CardTitle>Two-Phase Infrastructure</CardTitle>\n        <CardDescription>Packer builds authenticated images, Vagrant manages runtime</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-2\">\n          <div>\ud83d\udce6 <Badge variant=\"secondary\">Packer</Badge> - One-time image creation with pre-authentication</div>\n          <div>\ud83d\udd04 <Badge variant=\"secondary\">Vagrant</Badge> - Project-specific setup and resource allocation</div>\n          <div>\ud83d\udcbe <Badge variant=\"secondary\">Suspend/Resume</Badge> - Instead of destroy/recreate cycles</div>\n          <div>\ud83d\udd12 <Badge variant=\"secondary\">Persistent Auth</Badge> - OAuth completed once during image build</div>\n        </div>\n      </CardContent>\n    </Card>\n  </TabsContent>\n  \n  <TabsContent value=\"packer\">\n    ```bash\n    # Packer handles the heavy lifting\n    packer {\n      required_plugins {\n        virtualbox = {\n          version = \">= 1.0.0\"\n          source  = \"github.com/hashicorp/virtualbox\"\n        }\n      }\n    }\n    \n    source \"virtualbox-iso\" \"ubuntu\" {\n      iso_url      = \"ubuntu-20.04.6-live-server-amd64.iso\"\n      iso_checksum = \"sha256:...\"\n      \n      vm_name     = \"claude-dev-base\"\n      memory      = 2048\n      cpus        = 2\n      disk_size   = 20480\n    }\n    \n    build {\n      sources = [\"source.virtualbox-iso.ubuntu\"]\n      \n      provisioner \"shell\" {\n        inline = [\n          \"curl -sSL https://claude.ai/install.sh | bash\",\n          \"claude auth login\",  # This requires human interaction\n          \"/workspace/vm-foreman/mark-authenticated.sh\"\n        ]\n      }\n    }\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"vagrant\">\n    ```ruby\n    # Vagrant uses the pre-built image\n    Vagrant.configure(\"2\") do |config|\n      config.vm.box = \"claude-dev-authenticated\"\n      config.vm.network \"private_network\", ip: \"192.168.121.44\"\n      \n      config.vm.provider \"virtualbox\" do |vb|\n        vb.memory = \"2048\"\n        vb.cpus = 2\n      end\n      \n      # Project-specific setup only\n      config.vm.provision \"shell\", inline: <<-SHELL\n        mkdir -p /workspace/#{project_name}\n        cd /workspace && ./setup-project.sh #{project_name}\n      SHELL\n    end\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"benefits\">\n    <div className=\"grid grid-cols-2 gap-4\">\n      <Card>\n        <CardHeader>\n          <CardTitle>Performance</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>5-10min</Badge> First-time image build</div>\n            <div><Badge>30sec</Badge> Resume time for daily work</div>\n            <div><Badge>5sec</Badge> Suspend when done</div>\n          </div>\n        </CardContent>\n      </Card>\n      \n      <Card>\n        <CardHeader>\n          <CardTitle>Reliability</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>Zero</Badge> Authentication failures</div>\n            <div><Badge>100%</Badge> Automation reliability</div>\n            <div><Badge>Isolated</Badge> Development environment</div>\n          </div>\n        </CardContent>\n      </Card>\n    </div>\n  </TabsContent>\n</Tabs>\n\n## Implementation Details\n\nThe workflow splits into two distinct phases:\n\n### Phase 1: Image Creation (Packer)\n```bash\n# Build the authenticated base image\npacker build claude-dev.pkr.hcl\n\n# This creates a VirtualBox image with:\n# - Ubuntu 20.04 base system\n# - Claude Code installed and authenticated\n# - Development tools pre-configured\n# - Authentication token stored securely\n```\n\n### Phase 2: Project Management (Vagrant)\n```bash\n# Daily usage is simple\nvagrant up      # Boots from authenticated image\nvagrant ssh     # Jump into development environment\n# ... do development work ...\nvagrant suspend # Saves state, releases resources\n```\n\n## Network Setup with Tailscale\n\nSince I'm running this on my homelab, I use Tailscale for secure remote access and Cloudflare for public applications. The VM gets a static IP on the Tailscale network, making it accessible from anywhere.\n\n```bash\n# On the VM\nsudo tailscale up --ssh\n# Now accessible from any device on my Tailscale network\n```\n\n## Learning Through Automation\n\nThis is my first real homelab setup, and I'm learning the ins and outs of computing as I go. Having Claude Code as an operator makes the learning curve manageable. I can give different Claude instances in different directories their own responsibilities and roles:\n\n- `/workspace/foreman/` - VM orchestration and monitoring\n- `/workspace/projects/` - Active development work  \n- `/workspace/templates/` - Project templates and scaffolding\n\nEach directory gets its own `CLAUDE.md` file with specific instructions and context.\n\n## The Results\n\nThis pattern eliminated OAuth complexity entirely. Instead of fighting authentication flows, I authenticate once during image creation and never deal with it again. The VM suspend/resume cycle takes seconds instead of minutes for full reprovisioning.\n\nFor a homelab setup, this approach scales well. I can create multiple authenticated images for different purposes - one for web development, another for systems work, etc. Each image is self-contained and ready to work.\n\n## Implementation Notes\n\nKey decisions that made this work:\n\n1. **Packer for image creation** - Handles the complex OAuth flow once\n2. **Vagrant for project management** - Simple, predictable VM lifecycle  \n3. **Suspend instead of destroy** - Preserves authentication state\n4. **Static networking** - Consistent access patterns\n5. **File-based communication** - Simple coordination between host and VM\n\nThe Minisforum UN100 handles this workload without breaking a sweat. Power consumption stays low, and the dual ethernet ports let me experiment with network configurations.\n\nThis pattern works because it separates concerns properly: Packer handles the hard infrastructure problems, Vagrant handles the simple project management, and the persistent authentication state eliminates the OAuth headache entirely.",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "completed",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "completed",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "completed",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "in_progress",
+          "id": "8"
+        }
+      ]
+    },
+    "tool_response": {
+      "oldTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "completed",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "completed",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "in_progress",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "pending",
+          "id": "8"
+        }
+      ],
+      "newTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "completed",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "completed",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "completed",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "in_progress",
+          "id": "8"
+        }
+      ]
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/page.tsx"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/page.tsx",
+        "content": "import Image from \"next/image\";\n\nexport default function Home() {\n  return (\n    <div className=\"font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20\">\n      <main className=\"flex flex-col gap-[32px] row-start-2 items-center sm:items-start\">\n        <Image\n          className=\"dark:invert\"\n          src=\"/next.svg\"\n          alt=\"Next.js logo\"\n          width={180}\n          height={38}\n          priority\n        />\n        <ol className=\"font-mono list-inside list-decimal text-sm/6 text-center sm:text-left\">\n          <li className=\"mb-2 tracking-[-.01em]\">\n            Get started by editing{\" \"}\n            <code className=\"bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded\">\n              src/app/page.tsx\n            </code>\n            .\n          </li>\n          <li className=\"tracking-[-.01em]\">\n            Save and see your changes instantly.\n          </li>\n        </ol>\n\n        <div className=\"flex gap-4 items-center flex-col sm:flex-row\">\n          <a\n            className=\"rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto\"\n            href=\"https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            <Image\n              className=\"dark:invert\"\n              src=\"/vercel.svg\"\n              alt=\"Vercel logomark\"\n              width={20}\n              height={20}\n            />\n            Deploy now\n          </a>\n          <a\n            className=\"rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]\"\n            href=\"https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            Read our docs\n          </a>\n        </div>\n      </main>\n      <footer className=\"row-start-3 flex gap-[24px] flex-wrap items-center justify-center\">\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/file.svg\"\n            alt=\"File icon\"\n            width={16}\n            height={16}\n          />\n          Learn\n        </a>\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/window.svg\"\n            alt=\"Window icon\"\n            width={16}\n            height={16}\n          />\n          Examples\n        </a>\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/globe.svg\"\n            alt=\"Globe icon\"\n            width={16}\n            height={16}\n          />\n          Go to nextjs.org \u2192\n        </a>\n      </footer>\n    </div>\n  );\n}\n",
+        "numLines": 104,
+        "startLine": 1,
+        "totalLines": 104
+      }
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Edit",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/page.tsx",
+      "old_string": "import Image from \"next/image\";\n\nexport default function Home() {\n  return (\n    <div className=\"font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20\">\n      <main className=\"flex flex-col gap-[32px] row-start-2 items-center sm:items-start\">\n        <Image\n          className=\"dark:invert\"\n          src=\"/next.svg\"\n          alt=\"Next.js logo\"\n          width={180}\n          height={38}\n          priority\n        />\n        <ol className=\"font-mono list-inside list-decimal text-sm/6 text-center sm:text-left\">\n          <li className=\"mb-2 tracking-[-.01em]\">\n            Get started by editing{\" \"}\n            <code className=\"bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded\">\n              src/app/page.tsx\n            </code>\n            .\n          </li>\n          <li className=\"tracking-[-.01em]\">\n            Save and see your changes instantly.\n          </li>\n        </ol>\n\n        <div className=\"flex gap-4 items-center flex-col sm:flex-row\">\n          <a\n            className=\"rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto\"\n            href=\"https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            <Image\n              className=\"dark:invert\"\n              src=\"/vercel.svg\"\n              alt=\"Vercel logomark\"\n              width={20}\n              height={20}\n            />\n            Deploy now\n          </a>\n          <a\n            className=\"rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]\"\n            href=\"https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            Read our docs\n          </a>\n        </div>\n      </main>\n      <footer className=\"row-start-3 flex gap-[24px] flex-wrap items-center justify-center\">\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/file.svg\"\n            alt=\"File icon\"\n            width={16}\n            height={16}\n          />\n          Learn\n        </a>\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/window.svg\"\n            alt=\"Window icon\"\n            width={16}\n            height={16}\n          />\n          Examples\n        </a>\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/globe.svg\"\n            alt=\"Globe icon\"\n            width={16}\n            height={16}\n          />\n          Go to nextjs.org \u2192\n        </a>\n      </footer>\n    </div>\n  );\n}",
+      "new_string": "import Link from 'next/link'\nimport { getAllPosts } from '@/lib/posts'\nimport { BlogCard } from '@/components/blog/BlogCard'\nimport { Button } from '@/components/ui/button'\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\n\nexport default function Home() {\n  const recentPosts = getAllPosts().slice(0, 3)\n\n  return (\n    <div className=\"container mx-auto px-4 py-8\">\n      <div className=\"max-w-4xl mx-auto\">\n        <div className=\"text-center mb-12\">\n          <h1 className=\"text-5xl font-bold tracking-tight mb-6\">\n            Homelab Chronicles\n          </h1>\n          <p className=\"text-xl text-muted-foreground mb-8 max-w-2xl mx-auto\">\n            Deep dives into VM orchestration, tmux automation, and AI-powered development workflows. \n            Learning the ins and outs of computing, one automated deployment at a time.\n          </p>\n          <Link href=\"/blog\">\n            <Button size=\"lg\" className=\"font-mono\">\n              Read the Blog\n            </Button>\n          </Link>\n        </div>\n\n        <div className=\"mb-12\">\n          <Card>\n            <CardHeader>\n              <CardTitle className=\"text-2xl\">What This Is</CardTitle>\n              <CardDescription>\n                My first homelab setup, documented as I learn\n              </CardDescription>\n            </CardHeader>\n            <CardContent className=\"prose dark:prose-invert max-w-none\">\n              <p>\n                This blog documents my journey building a homelab on a Minisforum UN100. \n                I'm using Packer and Vagrant for VM provisioning, tmux for automation, \n                and Claude Code as my AI operator across different development contexts.\n              </p>\n              <p>\n                Each post covers real problems I've solved, with the actual code and \n                infrastructure patterns that work. No bullshit, just what works.\n              </p>\n            </CardContent>\n          </Card>\n        </div>\n\n        {recentPosts.length > 0 && (\n          <div>\n            <h2 className=\"text-3xl font-bold tracking-tight mb-6\">Recent Posts</h2>\n            <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n              {recentPosts.map((post) => (\n                <BlogCard key={post.slug} post={post} />\n              ))}\n            </div>\n            <div className=\"text-center mt-8\">\n              <Link href=\"/blog\">\n                <Button variant=\"outline\">View All Posts</Button>\n              </Link>\n            </div>\n          </div>\n        )}\n      </div>\n    </div>\n  )\n}"
+    },
+    "tool_response": {
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/page.tsx",
+      "oldString": "import Image from \"next/image\";\n\nexport default function Home() {\n  return (\n    <div className=\"font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20\">\n      <main className=\"flex flex-col gap-[32px] row-start-2 items-center sm:items-start\">\n        <Image\n          className=\"dark:invert\"\n          src=\"/next.svg\"\n          alt=\"Next.js logo\"\n          width={180}\n          height={38}\n          priority\n        />\n        <ol className=\"font-mono list-inside list-decimal text-sm/6 text-center sm:text-left\">\n          <li className=\"mb-2 tracking-[-.01em]\">\n            Get started by editing{\" \"}\n            <code className=\"bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded\">\n              src/app/page.tsx\n            </code>\n            .\n          </li>\n          <li className=\"tracking-[-.01em]\">\n            Save and see your changes instantly.\n          </li>\n        </ol>\n\n        <div className=\"flex gap-4 items-center flex-col sm:flex-row\">\n          <a\n            className=\"rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto\"\n            href=\"https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            <Image\n              className=\"dark:invert\"\n              src=\"/vercel.svg\"\n              alt=\"Vercel logomark\"\n              width={20}\n              height={20}\n            />\n            Deploy now\n          </a>\n          <a\n            className=\"rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]\"\n            href=\"https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            Read our docs\n          </a>\n        </div>\n      </main>\n      <footer className=\"row-start-3 flex gap-[24px] flex-wrap items-center justify-center\">\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/file.svg\"\n            alt=\"File icon\"\n            width={16}\n            height={16}\n          />\n          Learn\n        </a>\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/window.svg\"\n            alt=\"Window icon\"\n            width={16}\n            height={16}\n          />\n          Examples\n        </a>\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/globe.svg\"\n            alt=\"Globe icon\"\n            width={16}\n            height={16}\n          />\n          Go to nextjs.org \u2192\n        </a>\n      </footer>\n    </div>\n  );\n}",
+      "newString": "import Link from 'next/link'\nimport { getAllPosts } from '@/lib/posts'\nimport { BlogCard } from '@/components/blog/BlogCard'\nimport { Button } from '@/components/ui/button'\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\n\nexport default function Home() {\n  const recentPosts = getAllPosts().slice(0, 3)\n\n  return (\n    <div className=\"container mx-auto px-4 py-8\">\n      <div className=\"max-w-4xl mx-auto\">\n        <div className=\"text-center mb-12\">\n          <h1 className=\"text-5xl font-bold tracking-tight mb-6\">\n            Homelab Chronicles\n          </h1>\n          <p className=\"text-xl text-muted-foreground mb-8 max-w-2xl mx-auto\">\n            Deep dives into VM orchestration, tmux automation, and AI-powered development workflows. \n            Learning the ins and outs of computing, one automated deployment at a time.\n          </p>\n          <Link href=\"/blog\">\n            <Button size=\"lg\" className=\"font-mono\">\n              Read the Blog\n            </Button>\n          </Link>\n        </div>\n\n        <div className=\"mb-12\">\n          <Card>\n            <CardHeader>\n              <CardTitle className=\"text-2xl\">What This Is</CardTitle>\n              <CardDescription>\n                My first homelab setup, documented as I learn\n              </CardDescription>\n            </CardHeader>\n            <CardContent className=\"prose dark:prose-invert max-w-none\">\n              <p>\n                This blog documents my journey building a homelab on a Minisforum UN100. \n                I'm using Packer and Vagrant for VM provisioning, tmux for automation, \n                and Claude Code as my AI operator across different development contexts.\n              </p>\n              <p>\n                Each post covers real problems I've solved, with the actual code and \n                infrastructure patterns that work. No bullshit, just what works.\n              </p>\n            </CardContent>\n          </Card>\n        </div>\n\n        {recentPosts.length > 0 && (\n          <div>\n            <h2 className=\"text-3xl font-bold tracking-tight mb-6\">Recent Posts</h2>\n            <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">\n              {recentPosts.map((post) => (\n                <BlogCard key={post.slug} post={post} />\n              ))}\n            </div>\n            <div className=\"text-center mt-8\">\n              <Link href=\"/blog\">\n                <Button variant=\"outline\">View All Posts</Button>\n              </Link>\n            </div>\n          </div>\n        )}\n      </div>\n    </div>\n  )\n}",
+      "originalFile": "import Image from \"next/image\";\n\nexport default function Home() {\n  return (\n    <div className=\"font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20\">\n      <main className=\"flex flex-col gap-[32px] row-start-2 items-center sm:items-start\">\n        <Image\n          className=\"dark:invert\"\n          src=\"/next.svg\"\n          alt=\"Next.js logo\"\n          width={180}\n          height={38}\n          priority\n        />\n        <ol className=\"font-mono list-inside list-decimal text-sm/6 text-center sm:text-left\">\n          <li className=\"mb-2 tracking-[-.01em]\">\n            Get started by editing{\" \"}\n            <code className=\"bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded\">\n              src/app/page.tsx\n            </code>\n            .\n          </li>\n          <li className=\"tracking-[-.01em]\">\n            Save and see your changes instantly.\n          </li>\n        </ol>\n\n        <div className=\"flex gap-4 items-center flex-col sm:flex-row\">\n          <a\n            className=\"rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto\"\n            href=\"https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            <Image\n              className=\"dark:invert\"\n              src=\"/vercel.svg\"\n              alt=\"Vercel logomark\"\n              width={20}\n              height={20}\n            />\n            Deploy now\n          </a>\n          <a\n            className=\"rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]\"\n            href=\"https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            Read our docs\n          </a>\n        </div>\n      </main>\n      <footer className=\"row-start-3 flex gap-[24px] flex-wrap items-center justify-center\">\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/file.svg\"\n            alt=\"File icon\"\n            width={16}\n            height={16}\n          />\n          Learn\n        </a>\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/window.svg\"\n            alt=\"Window icon\"\n            width={16}\n            height={16}\n          />\n          Examples\n        </a>\n        <a\n          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"\n          href=\"https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        >\n          <Image\n            aria-hidden\n            src=\"/globe.svg\"\n            alt=\"Globe icon\"\n            width={16}\n            height={16}\n          />\n          Go to nextjs.org \u2192\n        </a>\n      </footer>\n    </div>\n  );\n}\n",
+      "structuredPatch": [
+        {
+          "oldStart": 1,
+          "oldLines": 103,
+          "newStart": 1,
+          "newLines": 68,
+          "lines": [
+            "-import Image from \"next/image\";",
+            "+import Link from 'next/link'",
+            "+import { getAllPosts } from '@/lib/posts'",
+            "+import { BlogCard } from '@/components/blog/BlogCard'",
+            "+import { Button } from '@/components/ui/button'",
+            "+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'",
+            " ",
+            " export default function Home() {",
+            "+  const recentPosts = getAllPosts().slice(0, 3)",
+            "+",
+            "   return (",
+            "-    <div className=\"font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20\">",
+            "-      <main className=\"flex flex-col gap-[32px] row-start-2 items-center sm:items-start\">",
+            "-        <Image",
+            "-          className=\"dark:invert\"",
+            "-          src=\"/next.svg\"",
+            "-          alt=\"Next.js logo\"",
+            "-          width={180}",
+            "-          height={38}",
+            "-          priority",
+            "-        />",
+            "-        <ol className=\"font-mono list-inside list-decimal text-sm/6 text-center sm:text-left\">",
+            "-          <li className=\"mb-2 tracking-[-.01em]\">",
+            "-            Get started by editing{\" \"}",
+            "-            <code className=\"bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded\">",
+            "-              src/app/page.tsx",
+            "-            </code>",
+            "-            .",
+            "-          </li>",
+            "-          <li className=\"tracking-[-.01em]\">",
+            "-            Save and see your changes instantly.",
+            "-          </li>",
+            "-        </ol>",
+            "+    <div className=\"container mx-auto px-4 py-8\">",
+            "+      <div className=\"max-w-4xl mx-auto\">",
+            "+        <div className=\"text-center mb-12\">",
+            "+          <h1 className=\"text-5xl font-bold tracking-tight mb-6\">",
+            "+            Homelab Chronicles",
+            "+          </h1>",
+            "+          <p className=\"text-xl text-muted-foreground mb-8 max-w-2xl mx-auto\">",
+            "+            Deep dives into VM orchestration, tmux automation, and AI-powered development workflows. ",
+            "+            Learning the ins and outs of computing, one automated deployment at a time.",
+            "+          </p>",
+            "+          <Link href=\"/blog\">",
+            "+            <Button size=\"lg\" className=\"font-mono\">",
+            "+              Read the Blog",
+            "+            </Button>",
+            "+          </Link>",
+            "+        </div>",
+            " ",
+            "-        <div className=\"flex gap-4 items-center flex-col sm:flex-row\">",
+            "-          <a",
+            "-            className=\"rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto\"",
+            "-            href=\"https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"",
+            "-            target=\"_blank\"",
+            "-            rel=\"noopener noreferrer\"",
+            "-          >",
+            "-            <Image",
+            "-              className=\"dark:invert\"",
+            "-              src=\"/vercel.svg\"",
+            "-              alt=\"Vercel logomark\"",
+            "-              width={20}",
+            "-              height={20}",
+            "-            />",
+            "-            Deploy now",
+            "-          </a>",
+            "-          <a",
+            "-            className=\"rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]\"",
+            "-            href=\"https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"",
+            "-            target=\"_blank\"",
+            "-            rel=\"noopener noreferrer\"",
+            "-          >",
+            "-            Read our docs",
+            "-          </a>",
+            "+        <div className=\"mb-12\">",
+            "+          <Card>",
+            "+            <CardHeader>",
+            "+              <CardTitle className=\"text-2xl\">What This Is</CardTitle>",
+            "+              <CardDescription>",
+            "+                My first homelab setup, documented as I learn",
+            "+              </CardDescription>",
+            "+            </CardHeader>",
+            "+            <CardContent className=\"prose dark:prose-invert max-w-none\">",
+            "+              <p>",
+            "+                This blog documents my journey building a homelab on a Minisforum UN100. ",
+            "+                I'm using Packer and Vagrant for VM provisioning, tmux for automation, ",
+            "+                and Claude Code as my AI operator across different development contexts.",
+            "+              </p>",
+            "+              <p>",
+            "+                Each post covers real problems I've solved, with the actual code and ",
+            "+                infrastructure patterns that work. No bullshit, just what works.",
+            "+              </p>",
+            "+            </CardContent>",
+            "+          </Card>",
+            "         </div>",
+            "-      </main>",
+            "-      <footer className=\"row-start-3 flex gap-[24px] flex-wrap items-center justify-center\">",
+            "-        <a",
+            "-          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"",
+            "-          href=\"https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"",
+            "-          target=\"_blank\"",
+            "-          rel=\"noopener noreferrer\"",
+            "-        >",
+            "-          <Image",
+            "-            aria-hidden",
+            "-            src=\"/file.svg\"",
+            "-            alt=\"File icon\"",
+            "-            width={16}",
+            "-            height={16}",
+            "-          />",
+            "-          Learn",
+            "-        </a>",
+            "-        <a",
+            "-          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"",
+            "-          href=\"https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"",
+            "-          target=\"_blank\"",
+            "-          rel=\"noopener noreferrer\"",
+            "-        >",
+            "-          <Image",
+            "-            aria-hidden",
+            "-            src=\"/window.svg\"",
+            "-            alt=\"Window icon\"",
+            "-            width={16}",
+            "-            height={16}",
+            "-          />",
+            "-          Examples",
+            "-        </a>",
+            "-        <a",
+            "-          className=\"flex items-center gap-2 hover:underline hover:underline-offset-4\"",
+            "-          href=\"https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"",
+            "-          target=\"_blank\"",
+            "-          rel=\"noopener noreferrer\"",
+            "-        >",
+            "-          <Image",
+            "-            aria-hidden",
+            "-            src=\"/globe.svg\"",
+            "-            alt=\"Globe icon\"",
+            "-            width={16}",
+            "-            height={16}",
+            "-          />",
+            "-          Go to nextjs.org \u2192",
+            "-        </a>",
+            "-      </footer>",
+            "+",
+            "+        {recentPosts.length > 0 && (",
+            "+          <div>",
+            "+            <h2 className=\"text-3xl font-bold tracking-tight mb-6\">Recent Posts</h2>",
+            "+            <div className=\"grid gap-6 md:grid-cols-2 lg:grid-cols-3\">",
+            "+              {recentPosts.map((post) => (",
+            "+                <BlogCard key={post.slug} post={post} />",
+            "+              ))}",
+            "+            </div>",
+            "+            <div className=\"text-center mt-8\">",
+            "+              <Link href=\"/blog\">",
+            "+                <Button variant=\"outline\">View All Posts</Button>",
+            "+              </Link>",
+            "+            </div>",
+            "+          </div>",
+            "+        )}",
+            "+      </div>",
+            "     </div>",
+            "-  );",
+            "+  )",
+            " }"
+          ]
+        }
+      ],
+      "userModified": false,
+      "replaceAll": false
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Write",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/components/Navigation.tsx",
+      "content": "import Link from 'next/link'\nimport { Button } from '@/components/ui/button'\nimport { Badge } from '@/components/ui/badge'\n\nexport function Navigation() {\n  return (\n    <nav className=\"border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60\">\n      <div className=\"container mx-auto px-4\">\n        <div className=\"flex h-16 items-center justify-between\">\n          <Link href=\"/\" className=\"flex items-center space-x-2\">\n            <span className=\"font-bold text-xl font-mono\">\n              homelab\n            </span>\n            <Badge variant=\"secondary\" className=\"hidden sm:inline-flex\">\n              chronicles\n            </Badge>\n          </Link>\n          \n          <div className=\"flex items-center space-x-4\">\n            <Link href=\"/blog\">\n              <Button variant=\"ghost\" className=\"font-mono\">\n                Blog\n              </Button>\n            </Link>\n          </div>\n        </div>\n      </div>\n    </nav>\n  )\n}"
+    },
+    "tool_response": {
+      "type": "create",
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/components/Navigation.tsx",
+      "content": "import Link from 'next/link'\nimport { Button } from '@/components/ui/button'\nimport { Badge } from '@/components/ui/badge'\n\nexport function Navigation() {\n  return (\n    <nav className=\"border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60\">\n      <div className=\"container mx-auto px-4\">\n        <div className=\"flex h-16 items-center justify-between\">\n          <Link href=\"/\" className=\"flex items-center space-x-2\">\n            <span className=\"font-bold text-xl font-mono\">\n              homelab\n            </span>\n            <Badge variant=\"secondary\" className=\"hidden sm:inline-flex\">\n              chronicles\n            </Badge>\n          </Link>\n          \n          <div className=\"flex items-center space-x-4\">\n            <Link href=\"/blog\">\n              <Button variant=\"ghost\" className=\"font-mono\">\n                Blog\n              </Button>\n            </Link>\n          </div>\n        </div>\n      </div>\n    </nav>\n  )\n}",
+      "structuredPatch": []
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/layout.tsx"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/layout.tsx",
+        "content": "import type { Metadata } from \"next\";\nimport { Geist, Geist_Mono } from \"next/font/google\";\nimport \"./globals.css\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\nexport const metadata: Metadata = {\n  title: \"Create Next App\",\n  description: \"Generated by create next app\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\">\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        {children}\n      </body>\n    </html>\n  );\n}\n",
+        "numLines": 35,
+        "startLine": 1,
+        "totalLines": 35
+      }
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Edit",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/layout.tsx",
+      "old_string": "import type { Metadata } from \"next\";\nimport { Geist, Geist_Mono } from \"next/font/google\";\nimport \"./globals.css\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\nexport const metadata: Metadata = {\n  title: \"Create Next App\",\n  description: \"Generated by create next app\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\">\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        {children}\n      </body>\n    </html>\n  );\n}",
+      "new_string": "import type { Metadata } from \"next\";\nimport { Geist, Geist_Mono } from \"next/font/google\";\nimport { Navigation } from \"@/components/Navigation\";\nimport \"./globals.css\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\nexport const metadata: Metadata = {\n  title: \"Homelab Chronicles\",\n  description: \"Deep dives into VM orchestration, tmux automation, and AI-powered development workflows\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\">\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        <Navigation />\n        <main className=\"min-h-screen\">\n          {children}\n        </main>\n      </body>\n    </html>\n  );\n}"
+    },
+    "tool_response": {
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/app/layout.tsx",
+      "oldString": "import type { Metadata } from \"next\";\nimport { Geist, Geist_Mono } from \"next/font/google\";\nimport \"./globals.css\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\nexport const metadata: Metadata = {\n  title: \"Create Next App\",\n  description: \"Generated by create next app\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\">\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        {children}\n      </body>\n    </html>\n  );\n}",
+      "newString": "import type { Metadata } from \"next\";\nimport { Geist, Geist_Mono } from \"next/font/google\";\nimport { Navigation } from \"@/components/Navigation\";\nimport \"./globals.css\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\nexport const metadata: Metadata = {\n  title: \"Homelab Chronicles\",\n  description: \"Deep dives into VM orchestration, tmux automation, and AI-powered development workflows\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\">\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        <Navigation />\n        <main className=\"min-h-screen\">\n          {children}\n        </main>\n      </body>\n    </html>\n  );\n}",
+      "originalFile": "import type { Metadata } from \"next\";\nimport { Geist, Geist_Mono } from \"next/font/google\";\nimport \"./globals.css\";\n\nconst geistSans = Geist({\n  variable: \"--font-geist-sans\",\n  subsets: [\"latin\"],\n});\n\nconst geistMono = Geist_Mono({\n  variable: \"--font-geist-mono\",\n  subsets: [\"latin\"],\n});\n\nexport const metadata: Metadata = {\n  title: \"Create Next App\",\n  description: \"Generated by create next app\",\n};\n\nexport default function RootLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <html lang=\"en\">\n      <body\n        className={`${geistSans.variable} ${geistMono.variable} antialiased`}\n      >\n        {children}\n      </body>\n    </html>\n  );\n}\n",
+      "structuredPatch": [
+        {
+          "oldStart": 1,
+          "oldLines": 5,
+          "newStart": 1,
+          "newLines": 6,
+          "lines": [
+            " import type { Metadata } from \"next\";",
+            " import { Geist, Geist_Mono } from \"next/font/google\";",
+            "+import { Navigation } from \"@/components/Navigation\";",
+            " import \"./globals.css\";",
+            " ",
+            " const geistSans = Geist({"
+          ]
+        },
+        {
+          "oldStart": 13,
+          "oldLines": 8,
+          "newStart": 14,
+          "newLines": 8,
+          "lines": [
+            " });",
+            " ",
+            " export const metadata: Metadata = {",
+            "-  title: \"Create Next App\",",
+            "-  description: \"Generated by create next app\",",
+            "+  title: \"Homelab Chronicles\",",
+            "+  description: \"Deep dives into VM orchestration, tmux automation, and AI-powered development workflows\",",
+            " };",
+            " ",
+            " export default function RootLayout({"
+          ]
+        },
+        {
+          "oldStart": 27,
+          "oldLines": 7,
+          "newStart": 28,
+          "newLines": 10,
+          "lines": [
+            "       <body",
+            "         className={`${geistSans.variable} ${geistMono.variable} antialiased`}",
+            "       >",
+            "-        {children}",
+            "+        <Navigation />",
+            "+        <main className=\"min-h-screen\">",
+            "+          {children}",
+            "+        </main>",
+            "       </body>",
+            "     </html>",
+            "   );"
+          ]
+        }
+      ],
+      "userModified": false,
+      "replaceAll": false
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "TodoWrite",
+    "tool_input": {
+      "todos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "completed",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "completed",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "completed",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "completed",
+          "id": "8"
+        }
+      ]
+    },
+    "tool_response": {
+      "oldTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "completed",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "completed",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "completed",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "in_progress",
+          "id": "8"
+        }
+      ],
+      "newTodos": [
+        {
+          "content": "Set up MDX support and configuration",
+          "status": "completed",
+          "id": "1"
+        },
+        {
+          "content": "Create blog directory structure",
+          "status": "completed",
+          "id": "2"
+        },
+        {
+          "content": "Build MDX utilities and post management",
+          "status": "completed",
+          "id": "3"
+        },
+        {
+          "content": "Create BlogCard component",
+          "status": "completed",
+          "id": "4"
+        },
+        {
+          "content": "Create blog listing page",
+          "status": "completed",
+          "id": "5"
+        },
+        {
+          "content": "Create dynamic blog post page",
+          "status": "completed",
+          "id": "6"
+        },
+        {
+          "content": "Create sample MDX blog posts",
+          "status": "completed",
+          "id": "7"
+        },
+        {
+          "content": "Add sidebar navigation",
+          "status": "completed",
+          "id": "8"
+        }
+      ]
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "npm run dev",
+      "description": "Start the homelab blog development server",
+      "run_in_background": true
+    },
+    "tool_response": {
+      "stdout": "",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false,
+      "backgroundTaskId": "bash_2"
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "BashOutput",
+    "tool_input": {
+      "bash_id": "bash_2"
+    },
+    "tool_response": {
+      "shellId": "bash_2",
+      "command": "npm run dev",
+      "status": "running",
+      "exitCode": null,
+      "stdout": "> homelab-blog@0.1.0 dev\n> next dev --turbopack\n\n   \u25b2 Next.js 15.4.7 (Turbopack)\n   - Local:        http://localhost:3002\n   - Network:      http://192.168.60.118:3002\n\n \u2713 Starting...\n \u2713 Ready in 1279ms",
+      "stderr": " \u26a0 Warning: Found multiple lockfiles. Selecting /Users/williamvansickleiii/pnpm-lock.yaml.\n   Consider removing the lockfiles at:\n   * /Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/package-lock.json\n\n \u26a0 Port 3000 is in use by process 9920, using available port 3002 instead.",
+      "stdoutLines": 10,
+      "stderrLines": 5,
+      "timestamp": "2025-08-19T02:59:00.543Z"
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Edit",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/content/posts/persistent-vm-pattern.mdx",
+      "old_string": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2024-01-15\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---",
+      "new_string": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2025-08-18\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---"
+    },
+    "tool_response": {
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/content/posts/persistent-vm-pattern.mdx",
+      "oldString": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2024-01-15\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---",
+      "newString": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2025-08-18\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---",
+      "originalFile": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2024-01-15\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---\n\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Alert, AlertDescription } from '@/components/ui/alert'\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'\nimport { Badge } from '@/components/ui/badge'\n\n# The Problem: OAuth Token Hell\n\nWhen you're trying to automate Claude Code in isolated environments, you hit this fucking annoying wall: OAuth tokens. Every time you destroy and recreate a VM, you need to re-authenticate Claude Code through a browser. This becomes a nightmare when you're trying to run automated development workflows.\n\n<Alert>\n  <AlertDescription>\n    Traditional approaches fail because OAuth requires human intervention. You can't script browser authentication flows without getting into security hell.\n  </AlertDescription>\n</Alert>\n\nI bought this little beast to run my homelab - a Minisforum UN100 with an Intel N100 processor, 16GB RAM, and dual gigabit ethernet ports. Small as fuck but handles everything I throw at it.\n\n![Minisforum UN100](https://darrenwatt.com/content/images/size/w2000/2024/02/Screenshot-2024-02-06-194024.png)\n\nThe specs are solid for a homelab starter:\n- Intel N100 Processor (4 cores, up to 3.4 GHz)\n- 16GB LPDDR5 RAM\n- Dual gigabit ethernet (perfect for network testing)\n- Multiple HDMI outputs\n- Runs at 7.7W idle, 23.5W under load\n\n## The Solution: Persistent VM Pattern\n\nInstead of fighting OAuth complexity, I decided to solve it with infrastructure. The approach is simple: authenticate once, then never destroy the VM.\n\n<Tabs defaultValue=\"approach\">\n  <TabsList>\n    <TabsTrigger value=\"approach\">The Pattern</TabsTrigger>\n    <TabsTrigger value=\"packer\">Packer Phase</TabsTrigger>\n    <TabsTrigger value=\"vagrant\">Vagrant Phase</TabsTrigger>\n    <TabsTrigger value=\"benefits\">Results</TabsTrigger>\n  </TabsList>\n  \n  <TabsContent value=\"approach\">\n    <Card>\n      <CardHeader>\n        <CardTitle>Two-Phase Infrastructure</CardTitle>\n        <CardDescription>Packer builds authenticated images, Vagrant manages runtime</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-2\">\n          <div>\ud83d\udce6 <Badge variant=\"secondary\">Packer</Badge> - One-time image creation with pre-authentication</div>\n          <div>\ud83d\udd04 <Badge variant=\"secondary\">Vagrant</Badge> - Project-specific setup and resource allocation</div>\n          <div>\ud83d\udcbe <Badge variant=\"secondary\">Suspend/Resume</Badge> - Instead of destroy/recreate cycles</div>\n          <div>\ud83d\udd12 <Badge variant=\"secondary\">Persistent Auth</Badge> - OAuth completed once during image build</div>\n        </div>\n      </CardContent>\n    </Card>\n  </TabsContent>\n  \n  <TabsContent value=\"packer\">\n    ```bash\n    # Packer handles the heavy lifting\n    packer {\n      required_plugins {\n        virtualbox = {\n          version = \">= 1.0.0\"\n          source  = \"github.com/hashicorp/virtualbox\"\n        }\n      }\n    }\n    \n    source \"virtualbox-iso\" \"ubuntu\" {\n      iso_url      = \"ubuntu-20.04.6-live-server-amd64.iso\"\n      iso_checksum = \"sha256:...\"\n      \n      vm_name     = \"claude-dev-base\"\n      memory      = 2048\n      cpus        = 2\n      disk_size   = 20480\n    }\n    \n    build {\n      sources = [\"source.virtualbox-iso.ubuntu\"]\n      \n      provisioner \"shell\" {\n        inline = [\n          \"curl -sSL https://claude.ai/install.sh | bash\",\n          \"claude auth login\",  # This requires human interaction\n          \"/workspace/vm-foreman/mark-authenticated.sh\"\n        ]\n      }\n    }\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"vagrant\">\n    ```ruby\n    # Vagrant uses the pre-built image\n    Vagrant.configure(\"2\") do |config|\n      config.vm.box = \"claude-dev-authenticated\"\n      config.vm.network \"private_network\", ip: \"192.168.121.44\"\n      \n      config.vm.provider \"virtualbox\" do |vb|\n        vb.memory = \"2048\"\n        vb.cpus = 2\n      end\n      \n      # Project-specific setup only\n      config.vm.provision \"shell\", inline: <<-SHELL\n        mkdir -p /workspace/#{project_name}\n        cd /workspace && ./setup-project.sh #{project_name}\n      SHELL\n    end\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"benefits\">\n    <div className=\"grid grid-cols-2 gap-4\">\n      <Card>\n        <CardHeader>\n          <CardTitle>Performance</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>5-10min</Badge> First-time image build</div>\n            <div><Badge>30sec</Badge> Resume time for daily work</div>\n            <div><Badge>5sec</Badge> Suspend when done</div>\n          </div>\n        </CardContent>\n      </Card>\n      \n      <Card>\n        <CardHeader>\n          <CardTitle>Reliability</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>Zero</Badge> Authentication failures</div>\n            <div><Badge>100%</Badge> Automation reliability</div>\n            <div><Badge>Isolated</Badge> Development environment</div>\n          </div>\n        </CardContent>\n      </Card>\n    </div>\n  </TabsContent>\n</Tabs>\n\n## Implementation Details\n\nThe workflow splits into two distinct phases:\n\n### Phase 1: Image Creation (Packer)\n```bash\n# Build the authenticated base image\npacker build claude-dev.pkr.hcl\n\n# This creates a VirtualBox image with:\n# - Ubuntu 20.04 base system\n# - Claude Code installed and authenticated\n# - Development tools pre-configured\n# - Authentication token stored securely\n```\n\n### Phase 2: Project Management (Vagrant)\n```bash\n# Daily usage is simple\nvagrant up      # Boots from authenticated image\nvagrant ssh     # Jump into development environment\n# ... do development work ...\nvagrant suspend # Saves state, releases resources\n```\n\n## Network Setup with Tailscale\n\nSince I'm running this on my homelab, I use Tailscale for secure remote access and Cloudflare for public applications. The VM gets a static IP on the Tailscale network, making it accessible from anywhere.\n\n```bash\n# On the VM\nsudo tailscale up --ssh\n# Now accessible from any device on my Tailscale network\n```\n\n## Learning Through Automation\n\nThis is my first real homelab setup, and I'm learning the ins and outs of computing as I go. Having Claude Code as an operator makes the learning curve manageable. I can give different Claude instances in different directories their own responsibilities and roles:\n\n- `/workspace/foreman/` - VM orchestration and monitoring\n- `/workspace/projects/` - Active development work  \n- `/workspace/templates/` - Project templates and scaffolding\n\nEach directory gets its own `CLAUDE.md` file with specific instructions and context.\n\n## The Results\n\nThis pattern eliminated OAuth complexity entirely. Instead of fighting authentication flows, I authenticate once during image creation and never deal with it again. The VM suspend/resume cycle takes seconds instead of minutes for full reprovisioning.\n\nFor a homelab setup, this approach scales well. I can create multiple authenticated images for different purposes - one for web development, another for systems work, etc. Each image is self-contained and ready to work.\n\n## Implementation Notes\n\nKey decisions that made this work:\n\n1. **Packer for image creation** - Handles the complex OAuth flow once\n2. **Vagrant for project management** - Simple, predictable VM lifecycle  \n3. **Suspend instead of destroy** - Preserves authentication state\n4. **Static networking** - Consistent access patterns\n5. **File-based communication** - Simple coordination between host and VM\n\nThe Minisforum UN100 handles this workload without breaking a sweat. Power consumption stays low, and the dual ethernet ports let me experiment with network configurations.\n\nThis pattern works because it separates concerns properly: Packer handles the hard infrastructure problems, Vagrant handles the simple project management, and the persistent authentication state eliminates the OAuth headache entirely.",
+      "structuredPatch": [
+        {
+          "oldStart": 1,
+          "oldLines": 6,
+          "newStart": 1,
+          "newLines": 6,
+          "lines": [
+            " ---",
+            " title: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"",
+            "-date: \"2024-01-15\"",
+            "+date: \"2025-08-18\"",
+            " category: \"infrastructure\"",
+            " tags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]",
+            " excerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\""
+          ]
+        }
+      ],
+      "userModified": false,
+      "replaceAll": false
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Read",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/content/posts/persistent-vm-pattern.mdx"
+    },
+    "tool_response": {
+      "type": "text",
+      "file": {
+        "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/content/posts/persistent-vm-pattern.mdx",
+        "content": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2025-08-18\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---\n\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Alert, AlertDescription } from '@/components/ui/alert'\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'\nimport { Badge } from '@/components/ui/badge'\n\n# The Problem: OAuth Token Hell\n\nWhen you're trying to automate Claude Code in isolated environments, you hit this fucking annoying wall: OAuth tokens. Every time you destroy and recreate a VM, you need to re-authenticate Claude Code through a browser. This becomes a nightmare when you're trying to run automated development workflows.\n\n<Alert>\n  <AlertDescription>\n    Traditional approaches fail because OAuth requires human intervention. You can't script browser authentication flows without getting into security hell.\n  </AlertDescription>\n</Alert>\n\nI bought this little beast to run my homelab - a Minisforum UN100 with an Intel N100 processor, 16GB RAM, and dual gigabit ethernet ports. Small as fuck but handles everything I throw at it.\n\n![Minisforum UN100](https://darrenwatt.com/content/images/size/w2000/2024/02/Screenshot-2024-02-06-194024.png)\n\nThe specs are solid for a homelab starter:\n- Intel N100 Processor (4 cores, up to 3.4 GHz)\n- 16GB LPDDR5 RAM\n- Dual gigabit ethernet (perfect for network testing)\n- Multiple HDMI outputs\n- Runs at 7.7W idle, 23.5W under load\n\n## The Solution: Persistent VM Pattern\n\nInstead of fighting OAuth complexity, I decided to solve it with infrastructure. The approach is simple: authenticate once, then never destroy the VM.\n\n<Tabs defaultValue=\"approach\">\n  <TabsList>\n    <TabsTrigger value=\"approach\">The Pattern</TabsTrigger>\n    <TabsTrigger value=\"packer\">Packer Phase</TabsTrigger>\n    <TabsTrigger value=\"vagrant\">Vagrant Phase</TabsTrigger>\n    <TabsTrigger value=\"benefits\">Results</TabsTrigger>\n  </TabsList>\n  \n  <TabsContent value=\"approach\">\n    <Card>\n      <CardHeader>\n        <CardTitle>Two-Phase Infrastructure</CardTitle>\n        <CardDescription>Packer builds authenticated images, Vagrant manages runtime</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-2\">\n          <div>\ud83d\udce6 <Badge variant=\"secondary\">Packer</Badge> - One-time image creation with pre-authentication</div>\n          <div>\ud83d\udd04 <Badge variant=\"secondary\">Vagrant</Badge> - Project-specific setup and resource allocation</div>\n          <div>\ud83d\udcbe <Badge variant=\"secondary\">Suspend/Resume</Badge> - Instead of destroy/recreate cycles</div>\n          <div>\ud83d\udd12 <Badge variant=\"secondary\">Persistent Auth</Badge> - OAuth completed once during image build</div>\n        </div>\n      </CardContent>\n    </Card>\n  </TabsContent>\n  \n  <TabsContent value=\"packer\">\n    ```bash\n    # Packer handles the heavy lifting\n    packer {\n      required_plugins {\n        virtualbox = {\n          version = \">= 1.0.0\"\n          source  = \"github.com/hashicorp/virtualbox\"\n        }\n      }\n    }\n    \n    source \"virtualbox-iso\" \"ubuntu\" {\n      iso_url      = \"ubuntu-20.04.6-live-server-amd64.iso\"\n      iso_checksum = \"sha256:...\"\n      \n      vm_name     = \"claude-dev-base\"\n      memory      = 2048\n      cpus        = 2\n      disk_size   = 20480\n    }\n    \n    build {\n      sources = [\"source.virtualbox-iso.ubuntu\"]\n      \n      provisioner \"shell\" {\n        inline = [\n          \"curl -sSL https://claude.ai/install.sh | bash\",\n          \"claude auth login\",  # This requires human interaction\n          \"/workspace/vm-foreman/mark-authenticated.sh\"\n        ]\n      }\n    }\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"vagrant\">\n    ```ruby\n    # Vagrant uses the pre-built image\n    Vagrant.configure(\"2\") do |config|\n      config.vm.box = \"claude-dev-authenticated\"\n      config.vm.network \"private_network\", ip: \"192.168.121.44\"\n      \n      config.vm.provider \"virtualbox\" do |vb|\n        vb.memory = \"2048\"\n        vb.cpus = 2\n      end\n      \n      # Project-specific setup only\n      config.vm.provision \"shell\", inline: <<-SHELL\n        mkdir -p /workspace/#{project_name}\n        cd /workspace && ./setup-project.sh #{project_name}\n      SHELL\n    end\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"benefits\">\n    <div className=\"grid grid-cols-2 gap-4\">\n      <Card>\n        <CardHeader>\n          <CardTitle>Performance</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>5-10min</Badge> First-time image build</div>\n            <div><Badge>30sec</Badge> Resume time for daily work</div>\n            <div><Badge>5sec</Badge> Suspend when done</div>\n          </div>\n        </CardContent>\n      </Card>\n      \n      <Card>\n        <CardHeader>\n          <CardTitle>Reliability</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>Zero</Badge> Authentication failures</div>\n            <div><Badge>100%</Badge> Automation reliability</div>\n            <div><Badge>Isolated</Badge> Development environment</div>\n          </div>\n        </CardContent>\n      </Card>\n    </div>\n  </TabsContent>\n</Tabs>\n\n## Implementation Details\n\nThe workflow splits into two distinct phases:\n\n### Phase 1: Image Creation (Packer)\n```bash\n# Build the authenticated base image\npacker build claude-dev.pkr.hcl\n\n# This creates a VirtualBox image with:\n# - Ubuntu 20.04 base system\n# - Claude Code installed and authenticated\n# - Development tools pre-configured\n# - Authentication token stored securely\n```\n\n### Phase 2: Project Management (Vagrant)\n```bash\n# Daily usage is simple\nvagrant up      # Boots from authenticated image\nvagrant ssh     # Jump into development environment\n# ... do development work ...\nvagrant suspend # Saves state, releases resources\n```\n\n## Network Setup with Tailscale\n\nSince I'm running this on my homelab, I use Tailscale for secure remote access and Cloudflare for public applications. The VM gets a static IP on the Tailscale network, making it accessible from anywhere.\n\n```bash\n# On the VM\nsudo tailscale up --ssh\n# Now accessible from any device on my Tailscale network\n```\n\n## Learning Through Automation\n\nThis is my first real homelab setup, and I'm learning the ins and outs of computing as I go. Having Claude Code as an operator makes the learning curve manageable. I can give different Claude instances in different directories their own responsibilities and roles:\n\n- `/workspace/foreman/` - VM orchestration and monitoring\n- `/workspace/projects/` - Active development work  \n- `/workspace/templates/` - Project templates and scaffolding\n\nEach directory gets its own `CLAUDE.md` file with specific instructions and context.\n\n## The Results\n\nThis pattern eliminated OAuth complexity entirely. Instead of fighting authentication flows, I authenticate once during image creation and never deal with it again. The VM suspend/resume cycle takes seconds instead of minutes for full reprovisioning.\n\nFor a homelab setup, this approach scales well. I can create multiple authenticated images for different purposes - one for web development, another for systems work, etc. Each image is self-contained and ready to work.\n\n## Implementation Notes\n\nKey decisions that made this work:\n\n1. **Packer for image creation** - Handles the complex OAuth flow once\n2. **Vagrant for project management** - Simple, predictable VM lifecycle  \n3. **Suspend instead of destroy** - Preserves authentication state\n4. **Static networking** - Consistent access patterns\n5. **File-based communication** - Simple coordination between host and VM\n\nThe Minisforum UN100 handles this workload without breaking a sweat. Power consumption stays low, and the dual ethernet ports let me experiment with network configurations.\n\nThis pattern works because it separates concerns properly: Packer handles the hard infrastructure problems, Vagrant handles the simple project management, and the persistent authentication state eliminates the OAuth headache entirely.",
+        "numLines": 215,
+        "startLine": 1,
+        "totalLines": 215
+      }
+    }
+  },
+  {
+    "session_id": "9841402e-3777-467d-93d7-bd47c3c2680e",
+    "transcript_path": "/Users/williamvansickleiii/.claude/projects/-Users-williamvansickleiii-code-homelab-blog-ai/9841402e-3777-467d-93d7-bd47c3c2680e.jsonl",
+    "cwd": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Edit",
+    "tool_input": {
+      "file_path": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/content/posts/persistent-vm-pattern.mdx",
+      "old_string": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2025-08-18\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---",
+      "new_string": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2025-08-19\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---"
+    },
+    "tool_response": {
+      "filePath": "/Users/williamvansickleiii/code/homelab-blog-ai/homelab-blog/src/content/posts/persistent-vm-pattern.mdx",
+      "oldString": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2025-08-18\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---",
+      "newString": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2025-08-19\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---",
+      "originalFile": "---\ntitle: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"\ndate: \"2025-08-18\"\ncategory: \"infrastructure\"\ntags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]\nexcerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\"\n---\n\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'\nimport { Alert, AlertDescription } from '@/components/ui/alert'\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'\nimport { Badge } from '@/components/ui/badge'\n\n# The Problem: OAuth Token Hell\n\nWhen you're trying to automate Claude Code in isolated environments, you hit this fucking annoying wall: OAuth tokens. Every time you destroy and recreate a VM, you need to re-authenticate Claude Code through a browser. This becomes a nightmare when you're trying to run automated development workflows.\n\n<Alert>\n  <AlertDescription>\n    Traditional approaches fail because OAuth requires human intervention. You can't script browser authentication flows without getting into security hell.\n  </AlertDescription>\n</Alert>\n\nI bought this little beast to run my homelab - a Minisforum UN100 with an Intel N100 processor, 16GB RAM, and dual gigabit ethernet ports. Small as fuck but handles everything I throw at it.\n\n![Minisforum UN100](https://darrenwatt.com/content/images/size/w2000/2024/02/Screenshot-2024-02-06-194024.png)\n\nThe specs are solid for a homelab starter:\n- Intel N100 Processor (4 cores, up to 3.4 GHz)\n- 16GB LPDDR5 RAM\n- Dual gigabit ethernet (perfect for network testing)\n- Multiple HDMI outputs\n- Runs at 7.7W idle, 23.5W under load\n\n## The Solution: Persistent VM Pattern\n\nInstead of fighting OAuth complexity, I decided to solve it with infrastructure. The approach is simple: authenticate once, then never destroy the VM.\n\n<Tabs defaultValue=\"approach\">\n  <TabsList>\n    <TabsTrigger value=\"approach\">The Pattern</TabsTrigger>\n    <TabsTrigger value=\"packer\">Packer Phase</TabsTrigger>\n    <TabsTrigger value=\"vagrant\">Vagrant Phase</TabsTrigger>\n    <TabsTrigger value=\"benefits\">Results</TabsTrigger>\n  </TabsList>\n  \n  <TabsContent value=\"approach\">\n    <Card>\n      <CardHeader>\n        <CardTitle>Two-Phase Infrastructure</CardTitle>\n        <CardDescription>Packer builds authenticated images, Vagrant manages runtime</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-2\">\n          <div>\ud83d\udce6 <Badge variant=\"secondary\">Packer</Badge> - One-time image creation with pre-authentication</div>\n          <div>\ud83d\udd04 <Badge variant=\"secondary\">Vagrant</Badge> - Project-specific setup and resource allocation</div>\n          <div>\ud83d\udcbe <Badge variant=\"secondary\">Suspend/Resume</Badge> - Instead of destroy/recreate cycles</div>\n          <div>\ud83d\udd12 <Badge variant=\"secondary\">Persistent Auth</Badge> - OAuth completed once during image build</div>\n        </div>\n      </CardContent>\n    </Card>\n  </TabsContent>\n  \n  <TabsContent value=\"packer\">\n    ```bash\n    # Packer handles the heavy lifting\n    packer {\n      required_plugins {\n        virtualbox = {\n          version = \">= 1.0.0\"\n          source  = \"github.com/hashicorp/virtualbox\"\n        }\n      }\n    }\n    \n    source \"virtualbox-iso\" \"ubuntu\" {\n      iso_url      = \"ubuntu-20.04.6-live-server-amd64.iso\"\n      iso_checksum = \"sha256:...\"\n      \n      vm_name     = \"claude-dev-base\"\n      memory      = 2048\n      cpus        = 2\n      disk_size   = 20480\n    }\n    \n    build {\n      sources = [\"source.virtualbox-iso.ubuntu\"]\n      \n      provisioner \"shell\" {\n        inline = [\n          \"curl -sSL https://claude.ai/install.sh | bash\",\n          \"claude auth login\",  # This requires human interaction\n          \"/workspace/vm-foreman/mark-authenticated.sh\"\n        ]\n      }\n    }\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"vagrant\">\n    ```ruby\n    # Vagrant uses the pre-built image\n    Vagrant.configure(\"2\") do |config|\n      config.vm.box = \"claude-dev-authenticated\"\n      config.vm.network \"private_network\", ip: \"192.168.121.44\"\n      \n      config.vm.provider \"virtualbox\" do |vb|\n        vb.memory = \"2048\"\n        vb.cpus = 2\n      end\n      \n      # Project-specific setup only\n      config.vm.provision \"shell\", inline: <<-SHELL\n        mkdir -p /workspace/#{project_name}\n        cd /workspace && ./setup-project.sh #{project_name}\n      SHELL\n    end\n    ```\n  </TabsContent>\n  \n  <TabsContent value=\"benefits\">\n    <div className=\"grid grid-cols-2 gap-4\">\n      <Card>\n        <CardHeader>\n          <CardTitle>Performance</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>5-10min</Badge> First-time image build</div>\n            <div><Badge>30sec</Badge> Resume time for daily work</div>\n            <div><Badge>5sec</Badge> Suspend when done</div>\n          </div>\n        </CardContent>\n      </Card>\n      \n      <Card>\n        <CardHeader>\n          <CardTitle>Reliability</CardTitle>\n        </CardHeader>\n        <CardContent>\n          <div className=\"space-y-2\">\n            <div><Badge>Zero</Badge> Authentication failures</div>\n            <div><Badge>100%</Badge> Automation reliability</div>\n            <div><Badge>Isolated</Badge> Development environment</div>\n          </div>\n        </CardContent>\n      </Card>\n    </div>\n  </TabsContent>\n</Tabs>\n\n## Implementation Details\n\nThe workflow splits into two distinct phases:\n\n### Phase 1: Image Creation (Packer)\n```bash\n# Build the authenticated base image\npacker build claude-dev.pkr.hcl\n\n# This creates a VirtualBox image with:\n# - Ubuntu 20.04 base system\n# - Claude Code installed and authenticated\n# - Development tools pre-configured\n# - Authentication token stored securely\n```\n\n### Phase 2: Project Management (Vagrant)\n```bash\n# Daily usage is simple\nvagrant up      # Boots from authenticated image\nvagrant ssh     # Jump into development environment\n# ... do development work ...\nvagrant suspend # Saves state, releases resources\n```\n\n## Network Setup with Tailscale\n\nSince I'm running this on my homelab, I use Tailscale for secure remote access and Cloudflare for public applications. The VM gets a static IP on the Tailscale network, making it accessible from anywhere.\n\n```bash\n# On the VM\nsudo tailscale up --ssh\n# Now accessible from any device on my Tailscale network\n```\n\n## Learning Through Automation\n\nThis is my first real homelab setup, and I'm learning the ins and outs of computing as I go. Having Claude Code as an operator makes the learning curve manageable. I can give different Claude instances in different directories their own responsibilities and roles:\n\n- `/workspace/foreman/` - VM orchestration and monitoring\n- `/workspace/projects/` - Active development work  \n- `/workspace/templates/` - Project templates and scaffolding\n\nEach directory gets its own `CLAUDE.md` file with specific instructions and context.\n\n## The Results\n\nThis pattern eliminated OAuth complexity entirely. Instead of fighting authentication flows, I authenticate once during image creation and never deal with it again. The VM suspend/resume cycle takes seconds instead of minutes for full reprovisioning.\n\nFor a homelab setup, this approach scales well. I can create multiple authenticated images for different purposes - one for web development, another for systems work, etc. Each image is self-contained and ready to work.\n\n## Implementation Notes\n\nKey decisions that made this work:\n\n1. **Packer for image creation** - Handles the complex OAuth flow once\n2. **Vagrant for project management** - Simple, predictable VM lifecycle  \n3. **Suspend instead of destroy** - Preserves authentication state\n4. **Static networking** - Consistent access patterns\n5. **File-based communication** - Simple coordination between host and VM\n\nThe Minisforum UN100 handles this workload without breaking a sweat. Power consumption stays low, and the dual ethernet ports let me experiment with network configurations.\n\nThis pattern works because it separates concerns properly: Packer handles the hard infrastructure problems, Vagrant handles the simple project management, and the persistent authentication state eliminates the OAuth headache entirely.",
+      "structuredPatch": [
+        {
+          "oldStart": 1,
+          "oldLines": 6,
+          "newStart": 1,
+          "newLines": 6,
+          "lines": [
+            " ---",
+            " title: \"The Persistent VM Pattern: Solving OAuth Hell in Automated Development\"",
+            "-date: \"2025-08-18\"",
+            "+date: \"2025-08-19\"",
+            " category: \"infrastructure\"",
+            " tags: [\"vm\", \"packer\", \"vagrant\", \"claude-code\", \"oauth\", \"automation\"]",
+            " excerpt: \"How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant\""
+          ]
+        }
+      ],
+      "userModified": false,
+      "replaceAll": false
+    }
+  }
+]
