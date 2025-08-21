@@ -1,0 +1,144 @@
+---
+title: "Automating Next.js + shadcn Setup Because Manual Steps Suck"
+date: "2025-08-21"
+category: "automation"
+tags: ["nextjs", "shadcn", "automation", "claude-code"]
+excerpt: "Built a script to skip the repetitive bullshit of setting up Next.js projects with all shadcn components"
+---
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Badge } from '@/components/ui/badge'
+
+# Automating Next.js + shadcn Setup Because Manual Steps Suck
+
+After [discovering I could install all shadcn components at once](https://willyv3.com/blog/43dcbe55-3245-4af6-8078-a00d02089e97), I kept setting up new Next.js projects manually. Create app, init shadcn, install components, pick themes. Same process every time I wanted to prototype something.
+
+
+## The Problem: Repetitive Setup Hell
+
+Every new project one has to:
+- Run `create-next-app` 
+- Initialize shadcn with `npx shadcn@latest init`
+- Install all 47 components manually or with `--all`
+- Ever try keeping theming consistent with AI-Forward dev? Fucked
+- Forgett half the steps
+
+<Alert>
+  <AlertDescription>
+    I know that developers are probably laughing here, but with all the other shit you have to learn to build websites this is mad annoying. 
+  </AlertDescription>
+</Alert>
+
+## The Solution: Script It
+
+Built an automation script that handles the entire flow. Takes project name, location, and optional theme. Does everything in one command.
+
+### Implementation
+
+The script handles:
+- Next.js 15 + TypeScript + Tailwind v4 creation
+- shadcn initialization with theme support
+- All 47 shadcn components installation
+- Additional package installation
+- Directory validation and path resolution
+
+<Tabs defaultValue="usage">
+  <TabsList>
+    <TabsTrigger value="usage">Usage</TabsTrigger>
+    <TabsTrigger value="script">Script Logic</TabsTrigger>
+    <TabsTrigger value="claude">Claude Integration</TabsTrigger>
+  </TabsList>
+  
+  <TabsContent value="usage">
+    ```bash
+    # Basic usage - creates project with default theme
+    ./create-nextjs-shadcn.sh my-app
+    
+    # Specify location
+    ./create-nextjs-shadcn.sh my-app /code
+    
+    # With specific theme
+    ./create-nextjs-shadcn.sh juicy-blog /code mocha-mousse
+    ```
+    
+    Creates a complete project with coffee brown theme in `/code/juicy-blog`.
+  </TabsContent>
+  
+  <TabsContent value="script">
+    ```bash
+    #!/bin/bash
+    
+    # Directory validation and path resolution
+    if [ ! -d "$BASE_DIR" ]; then
+      echo "Error: Directory $BASE_DIR does not exist"
+      exit 1
+    fi
+    
+    # Create Next.js project
+    cd "$BASE_DIR"
+    npx create-next-app@latest "$PROJECT_NAME" --typescript --tailwind --eslint --app --no-src-dir --import-alias "@/*"
+    
+    # Initialize shadcn with auto-confirm
+    cd "$PROJECT_NAME"
+    yes | npx shadcn@latest init
+    
+    # Install all components
+    npx shadcn@latest add --all
+    
+    # Apply theme if specified
+    if [ -n "$THEME" ]; then
+      npx shadcn@latest add "$THEME_URL"
+      npx shadcn@latest add "$THEME_URL"  # Twice for proper init
+    fi
+    ```
+  </TabsContent>
+  
+  <TabsContent value="claude">
+    **Claude Code Command Integration**
+    
+    Interactive setup asks for:
+    - Project name
+    - Base directory 
+    - Theme selection from 24 options
+    
+    Command file uses portable path resolution:
+    ```bash
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    "$SCRIPT_DIR/create-nextjs-shadcn.sh" "$@"
+    ```
+    
+    No hardcoded paths, works anywhere.
+  </TabsContent>
+</Tabs>
+
+### Claude Code Integration
+
+Making Claude Code use this as a sort of 'tool' was my original idea on this. Interactive setup asks for project details and shows all 24 available themes. The idea of using Claude Code as an operator to automate annoying dev tasks works well for this kind of repetitive bullshit.
+
+Instead of remembering which theme names exist or constantly checking documentation, the command shows options and handles the setup. Command file uses portable path resolution to find the script in the same directory. No hardcoded paths. 
+
+![Claude Code command interface showing 24 organized theme options](/ccscriptdemo.png)
+
+## Results
+
+New projects go from 10+ manual steps to one command. Works standalone or through Claude Code. All components pre-installed, theme applied, ready for `npm run dev`.
+
+Setup time: **30 seconds** instead of however long it took me .
+
+Shits just more reliable for autonomous agents to build on then expecting them to build an entire web app from the ground up. I like to try and make things easy for my AI. 
+
+## Implementation Notes
+
+There's not much to talk about here - - - pretty simple tbh.
+
+Add the .md file to the .claude/commands directory, make sure the script is close by. 
+
+Works on any machine without path configuration
+
+The script handles edge cases like existing directories and network failures during theme downloads.
+
+[**https://github.com/williavs/create-nextjs-app-claude-command**](https://github.com/williavs/create-nextjs-app-claude-command)
+
+This automation eliminated the tedious parts of project setup. Now starting a new Next.js project with full shadcn integration takes one command instead of a dozen manual steps. The real value is using Claude Code as an operator to handle the repetitive dev tasks that you'll forget how to do properly six months from now.
