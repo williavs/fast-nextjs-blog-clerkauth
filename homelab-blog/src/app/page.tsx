@@ -14,7 +14,7 @@ export default function Home() {
         <div className="mb-12">
           <Card>
             <CardHeader>
-              <CardTitle className="text-2xl">What This Is</CardTitle>
+              <CardTitle className="text-2xl font-virtue">What This Is</CardTitle>
               <CardDescription>
                 My first homelab setup, documented as I learn
               </CardDescription>
@@ -27,7 +27,7 @@ export default function Home() {
                 Each post covers real problems I&apos;ve hit and the actual solutions that worked. No theory, no best practices from people who&apos;ve never touched production - just what happens when you learn DevOps by doing it.
               </p>
               <p className="text-sm text-muted-foreground">
-                Cheers, <a href="https://willyv3.com/app-playground" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground underline">WillyV3</a>
+                Cheers, <a href="https://willyv3.com/app-playground" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground underline font-virtue">WillyV3</a>
               </p>
             </CardContent>
           </Card>
@@ -35,7 +35,7 @@ export default function Home() {
 
         {recentPosts.length > 0 && (
           <div>
-            <h2 className="text-3xl font-bold tracking-tight mb-6">Recent Posts</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-6 font-virtue">Recent Posts</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {recentPosts.map((post) => (
                 <BlogCard key={post.slug} post={post} />

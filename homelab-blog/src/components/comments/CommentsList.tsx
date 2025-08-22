@@ -7,7 +7,7 @@ import { CommentForm } from './CommentForm'
 import { Comment } from '@/lib/db'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Heart, MessageCircle } from 'lucide-react'
+import { Heart, MessageCircle, X } from 'lucide-react'
 
 
 interface CommentsListProps {
@@ -17,30 +17,44 @@ interface CommentsListProps {
   onLikeUpdate: (commentId: number, liked: boolean) => void
 }
 
+interface CommentItemProps {
+  comment: Comment
+  depth?: number
+  postSlug: string
+  onCommentAdded: (comment: Comment) => void
+  replyingTo: number | null
+  setReplyingTo: (id: number | null) => void
+  onLikeUpdate: (commentId: number, liked: boolean) => void
+}
+
 export function CommentsList({ comments, postSlug, onCommentAdded, onLikeUpdate }: CommentsListProps) {
   const [replyingTo, setReplyingTo] = useState<number | null>(null)
-  const { isSignedIn } = useUser()
 
-  const handleLike = async (commentId: number) => {
-    if (!isSignedIn) return
-    
-    try {
-      const response = await fetch(`/api/comments/${commentId}/like`, {
-        method: 'POST',
-      })
+  const CommentItem = ({ comment, depth = 0, postSlug, onCommentAdded, replyingTo, setReplyingTo, onLikeUpdate }: CommentItemProps) => {
+    const maxDepth = 3
+    const isReply = depth > 0
+    const shouldFlatten = depth >= maxDepth
+    const { isSignedIn } = useUser()
+
+    const handleLike = async (commentId: number) => {
+      if (!isSignedIn) return
       
-      if (response.ok) {
-        const result = await response.json()
-        // Optimistically update the specific comment
-        onLikeUpdate(commentId, result.liked)
+      try {
+        const response = await fetch(`/api/comments/${commentId}/like`, {
+          method: 'POST',
+        })
+        
+        if (response.ok) {
+          const result = await response.json()
+          onLikeUpdate(commentId, result.liked)
+        }
+      } catch (error) {
+        console.error('Error toggling like:', error)
       }
-    } catch (error) {
-      console.error('Error toggling like:', error)
     }
-  }
-
-  const CommentItem = ({ comment, isReply = false }: { comment: Comment; isReply?: boolean }) => (
-    <div className={`space-y-3 ${isReply ? 'ml-4 sm:ml-8 pl-4 border-l-2 border-muted' : ''}`}>
+    
+    return (
+    <div className={`space-y-3 ${isReply && !shouldFlatten ? 'ml-4 sm:ml-8 pl-4 border-l-2 border-muted' : ''}`}>
       <div className="flex items-start space-x-3">
         <Avatar className="h-8 w-8">
           <AvatarFallback className="text-xs">
@@ -74,15 +88,24 @@ export function CommentsList({ comments, postSlug, onCommentAdded, onLikeUpdate 
               <span className="text-xs">{Number(comment.like_count) || 0}</span>
             </Button>
             
-            {!isReply && isSignedIn && (
+            {isSignedIn && (
               <Button
                 variant="ghost"
                 size="sm"
                 className="h-8 px-2 hover:bg-accent"
                 onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
               >
-                <MessageCircle className="h-4 w-4 mr-1" />
-                <span className="text-xs">Reply</span>
+                {replyingTo === comment.id ? (
+                  <>
+                    <X className="h-4 w-4 mr-1" />
+                    <span className="text-xs">Cancel</span>
+                  </>
+                ) : (
+                  <>
+                    <MessageCircle className="h-4 w-4 mr-1" />
+                    <span className="text-xs">Reply</span>
+                  </>
+                )}
               </Button>
             )}
           </div>
@@ -107,12 +130,22 @@ export function CommentsList({ comments, postSlug, onCommentAdded, onLikeUpdate 
       {comment.replies && comment.replies.length > 0 && (
         <div className="mt-4 space-y-4">
           {comment.replies.map((reply) => (
-            <CommentItem key={reply.id} comment={reply} isReply={true} />
+            <CommentItem 
+              key={reply.id} 
+              comment={reply} 
+              depth={shouldFlatten ? maxDepth : depth + 1}
+              postSlug={postSlug}
+              onCommentAdded={onCommentAdded}
+              replyingTo={replyingTo}
+              setReplyingTo={setReplyingTo}
+              onLikeUpdate={onLikeUpdate}
+            />
           ))}
         </div>
       )}
     </div>
-  )
+    )
+  }
 
   if (comments.length === 0) {
     return (
@@ -126,7 +159,16 @@ export function CommentsList({ comments, postSlug, onCommentAdded, onLikeUpdate 
   return (
     <div className="space-y-6">
       {comments.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} />
+        <CommentItem 
+          key={comment.id} 
+          comment={comment} 
+          depth={0}
+          postSlug={postSlug}
+          onCommentAdded={onCommentAdded}
+          replyingTo={replyingTo}
+          setReplyingTo={setReplyingTo}
+          onLikeUpdate={onLikeUpdate}
+        />
       ))}
     </div>
   )

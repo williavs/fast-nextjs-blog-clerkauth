@@ -38,16 +38,24 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
 
   const handleCommentAdded = (newComment: Comment) => {
     if (newComment.parent_id) {
-      // It's a reply - add to the parent's replies
-      setComments(prev => prev.map(comment => {
-        if (comment.id === newComment.parent_id) {
-          return {
-            ...comment,
-            replies: [...(comment.replies || []), newComment]
+      // It's a reply - find the parent anywhere in the tree and add to its replies
+      const addReplyToTree = (comments: Comment[]): Comment[] => {
+        return comments.map(comment => {
+          if (comment.id === newComment.parent_id) {
+            return {
+              ...comment,
+              replies: [...(comment.replies || []), newComment]
+            }
+          } else if (comment.replies && comment.replies.length > 0) {
+            return {
+              ...comment,
+              replies: addReplyToTree(comment.replies)
+            }
           }
-        }
-        return comment
-      }))
+          return comment
+        })
+      }
+      setComments(prev => addReplyToTree(prev))
     } else {
       // It's a top-level comment
       setComments(prev => [...prev, { ...newComment, replies: [] }])
@@ -55,33 +63,26 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   }
 
   const handleLikeUpdate = (commentId: number, liked: boolean) => {
-    setComments(prev => prev.map(comment => {
-      if (comment.id === commentId) {
-        return {
-          ...comment,
-          user_has_liked: liked,
-          like_count: liked ? 
-            (Number(comment.like_count) || 0) + 1 : 
-            Math.max((Number(comment.like_count) || 0) - 1, 0)
+    const updateLikeInTree = (comments: Comment[]): Comment[] => {
+      return comments.map(comment => {
+        if (comment.id === commentId) {
+          return {
+            ...comment,
+            user_has_liked: liked,
+            like_count: liked ? 
+              (Number(comment.like_count) || 0) + 1 : 
+              Math.max((Number(comment.like_count) || 0) - 1, 0)
+          }
+        } else if (comment.replies && comment.replies.length > 0) {
+          return {
+            ...comment,
+            replies: updateLikeInTree(comment.replies)
+          }
         }
-      }
-      // Check replies too
-      if (comment.replies) {
-        return {
-          ...comment,
-          replies: comment.replies.map(reply => 
-            reply.id === commentId ? {
-              ...reply,
-              user_has_liked: liked,
-              like_count: liked ? 
-                (Number(reply.like_count) || 0) + 1 : 
-                Math.max((Number(reply.like_count) || 0) - 1, 0)
-            } : reply
-          )
-        }
-      }
-      return comment
-    }))
+        return comment
+      })
+    }
+    setComments(prev => updateLikeInTree(prev))
   }
 
 

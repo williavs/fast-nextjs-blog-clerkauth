@@ -20,7 +20,7 @@ export function BlogCard({ post }: BlogCardProps) {
               {new Date(post.date).toLocaleDateString()}
             </span>
           </div>
-          <CardTitle className="text-xl font-bold mb-2 line-clamp-2">
+          <CardTitle className="text-xl font-bold mb-2 line-clamp-2 font-virtue">
             {post.title}
           </CardTitle>
           <CardDescription className="text-base line-clamp-3">

@@ -35,13 +35,22 @@ export async function GET(request: NextRequest) {
     const values = userId ? [postSlug, userId] : [postSlug]
     const result = await pool.query(query, values)
     
-    // Organize comments in a tree structure
+    // Organize comments in a recursive tree structure
     const comments = result.rows
     const commentTree = comments.filter(c => !c.parent_id)
     
-    // Add replies to each comment
+    // Recursive function to build replies tree
+    function buildRepliesTree(parentId: number): any[] {
+      const replies = comments.filter(c => c.parent_id === parentId)
+      return replies.map(reply => ({
+        ...reply,
+        replies: buildRepliesTree(reply.id)
+      }))
+    }
+    
+    // Add replies recursively to each top-level comment
     commentTree.forEach(comment => {
-      comment.replies = comments.filter(c => c.parent_id === comment.id)
+      comment.replies = buildRepliesTree(comment.id)
     })
     
     return NextResponse.json(commentTree)

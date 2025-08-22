@@ -25,7 +25,7 @@ export function BlogLayout({ children, post }: BlogLayoutProps) {
           </time>
         </div>
         
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4 font-virtue">
           {post.title}
         </h1>
         

@@ -6,8 +6,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Oxanium", sans-serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Source Code Pro", monospace;
+  --font-virtue: var(--font-virtue);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -102,9 +103,10 @@
   --sidebar-border: oklch(0.4313 0 0);
   --sidebar-ring: oklch(0.5016 0.1887 27.4816);
   --destructive-foreground: oklch(0 0 0);
-  --font-sans: "Oxanium", sans-serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Source Code Pro", monospace;
+  --font-virtue: var(--font-virtue);
   --shadow-color: hsl(0 0% 0%);
   --shadow-opacity: 0.4;
   --shadow-blur: 4px;
@@ -158,9 +160,10 @@
   --sidebar-ring: oklch(0.6083 0.2090 27.0276);
   --destructive-foreground: oklch(0 0 0);
   --radius: 0px;
-  --font-sans: "Oxanium", sans-serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: "Source Code Pro", monospace;
+  --font-virtue: var(--font-virtue);
   --shadow-color: hsl(0 0% 0%);
   --shadow-opacity: 0.6;
   --shadow-blur: 5px;
@@ -190,6 +193,19 @@
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);
   }
+  
+  .font-virtue {
+    font-family: var(--font-virtue);
+  }
+  
+  .font-virtue h1,
+  .font-virtue h2,
+  .font-virtue h3,
+  .font-virtue h4,
+  .font-virtue h5,
+  .font-virtue h6 {
+    font-family: var(--font-virtue);
+  }
 }
 
 /* Clerk CSS Variables */
@@ -204,7 +220,7 @@
   --clerk-color-danger: oklch(0.7076 0.1975 46.4558);
   --clerk-color-neutral: oklch(0.7572 0 0);
   --clerk-border-radius: 0px;
-  --clerk-font-family: "Source Code Pro", monospace;
+  --clerk-font-family: var(--font-virtue);
   --clerk-font-size: 14px;
 }
 
@@ -235,6 +251,7 @@
 .cl-breadcrumbsItemDivider {
   color: oklch(0.2393 0 0) !important;
   background-color: oklch(0.7572 0 0) !important;
+  font-family: var(--font-virtue) !important;
 }
 
 .cl-userButton-root *,
