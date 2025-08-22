@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth, currentUser } from '@clerk/nextjs/server'
-import { pool } from '@/lib/db'
+import { pool, Comment } from '@/lib/db'
 
 export async function GET(request: NextRequest) {
   try {
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
     const commentTree = comments.filter(c => !c.parent_id)
     
     // Recursive function to build replies tree
-    function buildRepliesTree(parentId: number): any[] {
+    function buildRepliesTree(parentId: number): Comment[] {
       const replies = comments.filter(c => c.parent_id === parentId)
       return replies.map(reply => ({
         ...reply,

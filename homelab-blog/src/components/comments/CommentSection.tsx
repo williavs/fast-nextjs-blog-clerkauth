@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { CommentsList } from './CommentsList'
 import { CommentForm } from './CommentForm'
@@ -18,7 +18,7 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   const [loading, setLoading] = useState(true)
   const { isSignedIn } = useUser()
 
-  const fetchComments = async () => {
+  const fetchComments = useCallback(async () => {
     try {
       const response = await fetch(`/api/comments?post_slug=${postSlug}`)
       if (response.ok) {
@@ -30,11 +30,11 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
     } finally {
       setLoading(false)
     }
-  }
+  }, [postSlug])
 
   useEffect(() => {
     fetchComments()
-  }, [postSlug])
+  }, [postSlug, fetchComments])
 
   const handleCommentAdded = (newComment: Comment) => {
     if (newComment.parent_id) {
