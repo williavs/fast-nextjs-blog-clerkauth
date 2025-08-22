@@ -40,7 +40,7 @@ export function CommentsList({ comments, postSlug, onCommentAdded, onLikeUpdate 
   }
 
   const CommentItem = ({ comment, isReply = false }: { comment: Comment; isReply?: boolean }) => (
-    <div className={`space-y-3 ${isReply ? 'ml-4 sm:ml-8 pl-4 border-l border-muted/50' : ''}`}>
+    <div className={`space-y-3 ${isReply ? 'ml-4 sm:ml-8 pl-4 border-l-2 border-muted' : ''}`}>
       <div className="flex items-start space-x-3">
         <Avatar className="h-8 w-8">
           <AvatarFallback className="text-xs">
@@ -74,7 +74,7 @@ export function CommentsList({ comments, postSlug, onCommentAdded, onLikeUpdate 
               <span className="text-xs">{Number(comment.like_count) || 0}</span>
             </Button>
             
-            {isSignedIn && (
+            {!isReply && isSignedIn && (
               <Button
                 variant="ghost"
                 size="sm"
@@ -98,7 +98,6 @@ export function CommentsList({ comments, postSlug, onCommentAdded, onLikeUpdate 
                 }}
                 placeholder={`Reply to ${comment.username}...`}
                 compact
-                onCancel={() => setReplyingTo(null)}
               />
             </div>
           )}

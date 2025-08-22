@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { CommentsList } from './CommentsList'
 import { CommentForm } from './CommentForm'
@@ -18,7 +18,7 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   const [loading, setLoading] = useState(true)
   const { isSignedIn } = useUser()
 
-  const fetchComments = useCallback(async () => {
+  const fetchComments = async () => {
     try {
       const response = await fetch(`/api/comments?post_slug=${postSlug}`)
       if (response.ok) {
@@ -30,33 +30,24 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
     } finally {
       setLoading(false)
     }
-  }, [postSlug])
+  }
 
   useEffect(() => {
     fetchComments()
-  }, [postSlug, fetchComments])
+  }, [postSlug])
 
   const handleCommentAdded = (newComment: Comment) => {
     if (newComment.parent_id) {
-      // It's a reply - find the parent anywhere in the tree and add to its replies
-      const addReplyToTree = (comments: Comment[]): Comment[] => {
-        return comments.map(comment => {
-          if (comment.id === newComment.parent_id) {
-            return {
-              ...comment,
-              replies: [...(comment.replies || []), { ...newComment, replies: [] }]
-            }
+      // It's a reply - add to the parent's replies
+      setComments(prev => prev.map(comment => {
+        if (comment.id === newComment.parent_id) {
+          return {
+            ...comment,
+            replies: [...(comment.replies || []), newComment]
           }
-          if (comment.replies && comment.replies.length > 0) {
-            return {
-              ...comment,
-              replies: addReplyToTree(comment.replies)
-            }
-          }
-          return comment
-        })
-      }
-      setComments(prev => addReplyToTree(prev))
+        }
+        return comment
+      }))
     } else {
       // It's a top-level comment
       setComments(prev => [...prev, { ...newComment, replies: [] }])

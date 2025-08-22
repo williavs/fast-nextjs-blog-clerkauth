@@ -14,7 +14,6 @@ interface CommentFormProps {
   onCommentAdded: (comment: Comment) => void
   placeholder?: string
   compact?: boolean
-  onCancel?: () => void
 }
 
 export function CommentForm({ 
@@ -22,8 +21,7 @@ export function CommentForm({
   parentId, 
   onCommentAdded, 
   placeholder = "Share your thoughts...",
-  compact = false,
-  onCancel
+  compact = false 
 }: CommentFormProps) {
   const [content, setContent] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -81,18 +79,7 @@ export function CommentForm({
             disabled={isSubmitting}
           />
           
-          <div className="flex justify-end gap-2">
-            {onCancel && (
-              <Button 
-                type="button"
-                variant="outline"
-                onClick={onCancel}
-                size={compact ? "sm" : "default"}
-                disabled={isSubmitting}
-              >
-                Cancel
-              </Button>
-            )}
+          <div className="flex justify-end">
             <Button 
               type="submit" 
               disabled={!content.trim() || isSubmitting}

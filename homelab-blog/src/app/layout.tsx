@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs'
 import { Navigation } from "@/components/Navigation";
 import "./globals.css";
 
-const virtue = localFont({
-  src: "../../public/virtue.ttf",
-  variable: "--font-virtue",
-  display: "swap",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -72,7 +76,7 @@ export default function RootLayout({
     >
       <html lang="en">
         <body
-          className={`${virtue.variable} font-sans antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Navigation />
           <main className="min-h-screen">

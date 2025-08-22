@@ -35,21 +35,13 @@ export async function GET(request: NextRequest) {
     const values = userId ? [postSlug, userId] : [postSlug]
     const result = await pool.query(query, values)
     
-    // Organize comments in a tree structure with unlimited depth
+    // Organize comments in a tree structure
     const comments = result.rows
-    const commentMap = new Map(comments.map(c => [c.id, { ...c, replies: [] }]))
-    const commentTree: typeof comments = []
+    const commentTree = comments.filter(c => !c.parent_id)
     
-    comments.forEach(comment => {
-      const commentWithReplies = commentMap.get(comment.id)
-      if (comment.parent_id) {
-        const parent = commentMap.get(comment.parent_id)
-        if (parent) {
-          parent.replies.push(commentWithReplies)
-        }
-      } else {
-        commentTree.push(commentWithReplies)
-      }
+    // Add replies to each comment
+    commentTree.forEach(comment => {
+      comment.replies = comments.filter(c => c.parent_id === comment.id)
     })
     
     return NextResponse.json(commentTree)
