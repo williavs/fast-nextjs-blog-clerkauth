@@ -34,11 +34,11 @@ export default function BlogPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight mb-4">
-          Breaking Shit & Fixing It
+        <h1 className="text-4xl font-bold tracking-tight mb-4 font-virtue">
+          All Posts
         </h1>
         <p className="text-xl text-muted-foreground mb-6">
-          Infrastructure as Code when you barely know how to code. Real failures, real solutions.
+          Homelab chaos documented.
         </p>
         
         <div className="flex flex-wrap gap-2 mb-8">
