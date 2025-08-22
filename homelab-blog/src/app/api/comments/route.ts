@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     // Organize comments in a tree structure with unlimited depth
     const comments = result.rows
     const commentMap = new Map(comments.map(c => [c.id, { ...c, replies: [] }]))
-    const commentTree = []
+    const commentTree: typeof comments = []
     
     comments.forEach(comment => {
       const commentWithReplies = commentMap.get(comment.id)
