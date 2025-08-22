@@ -1,9 +1,9 @@
 import { getAllPosts } from '@/lib/posts'
 import { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts()
-  const baseUrl = 'https://homelab-blog.vercel.app'
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getAllPosts()
+  const baseUrl = 'https://breakshit.blog'
 
   const postUrls = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,

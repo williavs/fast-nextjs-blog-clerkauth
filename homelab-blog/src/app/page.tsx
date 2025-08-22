@@ -4,8 +4,8 @@ import { BlogCard } from '@/components/blog/BlogCard'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default function Home() {
-  const recentPosts = getAllPosts().slice(0, 3)
+export default async function Home() {
+  const recentPosts = (await getAllPosts()).slice(0, 3)
 
   return (
     <div className="container mx-auto px-4 py-8">

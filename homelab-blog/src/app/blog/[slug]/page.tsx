@@ -11,7 +11,7 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts()
+  const posts = await getAllPosts()
   return posts.map((post) => ({
     slug: post.slug,
   }))
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = await getPostBySlug(slug)
   
   if (!post) {
     return {}
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = await getPostBySlug(slug)
 
   if (!post) {
     notFound()
@@ -72,10 +72,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <div className="container mx-auto px-4 py-8">
       <BlogLayout post={post}>
-        <MDXRemote 
-          source={post.content} 
-          components={mdxComponents}
-        />
+        {post.source === 'mdx' ? (
+          <MDXRemote 
+            source={post.content} 
+            components={mdxComponents}
+          />
+        ) : (
+          <div className="prose prose-lg max-w-none dark:prose-invert">
+            <MDXRemote 
+              source={post.content} 
+              components={mdxComponents}
+            />
+          </div>
+        )}
       </BlogLayout>
       
       <div className="mt-12">

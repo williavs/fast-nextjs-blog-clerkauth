@@ -1,10 +1,25 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Rss } from 'lucide-react'
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { Rss, Settings } from 'lucide-react'
+import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs'
 
 export function Navigation() {
+  const { user } = useUser()
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    if (user?.id) {
+      fetch('/api/admin/check')
+        .then(res => res.json())
+        .then(data => setIsAdmin(data.isAdmin))
+        .catch(() => setIsAdmin(false))
+    }
+  }, [user?.id])
+  
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
@@ -30,6 +45,14 @@ export function Navigation() {
                 <Rss className="h-4 w-4" />
               </Button>
             </Link>
+            
+            {isAdmin && (
+              <Link href="/admin">
+                <Button variant="outline" size="sm" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white">
+                  <Settings className="h-4 w-4" />
+                </Button>
+              </Link>
+            )}
             
             <SignedOut>
               <SignInButton>

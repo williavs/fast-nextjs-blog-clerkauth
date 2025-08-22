@@ -2,7 +2,7 @@ import { getAllPosts } from '@/lib/posts'
 import RSS from 'rss'
 
 export async function GET() {
-  const posts = getAllPosts()
+  const posts = await getAllPosts()
   
   const feed = new RSS({
     title: 'Breaking Shit & Fixing It',

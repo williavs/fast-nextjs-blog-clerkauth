@@ -26,3 +26,16 @@ export interface CommentLike {
   clerk_user_id: string
   created_at: string
 }
+
+export interface Post {
+  id: number
+  title: string
+  slug: string
+  content: string
+  excerpt: string
+  category: string
+  tags: string[]
+  published: boolean
+  created_at: string
+  updated_at: string
+}

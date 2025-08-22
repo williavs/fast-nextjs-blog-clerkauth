@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   }
 }
 
-export default function BlogPage() {
-  const posts = getAllPosts()
-  const categories = getAllCategories()
+export default async function BlogPage() {
+  const posts = await getAllPosts()
+  const categories = await getAllCategories()
   
   return (
     <div className="container mx-auto px-4 py-8">
