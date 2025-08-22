@@ -1,12 +1,25 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Remove aggressive focus borders */
+textarea:focus,
+input:focus {
+  outline: none !important;
+  border-color: hsl(var(--border)) !important;
+  box-shadow: none !important;
+}
+
+/* Ensure virtue font is applied everywhere */
+* {
+  font-family: var(--font-virtue), sans-serif;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Oxanium", sans-serif;
+  --font-sans: var(--font-virtue), sans-serif;
   --font-mono: "Source Code Pro", monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);

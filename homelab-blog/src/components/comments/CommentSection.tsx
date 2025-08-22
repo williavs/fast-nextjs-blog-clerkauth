@@ -38,16 +38,25 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
 
   const handleCommentAdded = (newComment: Comment) => {
     if (newComment.parent_id) {
-      // It's a reply - add to the parent's replies
-      setComments(prev => prev.map(comment => {
-        if (comment.id === newComment.parent_id) {
-          return {
-            ...comment,
-            replies: [...(comment.replies || []), newComment]
+      // It's a reply - find the parent anywhere in the tree and add to its replies
+      const addReplyToTree = (comments: Comment[]): Comment[] => {
+        return comments.map(comment => {
+          if (comment.id === newComment.parent_id) {
+            return {
+              ...comment,
+              replies: [...(comment.replies || []), { ...newComment, replies: [] }]
+            }
           }
-        }
-        return comment
-      }))
+          if (comment.replies && comment.replies.length > 0) {
+            return {
+              ...comment,
+              replies: addReplyToTree(comment.replies)
+            }
+          }
+          return comment
+        })
+      }
+      setComments(prev => addReplyToTree(prev))
     } else {
       // It's a top-level comment
       setComments(prev => [...prev, { ...newComment, replies: [] }])
