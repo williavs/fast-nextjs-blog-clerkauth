@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { Rss } from 'lucide-react'
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 export function Navigation() {
@@ -21,6 +22,12 @@ export function Navigation() {
             <Link href="/blog">
               <Button variant="outline" size="sm" className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white">
                 Blog
+              </Button>
+            </Link>
+            
+            <Link href="/feed.xml">
+              <Button variant="outline" size="sm" className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white">
+                <Rss className="h-4 w-4" />
               </Button>
             </Link>
             
