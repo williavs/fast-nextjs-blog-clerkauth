@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { ClerkProvider } from '@clerk/nextjs'
 import { Navigation } from "@/components/Navigation";
 import "./globals.css";
-
-const virtue = localFont({
-  src: "../../public/virtue.ttf",
-  variable: "--font-virtue",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://breakshit.blog'),
@@ -72,7 +65,7 @@ export default function RootLayout({
     >
       <html lang="en">
         <body
-          className={`${virtue.variable} antialiased`}
+          className="antialiased"
         >
           <Navigation />
           <main className="min-h-screen">
