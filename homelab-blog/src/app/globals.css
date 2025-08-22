@@ -1,4 +1,5 @@
 @tailwind base;
+
 @tailwind components;
 @tailwind utilities;
 
@@ -14,7 +15,6 @@ input:focus {
 * {
   font-family: var(--font-virtue), sans-serif;
 }
-
 
 :root {
   --radius: 0px;
@@ -202,3 +202,4 @@ input:focus {
 .cl-formField * {
   color: oklch(0.2393 0 0) !important;
 }
+
