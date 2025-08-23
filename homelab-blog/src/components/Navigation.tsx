@@ -63,7 +63,7 @@ export function Navigation() {
               {isHydrated && <Badge variant="secondary" className="text-xs">@Home</Badge>}
               {isHydrated && <span className="font-bold text-sm md:text-base hidden lg:block">Breaking Shit & Fixing It</span>}
             </div>
-            {isHydrated && <span className="text-muted-foreground text-xs hidden xl:block">Infrastructure as Code when you barely know how to code</span>}
+            {isHydrated && <span className="text-muted-foreground text-xs hidden lg:block xl:block">Infrastructure as Code when you barely know how to code</span>}
           </Link>
           
           <div className="flex items-center space-x-2 md:space-x-4 font-virtue flex-shrink-0">
