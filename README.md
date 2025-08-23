@@ -147,7 +147,7 @@ Multiple admins supported by comma-separating user IDs.
 
 Works on Vercel, Railway, Render, or any Node.js platform. Add environment variables to your deployment platform.
 
-Vercel handles the build process for `llms.txt` and RSS feed generation automatically.
+When you deploy the llms.txt and the feed.xml pages get auto-updated so you have an rss feed for your blog and AI agents know wtf you do. Welcome to today ~~~~
 
 ## Tech Stack
 
