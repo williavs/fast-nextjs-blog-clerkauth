@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     openGraph: {
       type: "article",
       locale: "en_US",
-      url: `https://homelab-blog.vercel.app/blog/${slug}`,
+      url: `https://breakshit.blog/blog/${slug}`,
       title: post.title,
       description: post.excerpt,
       siteName: "Breaking Shit & Fixing It",

@@ -21,7 +21,7 @@ export async function GET() {
     feed.item({
       title: post.title,
       description: post.excerpt,
-      url: `https://homelab-blog.vercel.app/blog/${post.slug}`,
+      url: `https://breakshit.blog/blog/${post.slug}`,
       date: new Date(post.date),
       categories: post.tags || [],
       author: 'WillyV3',

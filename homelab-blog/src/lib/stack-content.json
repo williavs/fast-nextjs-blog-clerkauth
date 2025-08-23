@@ -12,17 +12,4 @@
    "https://github.com/punkpeye/awesome-mcp-servers",
    "https://github.com/charmbracelet/crush"
 
-  ],
-  "homelabStack": [
-    "https://github.com/tailscale/tailscale",
-    "https://github.com/postgres/postgres",
-    "https://github.com/canonical/cloud-init",
-    "https://github.com/tmux/tmux"
-  ],
-  "otherShit": [
-    "https://github.com/arc-browser/arc",
-    "https://github.com/gnachman/iTerm2", 
-    "https://github.com/vercel/vercel",
-    "https://github.com/neondatabase/neon"
-  ]
-}
+  ] }

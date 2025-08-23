@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog Posts | Breaking Shit & Fixing It",
     description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions from a homelab journey.",
-    url: "https://homelab-blog.vercel.app/blog",
+    url: "https://breakshit.blog/blog",
     images: [
       {
         url: "/og-image-blog.png",

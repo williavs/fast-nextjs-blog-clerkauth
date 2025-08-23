@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ClerkProvider } from '@clerk/nextjs'
 import { Navigation } from "@/components/Navigation";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const virtue = localFont({
@@ -78,6 +79,7 @@ export default function RootLayout({
           <main className="min-h-screen">
             {children}
           </main>
+          <SpeedInsights />
         </body>
       </html>
     </ClerkProvider>
