@@ -154,7 +154,7 @@ export function Navigation() {
               </TabsList>
             </Tabs>
             
-            <a href="/feed.xml" className="flex items-center justify-center h-9 w-9 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground">
+            <a href="/feed.xml" className="hidden sm:flex items-center justify-center h-9 w-9 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground">
               <Rss className="h-4 w-4" />
             </a>
             
