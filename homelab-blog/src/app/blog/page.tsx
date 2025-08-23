@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { getAllPosts, getAllCategories } from '@/lib/posts'
 import { BlogCard } from '@/components/blog/BlogCard'
 import { Badge } from '@/components/ui/badge'
@@ -27,28 +28,20 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function BlogPage() {
+// Async component for blog posts and categories
+async function BlogContent() {
   const posts = await getAllPosts()
   const categories = await getAllCategories()
   
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight mb-4 font-virtue">
-          All Posts
-        </h1>
-        <p className="text-xl text-muted-foreground mb-6">
-          Homelab chaos documented.
-        </p>
-        
-        <div className="flex flex-wrap gap-2 mb-8">
-          <span className="text-sm text-muted-foreground mr-2">Categories:</span>
-          {categories.map((category) => (
-            <Badge key={category} variant="outline" className="font-mono">
-              {category}
-            </Badge>
-          ))}
-        </div>
+    <>
+      <div className="flex flex-wrap gap-2 mb-8">
+        <span className="text-sm text-muted-foreground mr-2">Categories:</span>
+        {categories.map((category) => (
+          <Badge key={category} variant="outline" className="font-mono">
+            {category}
+          </Badge>
+        ))}
       </div>
 
       {posts.length === 0 ? (
@@ -67,6 +60,52 @@ export default async function BlogPage() {
           ))}
         </div>
       )}
+    </>
+  )
+}
+
+// Loading component
+function BlogLoading() {
+  return (
+    <>
+      <div className="flex flex-wrap gap-2 mb-8">
+        <span className="text-sm text-muted-foreground mr-2">Categories:</span>
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-6 w-20 bg-muted animate-pulse rounded-full" />
+        ))}
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <Card key={i}>
+            <CardHeader>
+              <div className="h-6 w-3/4 bg-muted animate-pulse rounded mb-2" />
+              <div className="h-4 w-1/2 bg-muted animate-pulse rounded mb-2" />
+              <div className="h-4 w-full bg-muted animate-pulse rounded" />
+              <div className="h-4 w-2/3 bg-muted animate-pulse rounded" />
+            </CardHeader>
+          </Card>
+        ))}
+      </div>
+    </>
+  )
+}
+
+export default function BlogPage() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold tracking-tight mb-4 font-virtue">
+          All Posts
+        </h1>
+        <p className="text-xl text-muted-foreground mb-6">
+          Homelab chaos documented.
+        </p>
+      </div>
+
+      <Suspense fallback={<BlogLoading />}>
+        <BlogContent />
+      </Suspense>
     </div>
   )
 }

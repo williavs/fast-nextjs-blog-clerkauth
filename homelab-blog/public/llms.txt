@@ -13,7 +13,7 @@ Key technologies: Next.js 15 App Router, TypeScript, Tailwind CSS v4, shadcn/ui 
 - [VM Go Brrrr: A Homelab Disaster Story](https://breakshit.blog/blog/persistent-vm-pattern): How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant
 
 ## Recent Content
-Last updated: 2025-08-22
+Last updated: 2025-08-23
 Total posts: 3 (3 MDX + 0 Database)
 Recent: Automating Next.js + shadcn Setup Because Manual Steps Suck, Claude Instances Keep Using 2024 Dates in 2025: Fixed with Linux Systemd Automation, VM Go Brrrr: A Homelab Disaster Story
 

@@ -1,12 +1,58 @@
+import { Suspense } from 'react'
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/posts'
 import { BlogCard } from '@/components/blog/BlogCard'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default async function Home() {
+// Async component for recent posts
+async function RecentPosts() {
   const recentPosts = (await getAllPosts()).slice(0, 3)
 
+  if (recentPosts.length === 0) return null
+
+  return (
+    <div>
+      <h2 className="text-3xl font-bold tracking-tight mb-6 font-virtue">Recent Posts</h2>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {recentPosts.map((post) => (
+          <BlogCard key={post.slug} post={post} />
+        ))}
+      </div>
+      <div className="text-center mt-8">
+        <Link href="/blog">
+          <Button variant="outline">View All Posts</Button>
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+// Loading component for recent posts
+function RecentPostsLoading() {
+  return (
+    <div>
+      <div className="h-8 w-48 bg-muted animate-pulse rounded mb-6" />
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {[1, 2, 3].map((i) => (
+          <Card key={i}>
+            <CardHeader>
+              <div className="h-6 w-3/4 bg-muted animate-pulse rounded mb-2" />
+              <div className="h-4 w-1/2 bg-muted animate-pulse rounded mb-2" />
+              <div className="h-4 w-full bg-muted animate-pulse rounded" />
+              <div className="h-4 w-2/3 bg-muted animate-pulse rounded" />
+            </CardHeader>
+          </Card>
+        ))}
+      </div>
+      <div className="text-center mt-8">
+        <div className="h-10 w-32 bg-muted animate-pulse rounded mx-auto" />
+      </div>
+    </div>
+  )
+}
+
+export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
@@ -33,21 +79,9 @@ export default async function Home() {
           </Card>
         </div>
 
-        {recentPosts.length > 0 && (
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight mb-6 font-virtue">Recent Posts</h2>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {recentPosts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <Link href="/blog">
-                <Button variant="outline">View All Posts</Button>
-              </Link>
-            </div>
-          </div>
-        )}
+        <Suspense fallback={<RecentPostsLoading />}>
+          <RecentPosts />
+        </Suspense>
       </div>
     </div>
   )

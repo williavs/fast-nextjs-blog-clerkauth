@@ -1,0 +1,28 @@
+{
+  "favoriteRepos": [
+    "https://github.com/Jedward23/Tmux-Orchestrator", 
+    "https://github.com/williavs/create-nextjs-app-claude-command",
+    "https://github.com/ruvnet/claude-flow",
+    "https://github.com/opactorai/Claudable",
+    "https://github.com/Wirasm/PRPs-agentic-eng",
+    "https://github.com/sirmalloc/ccstatusline",
+   "https://github.com/BA-CalderonMorales/terminal-jarvis", 
+   "https://github.com/FrancyJGLisboa/claude-flow-tutorial-suite", 
+   "https://github.com/microsoft/MS-DOS", 
+   "https://github.com/punkpeye/awesome-mcp-servers",
+   "https://github.com/charmbracelet/crush"
+
+  ],
+  "homelabStack": [
+    "https://github.com/tailscale/tailscale",
+    "https://github.com/postgres/postgres",
+    "https://github.com/canonical/cloud-init",
+    "https://github.com/tmux/tmux"
+  ],
+  "otherShit": [
+    "https://github.com/arc-browser/arc",
+    "https://github.com/gnachman/iTerm2", 
+    "https://github.com/vercel/vercel",
+    "https://github.com/neondatabase/neon"
+  ]
+}

@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { BlogLayout } from '@/components/blog/BlogLayout'
@@ -61,8 +62,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 }
 
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params
+// Async component for blog post content
+async function PostContent({ slug }: { slug: string }) {
   const post = await getPostBySlug(slug)
 
   if (!post) {
@@ -70,25 +71,82 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <BlogLayout post={post}>
-        {post.source === 'mdx' ? (
+    <BlogLayout post={post}>
+      {post.source === 'mdx' ? (
+        <MDXRemote 
+          source={post.content} 
+          components={mdxComponents}
+        />
+      ) : (
+        <div className="prose prose-lg max-w-none dark:prose-invert">
           <MDXRemote 
             source={post.content} 
             components={mdxComponents}
           />
-        ) : (
-          <div className="prose prose-lg max-w-none dark:prose-invert">
-            <MDXRemote 
-              source={post.content} 
-              components={mdxComponents}
-            />
+        </div>
+      )}
+    </BlogLayout>
+  )
+}
+
+// Loading component for blog post
+function PostLoading() {
+  return (
+    <div className="max-w-4xl mx-auto">
+      <div className="mb-8 pb-8 border-b">
+        <div className="h-10 w-3/4 bg-muted animate-pulse rounded mb-4" />
+        <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+          <div className="h-4 w-24 bg-muted animate-pulse rounded" />
+          <div className="h-4 w-32 bg-muted animate-pulse rounded" />
+        </div>
+        <div className="h-4 w-full bg-muted animate-pulse rounded mb-2" />
+        <div className="h-4 w-2/3 bg-muted animate-pulse rounded" />
+      </div>
+      <div className="prose prose-lg max-w-none">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="mb-6">
+            <div className="h-4 w-full bg-muted animate-pulse rounded mb-2" />
+            <div className="h-4 w-full bg-muted animate-pulse rounded mb-2" />
+            <div className="h-4 w-3/4 bg-muted animate-pulse rounded" />
           </div>
-        )}
-      </BlogLayout>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// Loading component for comments
+function CommentsLoading() {
+  return (
+    <div className="space-y-4">
+      <div className="h-6 w-32 bg-muted animate-pulse rounded" />
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="border rounded-lg p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 bg-muted animate-pulse rounded-full" />
+            <div className="h-4 w-24 bg-muted animate-pulse rounded" />
+          </div>
+          <div className="h-4 w-full bg-muted animate-pulse rounded mb-2" />
+          <div className="h-4 w-2/3 bg-muted animate-pulse rounded" />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Suspense fallback={<PostLoading />}>
+        <PostContent slug={slug} />
+      </Suspense>
       
       <div className="mt-12">
-        <CommentSection postSlug={slug} />
+        <Suspense fallback={<CommentsLoading />}>
+          <CommentSection postSlug={slug} />
+        </Suspense>
       </div>
     </div>
   )
