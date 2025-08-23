@@ -12,8 +12,13 @@ import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from '@clerk/n
 export function Navigation() {
   const { user } = useUser()
   const [isAdmin, setIsAdmin] = useState(false)
+  const [isHydrated, setIsHydrated] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
+
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
 
   useEffect(() => {
     if (user?.id) {
@@ -51,17 +56,17 @@ export function Navigation() {
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex flex-col lg:flex-row lg:items-center lg:space-x-2 whitespace-nowrap font-virtue">
-            <div className="flex items-center space-x-2">
-              <span className="font-bold text-sm sm:text-base">WillyV3</span>
-              <Badge variant="secondary" className="text-xs">@Home</Badge>
-              <span className="font-bold text-sm sm:text-base hidden sm:block">Breaking Shit & Fixing It</span>
+        <div className="flex h-16 items-center justify-between gap-4">
+          <Link href="/" className="flex flex-col xl:flex-row xl:items-center xl:space-x-2 whitespace-nowrap font-virtue min-w-0 flex-shrink">
+            <div className="flex items-center space-x-2 min-w-0">
+              <span className="font-bold text-sm md:text-base">WillyV3</span>
+              {isHydrated && <Badge variant="secondary" className="text-xs">@Home</Badge>}
+              {isHydrated && <span className="font-bold text-sm md:text-base hidden lg:block">Breaking Shit & Fixing It</span>}
             </div>
-            <span className="text-muted-foreground text-xs hidden sm:block">Infrastructure as Code when you barely know how to code</span>
+            {isHydrated && <span className="text-muted-foreground text-xs hidden xl:block">Infrastructure as Code when you barely know how to code</span>}
           </Link>
           
-          <div className="flex items-center space-x-4 font-virtue">
+          <div className="flex items-center space-x-2 md:space-x-4 font-virtue flex-shrink-0">
             <Tabs value={getActiveTab()} onValueChange={handleTabChange} className="w-auto">
               <TabsList className="relative bg-transparent border-0 p-0">
                 <motion.div
@@ -155,8 +160,9 @@ export function Navigation() {
             
             <SignedOut>
               <SignInButton>
-                <div className="flex items-center justify-center h-9 px-4 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground text-sm font-medium cursor-pointer">
-                  Sign In
+                <div className="flex items-center justify-center h-9 px-2 md:px-4 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground text-sm font-medium cursor-pointer">
+                  <span className="hidden sm:inline">Sign In</span>
+                  <span className="sm:hidden">Sign</span>
                 </div>
               </SignInButton>
             </SignedOut>

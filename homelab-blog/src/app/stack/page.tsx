@@ -69,7 +69,7 @@ export default function StackPage() {
           Stack
         </h1>
         <p className="text-xl text-muted-foreground">
-          Tools, repos, and infrastructure that actually work
+          Tools, repos, and infrastructure that I like right now
         </p>
       </div>
 
@@ -77,13 +77,15 @@ export default function StackPage() {
         {/* Tab Navigation */}
         <TabsList className="grid w-full grid-cols-3 mb-8">
           <TabsTrigger value="repos" className="font-virtue">
-            Favorite Repos
+            <span className="hidden sm:inline">Favorite Repos</span>
+            <span className="sm:hidden">Repos</span>
           </TabsTrigger>
           <TabsTrigger value="homelab" className="font-virtue">
             Homelab Stack
           </TabsTrigger>
           <TabsTrigger value="other" className="font-virtue">
-            Other Shit I Use
+            <span className="hidden sm:inline">Other Shit I Use</span>
+            <span className="sm:hidden">Other Shit</span>
           </TabsTrigger>
         </TabsList>
 
