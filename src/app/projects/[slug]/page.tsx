@@ -44,7 +44,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const screenshotUrl = project.manual_screenshot_url;
 
   // Check if screenshot URL is valid and absolute
-  const isValidUrl = (url: string | null): boolean => {
+  const isValidUrl = (url: string | null | undefined): boolean => {
     if (!url) return false;
     try {
       new URL(url);
