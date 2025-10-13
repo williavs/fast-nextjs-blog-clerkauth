@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ClerkProvider } from '@clerk/nextjs'
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/FooterStuff";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import "@/components/ui/8bit/styles/retro.css";
@@ -13,37 +14,37 @@ const virtue = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://breakshit.blog'),
+  metadataBase: new URL('https://builtbywilly.com'),
   title: {
-    default: "Breaking Shit & Fixing It: An AI-Powered Homelab",
-    template: "%s | Breaking Shit & Fixing It"
+    default: "BuiltByWilly - Portfolio & Projects",
+    template: "%s | BuiltByWilly"
   },
-  description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions.",
-  keywords: ["homelab", "infrastructure", "devops", "claude", "automation", "self-hosted"],
+  description: "Portfolio of TUI apps, web projects, AI experiments, and open source contributions by WillyV3. Building things and breaking them since forever.",
+  keywords: ["portfolio", "TUI", "web development", "AI tools", "open source", "go", "next.js", "bubbletea"],
   authors: [{ name: "WillyV3", url: "https://willyv3.com" }],
   creator: "WillyV3",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://breakshit.blog",
-    title: "Breaking Shit & Fixing It: An AI-Powered Homelab",
-    description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions.",
-    siteName: "Breaking Shit & Fixing It",
+    url: "https://builtbywilly.com",
+    title: "BuiltByWilly - Portfolio & Projects",
+    description: "Portfolio of TUI apps, web projects, AI experiments, and open source contributions by WillyV3.",
+    siteName: "BuiltByWilly",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Breaking Shit & Fixing It - Homelab Blog"
+        alt: "BuiltByWilly - Portfolio & Projects"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Breaking Shit & Fixing It: An AI-Powered Homelab",
-    description: "Infrastructure as Code when you barely know how to code. Real failures, real solutions.",
+    title: "BuiltByWilly - Portfolio & Projects",
+    description: "Portfolio of TUI apps, web projects, AI experiments, and open source contributions.",
     images: ["/og-image.png"],
-    creator: "@willyv3"
+    creator: "@V3_Willy"
   },
   robots: {
     index: true,
@@ -80,6 +81,7 @@ export default function RootLayout({
           <main className="min-h-screen">
             {children}
           </main>
+          <Footer />
           <SpeedInsights />
         </body>
       </html>
