@@ -108,7 +108,7 @@ export function ProjectForm({ project, isEdit = false }: ProjectFormProps) {
       };
 
       // Submit to API
-      const url = isEdit
+      const url = isEdit && project
         ? `/api/backstage/projects/${project.id}`
         : '/api/backstage/projects';
 
