@@ -34,7 +34,7 @@ import {
 } from '@/components/ui/form';
 import { Card, CardContent } from '@/components/ui/card';
 import { X, Upload, Loader2 } from 'lucide-react';
-import type { ProjectCategory } from '@/lib/types/project';
+import type { Project } from '@/lib/types/project';
 
 // Form schema
 const projectFormSchema = z.object({
@@ -51,7 +51,7 @@ const projectFormSchema = z.object({
 type ProjectFormData = z.infer<typeof projectFormSchema>;
 
 interface ProjectFormProps {
-  project?: any; // For edit mode
+  project?: Project;
   isEdit?: boolean;
 }
 

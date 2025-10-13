@@ -354,6 +354,7 @@ export async function getRecentlyUpdatedProjects(hours: number): Promise<Project
  * @param row - Raw database row
  * @returns Project object with correct types
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapRowToProject(row: any): Project {
   return {
     id: row.id,

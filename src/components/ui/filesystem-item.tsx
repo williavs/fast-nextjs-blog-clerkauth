@@ -18,7 +18,7 @@ export function FilesystemItem({
   node,
   animated = false,
 }: FilesystemItemProps) {
-  let [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   // Общий контент для обоих вариантов
   const ChevronIcon = () =>
