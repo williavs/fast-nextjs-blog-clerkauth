@@ -1,10 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { DIcons } from "dicons";
- 
-
-import ThemeToogle from "@/components/ui/footer";
+import { Mail, Github, Linkedin, Globe, Heart } from "lucide-react";
+import ThemeToogle from "@/components/footer";
 
 const navigation = {
   categories: [
@@ -127,7 +125,7 @@ export function Footer() {
             target="_blank"
             className={Underline}
           >
-            <DIcons.Mail strokeWidth={1.5} className="h-5 w-5" />
+            <Mail strokeWidth={1.5} className="h-5 w-5" />
           </Link>
           <Link
             aria-label="Logo"
@@ -136,7 +134,9 @@ export function Footer() {
             target="_blank"
             className={Underline}
           >
-            <DIcons.X className="h-5 w-5" />
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
           </Link>
           <Link
             aria-label="Logo"
@@ -145,7 +145,7 @@ export function Footer() {
             target="_blank"
             className={Underline}
           >
-            <DIcons.GitBranch className="h-5 w-5" />
+            <Github className="h-5 w-5" />
           </Link>
           <Link
             aria-label="Logo"
@@ -154,7 +154,7 @@ export function Footer() {
             target="_blank"
             className={Underline}
           >
-            <DIcons.LinkedIn className="h-5 w-5" />
+            <Linkedin className="h-5 w-5" />
           </Link>
           <Link
             aria-label="Logo"
@@ -163,7 +163,7 @@ export function Footer() {
             target="_blank"
             className={Underline}
           >
-            <DIcons.Globe className="h-5 w-5" />
+            <Globe className="h-5 w-5" />
           </Link>
         </div>
         <ThemeToogle />
@@ -174,7 +174,7 @@ export function Footer() {
           <span> © </span>
           <span>{new Date().getFullYear()}</span>
           <span>Made with</span>
-          <DIcons.Heart className="text-red-600 mx-1 h-4 w-4 animate-pulse" />
+          <Heart className="text-red-600 mx-1 h-4 w-4 animate-pulse" fill="currentColor" />
           <span> by </span>
           <span className="hover:text-red-600 dark:hover:text-red-600 cursor-pointer text-black dark:text-white">
             <Link

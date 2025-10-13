@@ -1,15 +1,23 @@
-import { Suspense } from 'react'
+'use client'
+
+import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllProjects } from '@/lib/db'
 import { Badge } from '@/components/ui/8bit/badge'
+import { Button } from '@/components/ui/8bit/button'
 import { ProgressiveDialogue } from '@/components/ProgressiveDialogue'
+import { ChevronDown } from 'lucide-react'
+import type { Project } from '@/lib/types/project'
 
-// Async component for all projects
-async function AllProjects() {
-  const allProjects = await getAllProjects()
+// Client component for projects display with pagination
+function ProjectsList({ projects }: { projects: Project[] }) {
+  const [showAll, setShowAll] = useState(false)
+  const INITIAL_DISPLAY = 20
 
-  if (allProjects.length === 0) {
+  const displayedProjects = showAll ? projects : projects.slice(0, INITIAL_DISPLAY)
+  const hasMore = projects.length > INITIAL_DISPLAY
+
+  if (projects.length === 0) {
     return (
       <div className="text-center text-muted-foreground py-8">
         No projects found
@@ -21,7 +29,7 @@ async function AllProjects() {
     <div>
       <h2 className="text-3xl font-bold tracking-tight mb-8 font-virtue uppercase retro">All Projects</h2>
       <div className="space-y-4">
-        {allProjects.map((project) => {
+        {displayedProjects.map((project) => {
           const hasImage = project.manual_screenshot_url && project.manual_screenshot_url.startsWith('http');
 
           return (
@@ -88,6 +96,39 @@ async function AllProjects() {
           );
         })}
       </div>
+
+      {/* See More Button */}
+      {hasMore && !showAll && (
+        <div className="mt-8 flex justify-center">
+          <Button
+            onClick={() => setShowAll(true)}
+            size="lg"
+            className="uppercase font-bold border-4 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] active:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]"
+            style={{ borderRadius: 0 }}
+          >
+            <ChevronDown className="mr-2 h-5 w-5" />
+            See More Projects ({projects.length - INITIAL_DISPLAY} more)
+          </Button>
+        </div>
+      )}
+
+      {/* Scroll to Top Button - shown when viewing all */}
+      {showAll && (
+        <div className="mt-8 flex justify-center">
+          <Button
+            onClick={() => {
+              setShowAll(false)
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+            variant="outline"
+            size="lg"
+            className="uppercase font-bold border-4"
+            style={{ borderRadius: 0 }}
+          >
+            Show Less
+          </Button>
+        </div>
+      )}
     </div>
   )
 }
@@ -119,6 +160,15 @@ function ProjectsLoading() {
   )
 }
 
+// Async data fetching wrapper
+async function ProjectsDataLoader() {
+  // Import here to keep server-side only
+  const { getAllProjects } = await import('@/lib/db')
+  const allProjects = await getAllProjects()
+
+  return <ProjectsList projects={allProjects} />
+}
+
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -126,7 +176,7 @@ export default function Home() {
         <ProgressiveDialogue />
 
         <Suspense fallback={<ProjectsLoading />}>
-          <AllProjects />
+          <ProjectsDataLoader />
         </Suspense>
       </div>
     </div>
