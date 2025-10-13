@@ -1,52 +1,119 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
-import { getAllPosts } from '@/lib/posts'
-import { BlogCard } from '@/components/blog/BlogCard'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import Image from 'next/image'
+import { getAllProjects } from '@/lib/db'
+import { Badge } from '@/components/ui/8bit/badge'
+import { ProgressiveDialogue } from '@/components/ProgressiveDialogue'
 
-// Async component for recent posts
-async function RecentPosts() {
-  const recentPosts = (await getAllPosts()).slice(0, 3)
+// Async component for all projects
+async function AllProjects() {
+  const allProjects = await getAllProjects()
 
-  if (recentPosts.length === 0) return null
+  if (allProjects.length === 0) {
+    return (
+      <div className="text-center text-muted-foreground py-8">
+        No projects found
+      </div>
+    )
+  }
 
   return (
     <div>
-      <h2 className="text-3xl font-bold tracking-tight mb-6 font-virtue">Recent Posts</h2>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {recentPosts.map((post) => (
-          <BlogCard key={post.slug} post={post} />
-        ))}
-      </div>
-      <div className="text-center mt-8">
-        <Link href="/blog">
-          <Button variant="outline">View All Posts</Button>
-        </Link>
+      <h2 className="text-3xl font-bold tracking-tight mb-8 font-virtue uppercase retro">All Projects</h2>
+      <div className="space-y-4">
+        {allProjects.map((project) => {
+          const hasImage = project.manual_screenshot_url && project.manual_screenshot_url.startsWith('http');
+
+          return (
+            <Link
+              key={project.id}
+              href={`/projects/${project.slug}`}
+              className="block border-4 border-border p-4 hover:border-primary hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] active:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] active:translate-x-1 active:translate-y-1"
+              style={{ borderRadius: 0 }}
+            >
+              <div className="flex items-start gap-4">
+                {hasImage && (
+                  <div className="relative w-32 h-32 flex-shrink-0 border-4 border-border overflow-hidden" style={{ imageRendering: 'pixelated' }}>
+                    <Image
+                      src={project.manual_screenshot_url!}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                      sizes="128px"
+                      style={{ imageRendering: 'pixelated' }}
+                    />
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 mb-3">
+                    <h3 className="font-virtue text-lg font-bold uppercase retro">
+                      {project.title}
+                    </h3>
+                    {project.category && (
+                      <Badge variant="outline" className="text-xs uppercase font-bold border-2">
+                        {project.category}
+                      </Badge>
+                    )}
+                  </div>
+                  {project.description && (
+                    <p className="text-sm mb-3 leading-relaxed">
+                      {project.description}
+                    </p>
+                  )}
+                  <div className="flex gap-4 text-xs font-bold uppercase">
+                    {project.github_url && (
+                      <span className="border-2 border-border px-2 py-1 hover:bg-primary hover:text-primary-foreground">
+                        GitHub ↗
+                      </span>
+                    )}
+                    {project.homepage_url && project.homepage_url !== project.github_url && (
+                      <span className="border-2 border-border px-2 py-1 hover:bg-accent hover:text-accent-foreground">
+                        Demo ↗
+                      </span>
+                    )}
+                    {project.language && (
+                      <span className="px-2 py-1">
+                        {project.language}
+                      </span>
+                    )}
+                    {project.stars !== null && project.stars !== undefined && (
+                      <span className="px-2 py-1">
+                        ★ {project.stars}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   )
 }
 
-// Loading component for recent posts
-function RecentPostsLoading() {
+// Loading component for projects list
+function ProjectsLoading() {
   return (
     <div>
-      <div className="h-8 w-48 bg-muted animate-pulse rounded mb-6" />
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3].map((i) => (
-          <Card key={i}>
-            <CardHeader>
-              <div className="h-6 w-3/4 bg-muted animate-pulse rounded mb-2" />
-              <div className="h-4 w-1/2 bg-muted animate-pulse rounded mb-2" />
-              <div className="h-4 w-full bg-muted animate-pulse rounded" />
-              <div className="h-4 w-2/3 bg-muted animate-pulse rounded" />
-            </CardHeader>
-          </Card>
+      <div className="h-10 w-64 bg-muted animate-pulse mb-8 border-4 border-border" style={{ borderRadius: 0 }} />
+      <div className="space-y-4">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="border-4 border-border p-4" style={{ borderRadius: 0 }}>
+            <div className="flex gap-4">
+              <div className="w-32 h-32 bg-muted animate-pulse border-4 border-border flex-shrink-0" />
+              <div className="flex-1">
+                <div className="h-6 w-48 bg-muted animate-pulse border-2 border-border mb-3" style={{ borderRadius: 0 }} />
+                <div className="h-4 w-full bg-muted animate-pulse border-2 border-border mb-2" style={{ borderRadius: 0 }} />
+                <div className="h-4 w-3/4 bg-muted animate-pulse border-2 border-border mb-3" style={{ borderRadius: 0 }} />
+                <div className="flex gap-4">
+                  <div className="h-6 w-20 bg-muted animate-pulse border-2 border-border" style={{ borderRadius: 0 }} />
+                  <div className="h-6 w-16 bg-muted animate-pulse border-2 border-border" style={{ borderRadius: 0 }} />
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
-      </div>
-      <div className="text-center mt-8">
-        <div className="h-10 w-32 bg-muted animate-pulse rounded mx-auto" />
       </div>
     </div>
   )
@@ -55,32 +122,11 @@ function RecentPostsLoading() {
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
+        <ProgressiveDialogue />
 
-        <div className="mb-12">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl font-virtue">What This Is</CardTitle>
-              <CardDescription>
-                My first homelab setup, documented as I learn
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="prose dark:prose-invert max-w-none">
-              <p className="mb-4 text-muted-foreground">
-                This is my first homelab running on a Minisforum UN100. I&apos;m learning infrastructure by building it, breaking it, and documenting what might actually work. Packer for VM images, Vagrant for management, tmux for automation, and Claude Code as my agentic OS.
-              </p>
-              <p className="mb-6 text-muted-foreground">
-                Each post covers real problems I&apos;ve hit and the actual solutions that worked. No theory, no best practices from people who&apos;ve never touched production - just what happens when you learn DevOps by doing it.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Cheers, <a href="https://willyv3.com/app-playground" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground underline font-virtue">WillyV3</a>
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        <Suspense fallback={<RecentPostsLoading />}>
-          <RecentPosts />
+        <Suspense fallback={<ProjectsLoading />}>
+          <AllProjects />
         </Suspense>
       </div>
     </div>

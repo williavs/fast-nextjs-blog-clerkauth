@@ -2,20 +2,18 @@
 
 > Infrastructure as Code when you barely know how to code. Real failures, real solutions. A Next.js 15 blog documenting homelab adventures, automation experiments, and AI-powered development workflows.
 
-This is WillyV3's personal homelab blog built with Next.js 15, featuring 3 blog posts about infrastructure failures and fixes. The site uses Clerk for authentication, Neon PostgreSQL for comments, and showcases real-world homelab scenarios solved with Claude Code automation.
+This is WillyV3's personal homelab blog built with Next.js 15, featuring 0 blog posts about infrastructure failures and fixes. The site uses Clerk for authentication, Neon PostgreSQL for comments, and showcases real-world homelab scenarios solved with Claude Code automation.
 
 Key technologies: Next.js 15 App Router, TypeScript, Tailwind CSS v4, shadcn/ui components, MDX with React components, Clerk authentication, Neon PostgreSQL.
 
 ## Blog Posts
 
-- [Automating Next.js + shadcn Setup Because Manual Steps Suck](https://breakshit.blog/blog/automating-nextjs-shadcn-setup): Built a script to skip the repetitive bullshit of setting up Next.js projects with all shadcn components
-- [Claude Instances Keep Using 2024 Dates in 2025: Fixed with Linux Systemd Automation](https://breakshit.blog/blog/claude-time-sync-automation): Built automated timestamp updater using systemd timers to stop Claude instances from temporal confusion across my Ubuntu homelab
-- [VM Go Brrrr: A Homelab Disaster Story](https://breakshit.blog/blog/persistent-vm-pattern): How I solved the OAuth token complexity problem with a dead-simple persistent VM approach using Packer and Vagrant
+
 
 ## Recent Content
-Last updated: 2025-08-23
-Total posts: 3 (3 MDX + 0 Database)
-Recent: Automating Next.js + shadcn Setup Because Manual Steps Suck, Claude Instances Keep Using 2024 Dates in 2025: Fixed with Linux Systemd Automation, VM Go Brrrr: A Homelab Disaster Story
+Last updated: 2025-10-13
+Total posts: 0 (0 MDX + 0 Database)
+Recent: 
 
 ---
 

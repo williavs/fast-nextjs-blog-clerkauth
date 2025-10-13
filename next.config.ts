@@ -5,6 +5,18 @@ import rehypeHighlight from 'rehype-highlight'
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'yv3lr478zqmsszja.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.blob.vercel-storage.com',
+      },
+    ],
+  },
   webpack: (config, { isServer }) => {
     // Ignore .claude directories to prevent build issues with symlinks
     config.watchOptions = {

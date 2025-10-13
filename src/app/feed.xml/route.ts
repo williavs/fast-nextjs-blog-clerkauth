@@ -1,14 +1,14 @@
-import { getAllPosts } from '@/lib/posts'
+import { getAllProjects } from '@/lib/db'
 import RSS from 'rss'
 
 export async function GET() {
-  const posts = await getAllPosts()
-  
+  const projects = await getAllProjects()
+
   const feed = new RSS({
-    title: 'Breaking Shit & Fixing It',
-    description: 'Infrastructure as Code when you barely know how to code. Real failures, real solutions.',
-    site_url: 'https://homelab-blog.vercel.app',
-    feed_url: 'https://homelab-blog.vercel.app/feed.xml',
+    title: 'BuiltByWilly - Projects',
+    description: 'Portfolio of TUI applications, web projects, CLI tools, and open source contributions by WillyV3',
+    site_url: 'https://builtbywilly.com',
+    feed_url: 'https://builtbywilly.com/feed.xml',
     language: 'en',
     managingEditor: 'WillyV3',
     webMaster: 'WillyV3',
@@ -17,13 +17,13 @@ export async function GET() {
     ttl: 60,
   })
 
-  posts.forEach((post) => {
+  projects.forEach((project) => {
     feed.item({
-      title: post.title,
-      description: post.excerpt,
-      url: `https://breakshit.blog/blog/${post.slug}`,
-      date: new Date(post.date),
-      categories: post.tags || [],
+      title: project.title,
+      description: project.description || `${project.category} project`,
+      url: `https://builtbywilly.com/projects/${project.slug}`,
+      date: project.created_at || new Date(),
+      categories: [project.category],
       author: 'WillyV3',
     })
   })

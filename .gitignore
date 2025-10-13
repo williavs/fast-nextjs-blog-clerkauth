@@ -45,3 +45,6 @@ logs/
 
 # claude observability
 
+
+# clerk configuration (can include secrets)
+/.clerk/

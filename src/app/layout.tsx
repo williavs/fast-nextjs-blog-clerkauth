@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { Navigation } from "@/components/Navigation";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import "@/components/ui/8bit/styles/retro.css";
 
 const virtue = localFont({
   src: "../../public/virtue.ttf",
