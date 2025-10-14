@@ -101,22 +101,23 @@ export function ProjectsList({ projects }: ProjectsListProps) {
 
       {/* See More Button */}
       {hasMore && !showAll && (
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center px-3 sm:px-0">
           <Button
             onClick={() => setShowAll(true)}
             size="lg"
-            className="uppercase font-bold border-4 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] active:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]"
+            className="w-full sm:w-auto uppercase font-bold border-4 text-xs sm:text-sm hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] active:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)]"
             style={{ borderRadius: 0 }}
           >
-            <ChevronDown className="mr-2 h-5 w-5" />
-            See More Projects ({projects.length - INITIAL_DISPLAY} more)
+            <ChevronDown className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+            <span className="hidden sm:inline">See More Projects ({projects.length - INITIAL_DISPLAY} more)</span>
+            <span className="sm:hidden">See More ({projects.length - INITIAL_DISPLAY})</span>
           </Button>
         </div>
       )}
 
       {/* Scroll to Top Button - shown when viewing all */}
       {showAll && (
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center px-3 sm:px-0">
           <Button
             onClick={() => {
               setShowAll(false)
@@ -124,7 +125,7 @@ export function ProjectsList({ projects }: ProjectsListProps) {
             }}
             variant="outline"
             size="lg"
-            className="uppercase font-bold border-4"
+            className="w-full sm:w-auto uppercase font-bold border-4 text-xs sm:text-sm"
             style={{ borderRadius: 0 }}
           >
             Show Less
