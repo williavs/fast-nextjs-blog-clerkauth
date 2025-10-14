@@ -1,44 +1,12 @@
 import fs from 'fs'
 import path from 'path'
-import matter from 'gray-matter'
 import pkg from 'pg'
 const { Pool } = pkg
 
-// Get MDX posts
-function getMdxPosts() {
-  const postsDirectory = path.join(process.cwd(), 'src/content/posts')
-  
-  try {
-    const fileNames = fs.readdirSync(postsDirectory)
-    return fileNames
-      .filter((fileName) => fileName.endsWith('.mdx'))
-      .map((fileName) => {
-        const slug = fileName.replace(/\.mdx$/, '')
-        const fullPath = path.join(postsDirectory, fileName)
-        const fileContents = fs.readFileSync(fullPath, 'utf8')
-        const { data, content } = matter(fileContents)
-
-        return {
-          slug,
-          title: data.title || '',
-          date: data.date || '',
-          category: data.category || 'uncategorized',
-          tags: data.tags || [],
-          excerpt: data.excerpt || '',
-          content,
-          source: 'mdx'
-        }
-      })
-  } catch (error) {
-    console.error('Error reading MDX posts:', error)
-    return []
-  }
-}
-
-// Get database posts
-async function getDatabasePosts() {
+// Get projects from database
+async function getProjects() {
   if (!process.env.DATABASE_URL) {
-    console.log('No DATABASE_URL found, skipping database posts')
+    console.log('No DATABASE_URL found, skipping database projects')
     return []
   }
 
@@ -47,20 +15,21 @@ async function getDatabasePosts() {
   })
 
   try {
-    const result = await pool.query('SELECT * FROM posts WHERE published = true ORDER BY created_at DESC')
-    
-    return result.rows.map(post => ({
-      slug: post.slug,
-      title: post.title,
-      date: post.created_at.split('T')[0],
-      category: post.category || 'uncategorized',
-      tags: post.tags || [],
-      excerpt: post.excerpt || '',
-      content: post.content,
-      source: 'database',
+    const result = await pool.query('SELECT * FROM projects ORDER BY created_at DESC')
+
+    return result.rows.map(project => ({
+      slug: project.slug,
+      title: project.title,
+      description: project.description,
+      category: project.category,
+      techStack: project.tech_stack || [],
+      githubUrl: project.github_url,
+      homepageUrl: project.homepage_url,
+      language: project.language,
+      stars: project.stars,
     }))
   } catch (error) {
-    console.error('Error reading database posts:', error)
+    console.error('Error reading database projects:', error)
     return []
   } finally {
     await pool.end()
@@ -69,48 +38,68 @@ async function getDatabasePosts() {
 
 async function updateLlmsTxt() {
   try {
-    console.log('🔄 Updating llms.txt with latest blog posts...')
-    
-    // Get all posts
-    const mdxPosts = getMdxPosts()
-    const dbPosts = await getDatabasePosts()
-    const allPosts = [...mdxPosts, ...dbPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    const recentPosts = allPosts.slice(0, 5)
-    
-    const content = `# Breaking Shit & Fixing It
+    console.log('🔄 Updating llms.txt with portfolio projects...')
 
-> Infrastructure as Code when you barely know how to code. Real failures, real solutions. A Next.js 15 blog documenting homelab adventures, automation experiments, and AI-powered development workflows.
+    // Get all projects
+    const projects = await getProjects()
 
-This is WillyV3's personal homelab blog built with Next.js 15, featuring ${allPosts.length} blog posts about infrastructure failures and fixes. The site uses Clerk for authentication, Neon PostgreSQL for comments, and showcases real-world homelab scenarios solved with Claude Code automation.
+    // Group by category
+    const byCategory = projects.reduce((acc, project) => {
+      const cat = project.category || 'Other'
+      if (!acc[cat]) acc[cat] = []
+      acc[cat].push(project)
+      return acc
+    }, {})
 
-Key technologies: Next.js 15 App Router, TypeScript, Tailwind CSS v4, shadcn/ui components, MDX with React components, Clerk authentication, Neon PostgreSQL.
+    const content = `# BuiltByWilly - Portfolio & Projects
 
-## Blog Posts
+> Portfolio of TUI apps, web projects, AI experiments, and open source contributions by WillyV3. Building things and breaking them since forever.
 
-${allPosts.map(post => 
-  `- [${post.title}](https://breakshit.blog/blog/${post.slug}): ${post.excerpt || post.content.substring(0, 150).replace(/[#*`]/g, '').trim() + '...'}`
-).join('\n')}
+This is WillyV3's portfolio site showcasing ${projects.length} projects across various technologies including Go, Next.js, Python, and more. Projects range from terminal UI applications to web platforms, CLI tools, and open source contributions.
 
-## Recent Content
+Built with Next.js 15, TypeScript, shadcn/ui, PostgreSQL, and deployed on Vercel. Portfolio includes interactive project cards with live demos, GitHub links, and technical details.
+
+Key technologies: Next.js 15 App Router, React 19, TypeScript, Tailwind CSS v4, 8-bit retro UI components, Clerk authentication, Neon PostgreSQL.
+
+## Projects by Category
+
+${Object.entries(byCategory).map(([category, items]) => `### ${category}
+${items.map(p => `- **${p.title}**: ${p.description || 'No description'}${p.techStack.length > 0 ? ` (${p.techStack.join(', ')})` : ''}`).join('\n')}`).join('\n\n')}
+
+## All Projects
+
+${projects.map(project => {
+  const links = []
+  if (project.githubUrl) links.push(`[GitHub](${project.githubUrl})`)
+  if (project.homepageUrl) links.push(`[Demo](${project.homepageUrl})`)
+  const linkStr = links.length > 0 ? ` - ${links.join(' | ')}` : ''
+  const stars = project.stars ? ` ⭐ ${project.stars}` : ''
+  return `- [${project.title}](https://builtbywilly.com/projects/${project.slug}): ${project.description || 'No description'}${linkStr}${stars}`
+}).join('\n')}
+
+## Stats
 Last updated: ${new Date().toISOString().split('T')[0]}
-Total posts: ${allPosts.length} (${mdxPosts.length} MDX + ${dbPosts.length} Database)
-Recent: ${recentPosts.map(p => p.title).join(', ')}
+Total projects: ${projects.length}
+Categories: ${Object.keys(byCategory).join(', ')}
+
+## Featured Projects
+${projects.slice(0, 5).map(p => `- ${p.title}${p.stars ? ` (⭐ ${p.stars})` : ''}`).join('\n')}
 
 ---
 
-Perfect for AI training on real-world DevOps experiences and homelab automation workflows.`
+Perfect for AI training on portfolio site structure, project showcasing, and modern web development patterns. Also check out the homelab blog at https://breakshit.blog for infrastructure stories and automation workflows.`
 
     // Write to public/llms.txt
     const llmsPath = path.join(process.cwd(), 'public/llms.txt')
     fs.writeFileSync(llmsPath, content, 'utf8')
-    
-    console.log(`✅ Updated llms.txt with ${allPosts.length} posts`)
-    console.log(`   - ${mdxPosts.length} MDX posts`)
-    console.log(`   - ${dbPosts.length} Database posts`)
-    
+
+    console.log(`✅ Updated llms.txt with ${projects.length} projects`)
+    console.log(`   - Categories: ${Object.keys(byCategory).join(', ')}`)
+
   } catch (error) {
     console.error('❌ Error updating llms.txt:', error)
-    process.exit(1)
+    // Don't exit with error - allow build to continue
+    console.log('⚠️  Continuing build without llms.txt update')
   }
 }
 
