@@ -38,56 +38,56 @@ export function ProjectsList({ projects }: ProjectsListProps) {
             <Link
               key={project.id}
               href={`/projects/${project.slug}`}
-              className="block border-4 border-border p-4 hover:border-primary hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] active:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] active:translate-x-1 active:translate-y-1"
+              className="block border-4 border-border p-3 sm:p-4 hover:border-primary hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] active:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] active:translate-x-1 active:translate-y-1"
               style={{ borderRadius: 0 }}
             >
-              <div className="flex items-start gap-4">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
                 {hasImage && (
-                  <div className="relative w-32 h-32 flex-shrink-0 border-4 border-border overflow-hidden" style={{ imageRendering: 'pixelated' }}>
+                  <div className="relative w-full sm:w-32 h-48 sm:h-32 flex-shrink-0 border-4 border-border overflow-hidden" style={{ imageRendering: 'pixelated' }}>
                     <Image
                       src={project.manual_screenshot_url!}
                       alt={project.title}
                       fill
                       className="object-cover"
-                      sizes="128px"
+                      sizes="(max-width: 640px) 100vw, 128px"
                       style={{ imageRendering: 'pixelated' }}
                     />
                   </div>
                 )}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3 mb-3">
-                    <h3 className="font-virtue text-lg font-bold uppercase retro">
+                <div className="flex-1 min-w-0 w-full">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+                    <h3 className="font-virtue text-base sm:text-lg font-bold uppercase retro break-words">
                       {project.title}
                     </h3>
                     {project.category && (
-                      <Badge variant="outline" className="text-xs uppercase font-bold border-2">
+                      <Badge variant="outline" className="text-xs uppercase font-bold border-2 flex-shrink-0">
                         {project.category}
                       </Badge>
                     )}
                   </div>
                   {project.description && (
-                    <p className="text-sm mb-3 leading-relaxed">
+                    <p className="text-xs sm:text-sm mb-3 leading-relaxed break-words">
                       {project.description}
                     </p>
                   )}
-                  <div className="flex gap-4 text-xs font-bold uppercase">
+                  <div className="flex flex-wrap gap-2 sm:gap-4 text-xs font-bold uppercase">
                     {project.github_url && (
-                      <span className="border-2 border-border px-2 py-1 hover:bg-primary hover:text-primary-foreground">
+                      <span className="border-2 border-border px-2 py-1 hover:bg-primary hover:text-primary-foreground whitespace-nowrap">
                         GitHub ↗
                       </span>
                     )}
                     {project.homepage_url && project.homepage_url !== project.github_url && (
-                      <span className="border-2 border-border px-2 py-1 hover:bg-accent hover:text-accent-foreground">
+                      <span className="border-2 border-border px-2 py-1 hover:bg-accent hover:text-accent-foreground whitespace-nowrap">
                         Demo ↗
                       </span>
                     )}
                     {project.language && (
-                      <span className="px-2 py-1">
+                      <span className="px-2 py-1 whitespace-nowrap">
                         {project.language}
                       </span>
                     )}
                     {project.stars !== null && project.stars !== undefined && (
-                      <span className="px-2 py-1">
+                      <span className="px-2 py-1 whitespace-nowrap">
                         ★ {project.stars}
                       </span>
                     )}
