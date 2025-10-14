@@ -5,6 +5,6 @@ interface BlogPostPageProps {
 }
 
 // Blog functionality has been removed - redirect to home
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage() {
   redirect('/')
 }

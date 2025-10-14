@@ -34,6 +34,7 @@ import {
 } from '@/components/ui/form';
 import { Card, CardContent } from '@/components/ui/card';
 import { X, Upload, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 import type { Project } from '@/lib/types/project';
 
 // Form schema
@@ -312,10 +313,13 @@ export function ProjectForm({ project, isEdit = false }: ProjectFormProps) {
             <div className="space-y-4">
               {screenshot.previewUrl ? (
                 <div className="relative inline-block">
-                  <img
+                  <Image
                     src={screenshot.previewUrl}
                     alt="Screenshot preview"
-                    className="max-w-md rounded-lg border"
+                    width={448}
+                    height={300}
+                    className="max-w-md rounded-lg border object-cover"
+                    unoptimized
                   />
                   <Button
                     type="button"
