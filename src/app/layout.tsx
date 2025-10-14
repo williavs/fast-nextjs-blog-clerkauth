@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ClerkProvider } from '@clerk/nextjs'
+import { ThemeProvider } from "next-themes";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/FooterStuff";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -73,16 +74,23 @@ export default function RootLayout({
         baseTheme: "simple"
       }}
     >
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${virtue.variable} antialiased`}
         >
-          <Navigation />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-          <SpeedInsights />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navigation />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+            <SpeedInsights />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
