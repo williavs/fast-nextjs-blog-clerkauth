@@ -29,7 +29,7 @@ export function ProjectsList({ projects }: ProjectsListProps) {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold tracking-tight mb-8 font-virtue uppercase retro">All Projects</h2>
+      <h2 className="text-3xl font-bold tracking-tight mb-8 font-virtue uppercase retro">BuiltByWilly</h2>
       <div className="space-y-4">
         {displayedProjects.map((project) => {
           const hasImage = project.manual_screenshot_url && project.manual_screenshot_url.startsWith('http');
