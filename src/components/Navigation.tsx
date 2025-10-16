@@ -29,7 +29,6 @@ export function Navigation() {
   }, [user?.id])
 
   const isHome = pathname === '/'
-  const isStack = pathname === '/stack'
   const isBackstage = pathname.startsWith('/backstage')
 
   return (
@@ -65,9 +64,6 @@ export function Navigation() {
                       Blog
                     </a>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => router.push('/stack')}>
-                    Stack
-                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <a href="https://github.com/williavs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
@@ -99,20 +95,11 @@ export function Navigation() {
                 variant="outline"
                 size="sm"
                 asChild
-                className="rounded-none border-r-0"
+                className="rounded-none"
               >
                 <a href="https://breakshit.blog" target="_blank" rel="noopener noreferrer" className="uppercase font-bold">
                   Blog
                 </a>
-              </Button>
-
-              <Button
-                variant={isStack ? "default" : "outline"}
-                size="sm"
-                onClick={() => router.push('/stack')}
-                className="uppercase font-bold rounded-none"
-              >
-                Stack
               </Button>
             </div>
           </div>
