@@ -3,8 +3,15 @@
 import { useEffect, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/8bit/button'
-import { Rss, Settings } from 'lucide-react'
+import { Rss, Settings, Menu } from 'lucide-react'
 import { SignedIn, UserButton, useUser } from '@clerk/nextjs'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/8bit/dropdown-menu'
 
 export function Navigation() {
   const { user } = useUser()
@@ -40,6 +47,52 @@ export function Navigation() {
               Home
             </Button>
 
+            {/* Mobile dropdown menu */}
+            <div className="md:hidden">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-none"
+                  >
+                    <Menu className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48 text-xs">
+                  <DropdownMenuItem asChild>
+                    <a href="https://breakshit.blog" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                      Blog
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => router.push('/stack')}>
+                    Stack
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <a href="https://github.com/williavs" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                      GitHub
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="https://www.linkedin.com/in/willyv3/" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                      LinkedIn
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="https://willyv3.com" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                      Home
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="https://willyv3.com/app-playground" target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+                      Apps
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
             {/* Desktop nav buttons */}
             <div className="hidden md:flex items-center">
               <Button
@@ -60,42 +113,6 @@ export function Navigation() {
                 className="uppercase font-bold rounded-none"
               >
                 Stack
-              </Button>
-            </div>
-
-            {/* Tablet nav buttons - show 3 on medium screens */}
-            <div className="hidden sm:flex md:hidden items-center">
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className="uppercase font-bold rounded-none border-r-0"
-              >
-                <a href="https://github.com/williavs" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-              </Button>
-
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className="uppercase font-bold rounded-none border-r-0"
-              >
-                <a href="https://www.linkedin.com/in/willyv3/" target="_blank" rel="noopener noreferrer">
-                  LinkedIn
-                </a>
-              </Button>
-
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className="uppercase font-bold rounded-none"
-              >
-                <a href="https://willyv3.com" target="_blank" rel="noopener noreferrer">
-                  Home
-                </a>
               </Button>
             </div>
           </div>
