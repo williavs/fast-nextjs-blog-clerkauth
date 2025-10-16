@@ -14,7 +14,7 @@ interface ProjectsListProps {
 
 export function ProjectsList({ projects }: ProjectsListProps) {
   const [showAll, setShowAll] = useState(false)
-  const INITIAL_DISPLAY = 20
+  const INITIAL_DISPLAY = 5
 
   const displayedProjects = showAll ? projects : projects.slice(0, INITIAL_DISPLAY)
   const hasMore = projects.length > INITIAL_DISPLAY
