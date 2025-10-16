@@ -64,7 +64,7 @@ export function ProgressiveDialogue() {
   }, [visibleMessages])
 
   return (
-    <div className="mb-12 min-h-[400px]">
+    <div className="mt-12 mb-12 min-h-[400px]">
       <div className="space-y-6">
         {DIALOGUE_MESSAGES.slice(0, visibleMessages).map((msg, index) => (
           <Dialogue
