@@ -1,3 +1,33 @@
+
+<!-- TIMESTAMP-START-DO-NOT-EDIT -->
+# 🚨 CRITICAL TEMPORAL AWARENESS UPDATE 🚨
+
+## MANDATORY DATE/TIME RECOGNITION - READ THIS FIRST!
+
+**CURRENT ACTUAL DATE AND TIME:**
+- **TODAY IS: Sunday, October 19, 2025**
+- **CURRENT DATE: 2025-10-19**
+- **CURRENT TIME: 09:49:36 **
+- **THE YEAR IS: 2025**
+- **IT IS NOT 2024! IT IS 2025!**
+
+### ENFORCEMENT PROTOCOL:
+1. **ALWAYS use 2025 when referencing current year**
+2. **When using WebSearch, ALWAYS include "2025" or "2025" in queries for recent content**
+3. **NEVER default to 2024 - that was last year**
+4. **If you think it's 2024, YOU ARE WRONG - check this header again**
+
+### Examples of CORRECT date usage:
+- "The latest docs from 2025"
+- "Recent updates in August 2025"
+- "Current 2025 best practices"
+
+### VIOLATION ALERT:
+Using 2024 for current events = TEMPORAL CONFUSION = FAILURE
+
+**Last Updated: 2025-10-19 09:49:36**
+<!-- TIMESTAMP-END-DO-NOT-EDIT -->
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.

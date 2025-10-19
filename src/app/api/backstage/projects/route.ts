@@ -74,6 +74,16 @@ export async function POST(request: Request): Promise<NextResponse> {
       );
     }
 
+    // Check for duplicate slug error
+    if (error instanceof Error &&
+        (error.message.includes('duplicate key') ||
+         error.message.includes('already exists'))) {
+      return NextResponse.json(
+        { error: 'A project with this slug already exists. Please choose a different slug.' },
+        { status: 409 }
+      );
+    }
+
     return NextResponse.json(
       {
         error: 'Failed to create project',
