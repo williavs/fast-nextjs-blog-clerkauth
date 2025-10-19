@@ -74,10 +74,14 @@ export async function POST(request: Request): Promise<NextResponse> {
       );
     }
 
-    // Check for duplicate slug error
-    if (error instanceof Error &&
-        (error.message.includes('duplicate key') ||
-         error.message.includes('already exists'))) {
+    // Check for duplicate slug error (handles DatabaseError wrapper)
+    const errorMessage = error instanceof Error ? error.message : '';
+    const errorString = JSON.stringify(error);
+
+    if (errorMessage.includes('duplicate key') ||
+        errorMessage.includes('already exists') ||
+        errorString.includes('duplicate key') ||
+        errorString.includes('23505')) {  // PostgreSQL duplicate key error code
       return NextResponse.json(
         { error: 'A project with this slug already exists. Please choose a different slug.' },
         { status: 409 }
