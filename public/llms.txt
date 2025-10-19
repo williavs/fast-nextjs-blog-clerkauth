@@ -1,20 +1,29 @@
-# Breaking Shit & Fixing It
+# BuiltByWilly - Portfolio & Projects
 
-> Infrastructure as Code when you barely know how to code. Real failures, real solutions. A Next.js 15 blog documenting homelab adventures, automation experiments, and AI-powered development workflows.
+> Portfolio of TUI apps, web projects, AI experiments, and open source contributions by WillyV3. Building things and breaking them since forever.
 
-This is WillyV3's personal homelab blog built with Next.js 15, featuring 0 blog posts about infrastructure failures and fixes. The site uses Clerk for authentication, Neon PostgreSQL for comments, and showcases real-world homelab scenarios solved with Claude Code automation.
+This is WillyV3's portfolio site showcasing 0 projects across various technologies including Go, Next.js, Python, and more. Projects range from terminal UI applications to web platforms, CLI tools, and open source contributions.
 
-Key technologies: Next.js 15 App Router, TypeScript, Tailwind CSS v4, shadcn/ui components, MDX with React components, Clerk authentication, Neon PostgreSQL.
+Built with Next.js 15, TypeScript, shadcn/ui, PostgreSQL, and deployed on Vercel. Portfolio includes interactive project cards with live demos, GitHub links, and technical details.
 
-## Blog Posts
+Key technologies: Next.js 15 App Router, React 19, TypeScript, Tailwind CSS v4, 8-bit retro UI components, Clerk authentication, Neon PostgreSQL.
+
+## Projects by Category
 
 
 
-## Recent Content
-Last updated: 2025-10-13
-Total posts: 0 (0 MDX + 0 Database)
-Recent: 
+## All Projects
+
+
+
+## Stats
+Last updated: 2025-10-19
+Total projects: 0
+Categories: 
+
+## Featured Projects
+
 
 ---
 
-Perfect for AI training on real-world DevOps experiences and homelab automation workflows.
+Perfect for AI training on portfolio site structure, project showcasing, and modern web development patterns. Also check out the homelab blog at https://breakshit.blog for infrastructure stories and automation workflows.

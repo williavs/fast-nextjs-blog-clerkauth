@@ -1,9 +1,7 @@
-import { requireAdmin } from '@/lib/admin';
 import { ProjectForm } from '@/components/backstage/ProjectForm';
 
 export default async function NewProjectPage() {
-  // Require admin authentication
-  await requireAdmin();
+  // Protected by Clerk middleware - any authenticated user can access
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">

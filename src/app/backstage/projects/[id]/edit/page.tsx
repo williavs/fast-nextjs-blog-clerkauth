@@ -1,4 +1,3 @@
-import { requireAdmin } from '@/lib/admin';
 import { getProjectById } from '@/lib/db';
 import { ProjectForm } from '@/components/backstage/ProjectForm';
 import { notFound } from 'next/navigation';
@@ -8,8 +7,7 @@ interface EditProjectPageProps {
 }
 
 export default async function EditProjectPage({ params }: EditProjectPageProps) {
-  // Require admin authentication
-  await requireAdmin();
+  // Protected by Clerk middleware - any authenticated user can access
 
   const { id } = await params;
 

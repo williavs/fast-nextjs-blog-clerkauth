@@ -1,4 +1,3 @@
-import { requireAdmin } from '@/lib/admin';
 import { getAllProjects } from '@/lib/db';
 import Link from 'next/link';
 import { Button } from '@/components/ui/8bit/button';
@@ -6,8 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { PlusCircle, FolderKanban, Sparkles } from 'lucide-react';
 
 export default async function BackstageDashboard() {
-  // Require admin authentication
-  await requireAdmin();
+  // Protected by Clerk middleware - any authenticated user can access
 
   // Fetch projects for stats
   const projects = await getAllProjects();
