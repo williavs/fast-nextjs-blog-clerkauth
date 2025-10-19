@@ -4,16 +4,15 @@ import { NextResponse } from 'next/server'
 export async function GET() {
   try {
     const { userId } = await auth()
-    
+
     if (!userId) {
       return NextResponse.json({ isAdmin: false })
     }
 
-    const isAdmin = userId === process.env.ADMIN_ID
-
-    return NextResponse.json({ isAdmin })
+    // Any authenticated user can access backstage
+    return NextResponse.json({ isAdmin: true })
   } catch (error) {
-    console.error('Admin check error:', error)
+    console.error('Auth check error:', error)
     return NextResponse.json({ isAdmin: false })
   }
 }
