@@ -5,14 +5,17 @@
  */
 
 import { NextResponse } from 'next/server';
-import { requireAdmin } from '@/lib/admin';
+import { auth } from '@clerk/nextjs/server';
 import { saveProject } from '@/lib/db';
 import type { CreateProjectData } from '@/lib/types/project';
 
 export async function POST(request: Request): Promise<NextResponse> {
   try {
-    // Require admin authentication
-    await requireAdmin();
+    // Verify user is authenticated
+    const { userId } = await auth();
+    if (!userId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
     // Parse request body
     const body = await request.json();

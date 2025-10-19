@@ -6,7 +6,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { requireAdmin } from '@/lib/admin';
+import { auth } from '@clerk/nextjs/server';
 import { updateProject, deleteProject, getProjectById } from '@/lib/db';
 
 export async function PUT(
@@ -14,8 +14,11 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
   try {
-    // Require admin authentication
-    await requireAdmin();
+    // Verify user is authenticated
+    const { userId } = await auth();
+    if (!userId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
     const { id } = await params;
 
@@ -66,8 +69,11 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
   try {
-    // Require admin authentication
-    await requireAdmin();
+    // Verify user is authenticated
+    const { userId } = await auth();
+    if (!userId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
     const { id } = await params;
 
